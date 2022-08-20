@@ -1,0 +1,53 @@
+{
+  "users": [
+      {
+          "id": "number",
+          "isActive": "boolean",
+          "role": "user",
+          "email": "value",
+          "password": "value",
+          "firstName": "Value",
+          "lastName": "value",
+          "contact": "number",
+          "dob": "short date",
+          "address": {
+              "house_number": "value",
+              "street": "value",
+              "city": "value",
+              "province": "value",
+              "brgy": "value"
+          },
+          "orders": [
+              {
+                  "qty": "number",
+                  "ordersDate": "long date",
+                  "products": "products",
+                  "status": "value"
+              }
+          ]
+      }
+  ],
+  "products": {
+      "id": "number",
+      "productName": "value",
+      "image": "value",
+      "description": "value",
+      "price": "value",
+      "quantity": "value",
+      "isActive": "boolean",
+      "rating": [
+          "values"
+      ],
+      "comments": [
+          {"customer": "value", "comment": "value"}
+      ],
+      "date": "value",
+      "paymentType": ["cod"],
+      "sold": "number"
+  },
+  "admin": {
+      "role": "admin",
+      "username": "value",
+      "password": "value"
+  }
+}
