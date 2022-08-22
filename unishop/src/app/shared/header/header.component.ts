@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     let max = document.documentElement.scrollHeight;
     console.log(max, "max", pos, "pos")
     
-    this.stickyHeader = pos > 1300? true : false
+    this.stickyHeader = pos > 1500? true : false
   }
 
 
