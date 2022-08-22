@@ -1,0 +1,191 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #d9dee3;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    font-size: 15px;
+    margin-bottom: 70px ;
+    padding: 30px;
+  }
+  .card > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .card > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+  }
+  .card > .list-group:first-child {
+    border-top-width: 0;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  .card > .list-group:last-child {
+    border-bottom-width: 0;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+  .card > .card-header + .list-group,
+  .card > .list-group + .card-footer {
+    border-top: 0;
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .card-title {
+    margin-bottom: 0.875rem;
+  }
+  
+  .card-subtitle {
+    margin-top: -0.4375rem;
+    margin-bottom: 0;
+  }
+  
+  .card-text:last-child {
+    margin-bottom: 0;
+  }
+  
+  .card-link + .card-link {
+    margin-left: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1.5rem 1.5rem;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-bottom: 0 solid #d9dee3;
+  }
+  .card-header:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  
+  .card-footer {
+    padding: 1.5rem 1.5rem;
+    background-color: transparent;
+    border-top: 0 solid #d9dee3;
+  }
+  .card-footer:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+  
+  .card-header-tabs {
+    margin-right: -0.75rem;
+    margin-bottom: -1.5rem;
+    margin-left: -0.75rem;
+    border-bottom: 0;
+  }
+  
+  .card-header-pills {
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
+  }
+  
+  .card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .card-img,
+  .card-img-top,
+  .card-img-bottom {
+    width: 100%;
+  }
+  
+  .card-img,
+  .card-img-top {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .card-img,
+  .card-img-bottom {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+  
+  .card-group > .card {
+    margin-bottom: 0.8125rem;
+  }
+  @media (min-width: 576px) {
+    .card-group {
+      display: flex;
+      flex-flow: row wrap;
+    }
+    .card-group > .card {
+      flex: 1 0 0%;
+      margin-bottom: 0;
+    }
+    .card-group > .card + .card {
+      margin-left: 0;
+      border-left: 0;
+    }
+    .card-group > .card:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .card-group > .card:not(:last-child) .card-img-top,
+  .card-group > .card:not(:last-child) .card-header {
+      border-top-right-radius: 0;
+    }
+    .card-group > .card:not(:last-child) .card-img-bottom,
+  .card-group > .card:not(:last-child) .card-footer {
+      border-bottom-right-radius: 0;
+    }
+    .card-group > .card:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .card-group > .card:not(:first-child) .card-img-top,
+  .card-group > .card:not(:first-child) .card-header {
+      border-top-left-radius: 0;
+    }
+    .card-group > .card:not(:first-child) .card-img-bottom,
+  .card-group > .card:not(:first-child) .card-footer {
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .my-cart{
+    height: auto;
+    width: auto !important;
+    background-color: rgb(238, 238, 241);
+    margin-top: 30px;
+    font-size: 15px;
+    margin-bottom: 70px ;
+    box-shadow: 0px 10px 20px rgb(30, 25, 25);
+    padding: 30px;
+}
+
+    .count-input {
+    display: inline-block;
+    width: 100%;
+    width: 170px;
+  }
+
+  .count-input {
+    display: inline-block;
+    width: 100%;
+    width: 170px;
+  }
+
+  .input-group{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: stretch;
+    width: 100%;
+  }
