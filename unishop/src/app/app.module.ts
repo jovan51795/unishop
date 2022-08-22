@@ -8,7 +8,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
-import { MyCartComponent } from './components/my-cart/my-cart.component';
+
 
 
 
