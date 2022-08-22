@@ -8,89 +8,84 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Action</th>
+            <th class="text-right">
+                <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Clear Cart</button>
+              </th>
             </tr>
         </thead>
-        <tbody class="table-border-bottom-0 text-center">
-                <tr>
-                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                <td class="text-center">
-                    <div class="count-input">
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-secondary" type="button" >-</button>
+        <tbody class="table-border-bottom-0 text-center" *ngIf="items?.length; else noItemsInCart"  >
+                <tr *ngFor="let item of items">
+                    <td>
+                        <div class="product-item">
+                          <a class="product-thumb" routerLink="/products/{{item.product.id}}">
+                            <img [src]="item.product.image[0]" alt="Product">
+                          </a>
+                          <div class="product-info">
+                            <h4 class="product-title">
+                              <a routerLink="/products/{{item.product.id}}">{{item.product.productName}}</a>
+                            </h4>
+                          </div>
                         </div>
-                        <input type="text" class="form-control text-center" >
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="button" >+</button>
+                      </td>
+                      <td class="text-center">
+                        <div class="count-input">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <button class="btn btn-outline-secondary" type="button" (click)="decreaseAmount(item)">-</button>
+                            </div>
+                            <input type="text" class="form-control text-center">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button" (click)="increaseAmount(item)">+</button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                </td>
-                <td><i class="fab fa-react fa-lg text-info"></i> <strong>&#8369; 200</strong></td>
-                <td> <button type="button" class="btn btn-sm btn-outline-danger">Remove from cart</button></td>
+                      </td>
+                    
+                      <td class="text-right">
+                        <a class="remove-from-cart"
+                          href="#"
+                          data-toggle="tooltip"
+                          title="Remove item"
+                          (click)="onRemoveItem($event, item)">
+                          <i class="icon-cross"></i>
+                        </a>
+                      </td>
                 </tr>
                 
-                <tr>
-                <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                <td class="text-left">
-                    <div class="count-input">
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-secondary" type="button" >-</button>
-                        </div>
-                        <input type="text" class="form-control text-center" >
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="button" >+</button>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-
-                  <td><i class="fab fa-react fa-lg text-info"></i> <strong>&#8369; 200</strong></td>
-                <td> <button type="button" class="btn btn-sm btn-outline-danger">Remove from cart</button></td>
-                </tr>
-
-                <tr>
-                <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                <td class="text-center">
-                    <div class="count-input">
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-secondary" type="button" >-</button>
-                        </div>
-                        <input type="text" class="form-control text-center" >
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="button" >+</button>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-                <td><i class="fab fa-react fa-lg text-info"></i> <strong>&#8369; 200</strong></td>
-                <td> <button type="button" class="btn btn-sm btn-outline-danger">Remove from cart</button></td>
-                </tr>
-
-                <tr>
-                <td>
-                    <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
-                </td>
-                <td class="text-center">
-                    <div class="count-input">
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-secondary" type="button" >-</button>
-                        </div>
-                        <input type="text" class="form-control text-center" >
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="button" >+</button>
-                        </div>
-                      </div>
-                    </div>
-                </td>
-                <td><i class="fab fa-react fa-lg text-info"></i> <strong>&#8369; 200</strong></td>
-                <td> <button type="button" class="btn btn-sm btn-outline-danger">Remove from cart</button></td>
-                </tr>
-
+                
+                
             </tbody>
-        </table>
+
+            <ng-template #noItemsInCart>
+                <tbody>
+                  <tr>
+                    <td colspan="5">There are no items in your cart..</td>
+                  </tr>
+                </tbody>
+              </ng-template>
+
+
+            </table>
         </div>
+
+        <div class="shopping-cart-footer">
+            <div class="column">
+  
+            </div>
+            <div class="column text-lg">Total:
+              <span class="text-medium">&#8369; {{ total }}</span>
+            </div>
+          </div>
+          <div class="shopping-cart-footer">
+            <div class="column">
+              <a class="btn btn-outline-secondary" routerLink="/products">
+                <i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
+            </div>
+            <div class="column">
+              
+              <a class="btn btn-success" routerLink="/checkout">Proceed to Checkout</a>
+            </div>
+          </div>
+
+
     </div>
