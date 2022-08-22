@@ -19,8 +19,7 @@ import { MyCartComponent } from './components/my-cart/my-cart.component';
     FooterComponent,
     LayoutComponent,
     HomeComponent,
-    HeroSectionComponent,
-    MyCartComponent,
+    HeroSectionComponent
   ],
   imports: [
     BrowserModule,
