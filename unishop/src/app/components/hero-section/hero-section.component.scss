@@ -1,3 +1,92 @@
+@import '../../../scss/mixins';
 .hero-serction-main-container {
-    background-image: linear-gradient(90deg,#fb817e,#fbc97e);
+    background-image: linear-gradient(90deg, #fb817e, #fbc97e);
+    @include breakpoint-max(sm) {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.hero-body {
+    display: flex;
+    padding: 4.5rem 1.5rem 0;
+
+    @include breakpoint-max(sm) {
+        flex-direction: column;
+    }
+    
+    .left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include breakpoint-max(sm) {
+            margin-bottom: 2rem;
+        }
+    
+        .title-wrapper {
+            padding: 1rem 0;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-stretch: expanded;
+    
+            h1 {
+                
+                font-weight: 900;
+                font-size: 2.75rem !important;
+                font-weight: 800 !important;
+                font-style: italic;
+                line-height: 4.05rem;
+                color: #fff;
+                text-shadow: 0 4px rgb(0 0 0 / 25%);
+                margin-block-start: 0.83em;
+                margin-block-end: 0.83em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                white-space: nowrap;
+            }
+        }
+    
+        .search-container {
+            width: 100%;
+            
+    
+            .form-control {
+                height: 3rem !important;
+                border: 2px #fb817e ;
+            }
+    
+            .btn-us-primary {
+                background: #ffc836 ;
+                font-size: larger;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+
+.right {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    .img-wrapper {
+        img {
+            @include breakpoint-max(sm) {
+                width: 450px;
+                height: 450px;
+            }
+
+            @include breakpoint-max(xs) {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    }
 }
