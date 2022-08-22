@@ -22,6 +22,9 @@ import { AdminSidebarComponent } from './shared/admin-sidebar/admin-sidebar.comp
     HomeComponent,
     HeroSectionComponent,
     MyCartComponent,
+    AdminLayoutComponent,
+    UserLayoutComponent,
+    AdminSidebarComponent
   ],
   imports: [
     BrowserModule,
