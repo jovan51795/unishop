@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 // @import url('./assets/helpers/_helpers.scss');
+app-dashboard {
+    width: 100%;
+    margin: 1rem;
+}
+
+.us-btn-primary {
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: #ffc13b!important;
+    border: 2px solid #ffc13b!important;
+    box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
+}

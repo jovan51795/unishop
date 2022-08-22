@@ -1,0 +1,13 @@
+.page-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 20px;
+
+    div{
+        font-size: 28px;
+        font-weight: 700;
+    }
+}

@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LayoutComponent } from './shared/layout/layout.component';
+import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: "home",
+  redirectTo: "admin",
   pathMatch: 'full'
 },
 {
@@ -24,12 +24,22 @@ const routes: Routes = [{
 },
 {
   path: '',
-  component: LayoutComponent,
+  
   children: [
     {
       path: "user",
       loadChildren: () =>   import('./modules/user/user.module').then(b => b.UserModule)
     },
+  ]
+},
+{
+  path: '',
+  component: AdminLayoutComponent,
+  children: [
+    {
+      path: 'admin',
+      loadChildren: () => import('./modules/admin/admin.module').then(b => b.AdminModule)
+    }
   ]
 }
 ];
