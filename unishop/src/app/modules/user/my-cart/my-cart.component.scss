@@ -1,3 +1,5 @@
+
+@media (min-width: 769px) { 
 .card {
     position: relative;
     display: flex;
@@ -49,7 +51,7 @@
     display: flex;
     width: 100%;
     padding: 10px 0;
-    border-top: 1px solid;
+    // border-top: 1px solid;
      .column {
       display: table-cell;
       padding: 5px 0;
@@ -64,4 +66,14 @@
         }
       } 
     }
+  }
+}
+// Mobile View 
+.mobile-card{
+  margin: auto;
+}
+.count-input-mobile{
+    display: inline-block;
+    width: 100%;
+    width: 170px;
 }

@@ -22,7 +22,7 @@
                           </a>
                           <div class="product-info">
                             <h4 class="product-title">
-                             <!-- {{item.product.productName}} -->
+                             {{item.product.productName}}
                             </h4>
                           </div>
                         </div>
@@ -40,6 +40,9 @@
                           </div>
                         </div>
                       </td>
+
+                      <td class="text-center text-lg text-medium">Price:</td>
+                      <td class="text-center text-lg text-medium">{{ (item.product.price * item.amount) | currency }}</td>
                     
                       <td class="text-right">
                         <a class="remove-from-cart"
@@ -50,13 +53,10 @@
                           <i class="icon-cross"></i>
                         </a>
                       </td>
-                </tr>
-                
-                
-                
+                </tr> 
             </tbody>
 
-            <ng-template #noItemsInCart>
+              <ng-template #noItemsInCart>
                 <tbody>
                   <tr>
                     <td colspan="5">There are no items in your cart..</td>
@@ -69,9 +69,7 @@
         </div>
 
         <div class="shopping-cart-footer">
-            <div class="column">
-  
-            </div>
+            
             <div class="column text-lg">Total:
               <span class="text-medium">&#8369; {{ total }}</span>
             </div>
@@ -79,13 +77,41 @@
           <div class="shopping-cart-footer">
             <div class="column">
               <a class="btn btn-outline-secondary" routerLink="/products">
-                <i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
+                <i class="icon-arrow-left"></i>&nbsp; Continue Shopping</a>
             </div>
             <div class="column">
               
-              <a class="btn btn-success" routerLink="/checkout">Proceed to Checkout</a>
+              <a class="btn btn-warning" routerLink="/checkout">Checkout</a>
             </div>
           </div>
-
-
     </div>
+
+    <!-- Mobile View -->
+
+    <!-- <div class="mobile-card">
+      <h5 class="card-header">My Cart</h5>
+        <div class="card-body">
+          <h5 class="card-title">Product Name: Jacket</h5>
+          <p class="card-text">Price: </p>
+          <div class="count-input-mobile">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">-</button>
+              </div>
+              <input type="text" class="form-control text-center" placeholder="QTY">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">+</button>
+              </div>
+            </div>
+          </div><br><br><br>
+          
+          <div class="shopping-cart-footer ">
+            <div class="column">
+                <button type="button" class="btn rounded-pill btn-outline-secondary">Continue Shopping</button>
+            </div>
+            <div class="column">
+              <button type="button" class="btn rounded-pill btn-outline-warning">Checkout</button>
+            </div>
+          </div>
+        </div>
+    </div> -->
