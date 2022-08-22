@@ -29,6 +29,7 @@
   ],
   "products": {
       "id": "number",
+      "category": "string",
       "productName": "value",
       "image": "value",
       "description": "value",
