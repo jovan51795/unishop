@@ -16,7 +16,7 @@
             <h4 class="mb-2">Delight starts here</h4>
             <p class="mb-4">Make shopping easier</p>
 
-            <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+            <form [formGroup]="registerForm" class="mb-3">
               <div class="mb-3">
                 <label for="firtName" class="form-label">First Name</label>
                 <input
@@ -74,7 +74,7 @@
 
             <p class="text-center">
               <span>Already have an account?</span>
-              <a href="../login/login.component.html">
+              <a href="login">
                 <span>Sign in instead</span>
               </a>
             </p>
