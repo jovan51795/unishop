@@ -1,0 +1,68 @@
+<div class="container">
+        <h4>Order Summary</h4>
+        <hr class="padding-bottom-1x">
+        <div class="table-responsive shopping-cart">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th class="text-center">Total</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                <div class="product-item">
+                    <a class="product-thumb" >
+                    <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                    </a>
+                    <td>Tshirt x 3</td>
+                </div>
+                </td>
+                <td>100</td>
+                <td class="text-center text-lg text-medium">300</td>
+                
+            </tr>
+            <tr>
+                <td>
+                <div class="product-item">
+                    <a class="product-thumb" >
+                    <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                    </a>
+                    <td>Tshirt x 3</td>
+                </div>
+                </td>
+                <td>100</td>
+                <td class="text-center text-lg text-medium">300</td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                <div class="product-item">
+                    <a class="product-thumb" >
+                    <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                    </a>
+                    <td>Tshirt x 3</td>
+                </div>
+                </td>
+                <td>100</td>
+                <td class="text-center text-lg text-medium">300</td>
+                
+            </tr>
+
+            </tbody>
+        </table>
+        </div>
+
+        <div class="checkout-footer">
+            <div class="column text-lg">Subtotal:
+                <span class="text-medium">&#8369; 42,342</span>
+            </div>
+            <button type="button" class="btn btn-warning" (click)="placeOrder()">Place Order</button><br>
+            <button type="button" class="btn btn-secondary" (click)="backToCart()"> Back to Cart </button>
+        </div>
+</div>
+
