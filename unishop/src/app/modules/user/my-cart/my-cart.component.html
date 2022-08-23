@@ -8,9 +8,9 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Action</th>
-            <th class="text-right">
+            <th class="text-right" *ngIf="items?.length;">
                 <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Clear Cart</button>
-              </th>
+            </th>
             </tr>
         </thead>
         <tbody class="table-border-bottom-0 text-center" *ngIf="items?.length; else noItemsInCart"  >
@@ -22,7 +22,7 @@
                           </a>
                           <div class="product-info">
                             <h4 class="product-title">
-                             <!-- {{item.product.productName}} -->
+                             {{item.product.productName}}
                             </h4>
                           </div>
                         </div>
@@ -40,6 +40,9 @@
                           </div>
                         </div>
                       </td>
+
+                      <td class="text-center text-lg text-medium">Price:</td>
+                      <td class="text-center text-lg text-medium">{{ (item.product.price * item.amount) }}</td>
                     
                       <td class="text-right">
                         <a class="remove-from-cart"
@@ -50,13 +53,10 @@
                           <i class="icon-cross"></i>
                         </a>
                       </td>
-                </tr>
-                
-                
-                
+                </tr> 
             </tbody>
 
-            <ng-template #noItemsInCart>
+              <ng-template #noItemsInCart>
                 <tbody>
                   <tr>
                     <td colspan="5">There are no items in your cart..</td>
@@ -89,4 +89,3 @@
 
 
     </div>
-
