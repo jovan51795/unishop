@@ -1,0 +1,67 @@
+<div class="page-container">
+    <div>Add Product</div>
+    <div>
+        <button class="btn us-btn-primary" (click)="goBack()">Back</button>
+    </div>
+</div>
+<section class="page-navbar">
+    <div class="card-body">
+        <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Category</label>
+                    <input type="text" formControlName="category" class="form-control input-border" placeholder="Category">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Product Name</label>
+                    <input type="text" formControlName="productName" class="form-control"  placeholder="Product Name"
+                        required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Quantity</label>
+                    <input type="text" formControlName="quantity" class="form-control" placeholder="Quantity" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Date</label>
+                    <input type="text" formControlName="date" class="ng-valid form-control" placeholder="Date" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Price</label>
+                    <input type="text" formControlName="price" class="form-control" placeholder="Price"
+                        required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Payment Type</label>
+                    <select class="form-control" formControlName="paymentType" >
+                        <option value="COD" selected>COD</option>
+                        <option  title="Not Available" disabled>Credit Cards</option>
+                        <option title="Not Available" disabled>Debit Cards</option>
+                        <option  title="Not Available" disabled>Cash</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Description</label>
+                    <textarea formControlName="description" class="form-control" id="" cols="30" rows="16"></textarea>
+                    <!-- <input type="text" class="form-control" id="validationDefault03" placeholder="City" required> -->
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Product Image</label>
+                    <input type="file" accept="image/*"  class="form-control ng-valid"(change)="previewImage($event)"  id="validationDefault03" placeholder="City" required>
+                    <div class="preview-wrapper">
+                        <img width="400" height="350"
+                            [src]="imageUrl" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="submit" onsubmit="addProduct()" value="save"> -->
+            
+            <button class="btn us-btn-primary"  type="submit">Save</button>
+        </form>
+    </div>
+</section>
+
+

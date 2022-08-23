@@ -1,4 +1,5 @@
 @import '../../../scss/mixins';
+
 .hero-serction-main-container {
     background-image: linear-gradient(90deg, #fb817e, #fbc97e);
     @include breakpoint-max(sm) {
@@ -52,18 +53,6 @@
     
         .search-container {
             width: 100%;
-            
-    
-            .form-control {
-                height: 3rem !important;
-                border: 2px #fb817e ;
-            }
-    
-            .btn-us-primary {
-                background: #ffc836 ;
-                font-size: larger;
-                font-weight: 500;
-            }
         }
     }
 }
@@ -75,9 +64,10 @@
     flex: 1;
     flex-direction: column-reverse;
     align-items: center;
-
+    
     .img-wrapper {
         img {
+
             @include breakpoint-max(sm) {
                 width: 450px;
                 height: 450px;

@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-    let max = document.documentElement.scrollHeight;
-    console.log(max, "max", pos, "pos")
+    // let max = document.documentElement.scrollHeight;
     
     this.stickyHeader = pos > 1500? true : false
   }

@@ -11,7 +11,9 @@ import { MyCartComponent } from './components/my-cart/my-cart.component';
 import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './shared/user-layout/user-layout.component';
 import { AdminSidebarComponent } from './shared/admin-sidebar/admin-sidebar.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,11 +26,14 @@ import { AdminSidebarComponent } from './shared/admin-sidebar/admin-sidebar.comp
     MyCartComponent,
     AdminLayoutComponent,
     UserLayoutComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,12 @@
 
-<div class="page-navbar">
+<div class="page-container">
     <div>Dashboard</div>
     <div>
-        <button class="btn us-btn-primary">Add Product</button>
+        <button class="btn us-btn-primary" (click)="goToAddProduct()">Add Product</button>
     </div>
 </div>
-<section>
-
+<section class="page-container">
+    <div class="card-body">
+        <app-table [data]="products" [columns]="columns"></app-table>
+    </div>
 </section>
