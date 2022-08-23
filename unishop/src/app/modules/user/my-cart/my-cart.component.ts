@@ -13,7 +13,7 @@ export class MyCartComponent implements OnInit {
   private cartSubscription: Subscription | undefined;
   public items: CartItem[] | undefined;
   public total: number = 0;
-  
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class MyCartComponent implements OnInit {
     );
   }
 
+  
   public onClearCart(event: { preventDefault: () => void; stopPropagation: () => void; }) {
     event.preventDefault();
     event.stopPropagation();
