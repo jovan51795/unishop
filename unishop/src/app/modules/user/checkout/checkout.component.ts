@@ -13,14 +13,14 @@ export class CheckoutComponent implements OnInit {
   items: CartItem[] | undefined;
   total: number | undefined;
 
-  constructor(private cartService: CartService, private router: Router,) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
    placeOrder() {
     alert("Order has been placed")
-    this.router.navigate(['/home']);
+    this.router.navigate(['user/my-orders']);
   }
 
    backToCart() {

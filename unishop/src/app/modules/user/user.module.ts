@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { UserRoutingModule } from './user-routing.module';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 
@@ -12,7 +13,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
   
     DashboardComponent,
     MyCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyOrdersComponent
   ],
   imports: [
     CommonModule,
