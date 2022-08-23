@@ -14,6 +14,7 @@ import { AdminSidebarComponent } from './shared/admin-sidebar/admin-sidebar.comp
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,9 +34,10 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
