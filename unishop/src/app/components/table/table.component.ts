@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -7,27 +7,42 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-@Input() data: Product[] | undefined
-@Input() columns: string[] | undefined
-  constructor() { }
+@Input() data: Product[] | undefined;
+@Input() columns: any;
+@Input() buttons: any;
+@Output() headerBtnEmitter = new EventEmitter()
+@Output() actionEmitter = new EventEmitter()
+
+dropdownIcon = false
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
 
+  getDataLength() {
+    return !this.data?.length;
+  }
+
+  
   tableRowData =(data: any): string[] => {
-    console.log(this.columns, "the columns")
     let resultArray: string[] = []
-    
-    
-    for(let col in this.columns){
-      if(Object.keys(data).includes(this.columns[parseInt(col)])){
-        console.log(resultArray.push(data[this.columns[parseInt(col)]]), "lets try")
-        
+    for(let col of this.columns){
+      if(Object.keys(data).includes(col.key)){
+        resultArray.push(data[col.key])
       }
     }
-
-
     return resultArray;
+  }
+
+
+  orderBy = (e: any, data: any) => {
+    this.headerBtnEmitter.emit(data)
+  }
+
+  actions = (event: any, type: any) => {
+    this.actionEmitter.emit({...event, type})
   }
 
 }

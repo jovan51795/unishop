@@ -39,6 +39,19 @@ export class AuthService {
     )
   }
 
+  forgotpassword = (userData: any) => {
+    return this.http.post(`${environment.url}/forgotpasword`, userData)
+    .pipe(
+      catchError(err => {
+        console.log(err)
+        this.toast.error(err.error)
+        return of(err)
+      }),
+      tap(x => x)
+
+    )
+  }
+
   getToken(){
     return localStorage.getItem("token")? true: false;
   }

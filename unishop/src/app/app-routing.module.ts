@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -7,7 +8,7 @@ import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.compone
 
 const routes: Routes = [{
   path: '',
-  redirectTo: "admin",
+  redirectTo: "home",
   pathMatch: 'full'
 },
 {
@@ -17,6 +18,10 @@ const routes: Routes = [{
 {
   path: "register",
   component: RegisterComponent
+},
+{
+  path: "forgotpassword",
+  component: ForgotpasswordComponent
 },
 {
   path: "home",

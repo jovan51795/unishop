@@ -5,7 +5,7 @@
 app-dashboard {
     width: 100%;
 }
-app-add-product {
+app-add-product, app-products, app-details, app-users {
     width: 100%;
     margin: 1rem;
 }
@@ -27,7 +27,7 @@ app-add-product {
     border-radius: 20px;
     margin: 1rem;
 
-    div{
+    .page-nav {
         font-size: 28px;
         font-weight: 700;
     }
@@ -43,3 +43,12 @@ app-add-product {
     border: 2px solid #fb817e !important;
     height: 3rem !important;
 }
+
+.active-link {
+    background: #ffc13b;
+}
+
+.active-link:hover {
+    background: #ffc13b !important;
+}
+
