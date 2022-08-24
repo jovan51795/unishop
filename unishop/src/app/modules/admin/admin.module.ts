@@ -8,6 +8,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from 'src/app/components/table/table.component';
 import { DetailsComponent } from './details/details.component';
 import { CardComponent } from 'src/app/components/card/card.component';
+import { UsersComponent } from './users/users.component';
+import { CommandBarComponent } from './components/command-bar/command-bar.component';
 
 
 
@@ -18,7 +20,9 @@ import { CardComponent } from 'src/app/components/card/card.component';
     AddProductComponent,
     TableComponent,
     DetailsComponent,
-    CardComponent
+    CardComponent,
+    UsersComponent,
+    CommandBarComponent
   ],
   imports: [
     AdminRoutingModule,

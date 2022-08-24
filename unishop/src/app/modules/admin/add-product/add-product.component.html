@@ -1,9 +1,5 @@
-<div class="page-container">
-    <div>Add Product</div>
-    <div>
-        <button class="btn us-btn-primary" (click)="goBack()">Back</button>
-    </div>
-</div>
+<app-command-bar [data]="comData"></app-command-bar>
+
 <section class="page-container">
     <div class="card-body">
         <form [formGroup]="productForm" (ngSubmit)="addProduct()">

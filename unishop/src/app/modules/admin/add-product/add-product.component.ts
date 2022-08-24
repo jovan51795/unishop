@@ -18,6 +18,8 @@ export class AddProductComponent implements OnInit {
   dateNow = new Date();
   paramID: any;
 
+  comData = {title: "Add Product"}
+
   constructor(private fb: FormBuilder,
      private adminServices: AdminService, 
      private toast: ToastrService,
@@ -39,7 +41,7 @@ export class AddProductComponent implements OnInit {
       quantity: ['', [Validators.required]],
       date: [{value: this.datePipe.transform(this.dateNow), disabled: true } ],
       paymentType: ['', [Validators.required]],
-      isActive: [false],
+      isActive: [true],
       rating: this.fb.array([]),
       customers: this.fb.array([]),
       sold: [0]
@@ -88,8 +90,5 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  goBack = () => {
-    this.location.back();
-  }
 
 }

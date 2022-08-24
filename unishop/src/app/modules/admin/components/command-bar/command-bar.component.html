@@ -1,0 +1,10 @@
+<div class="page-container">
+    <div class="page-nav">{{data.title}}</div>
+    <div class="page-nav">
+        <button class="btn us-btn" 
+        [ngClass]="[btn.color]" 
+        *ngFor="let btn of data?.buttons"
+        (click)="action(btn)"
+        >{{btn.name}}</button> 
+    </div>
+</div>

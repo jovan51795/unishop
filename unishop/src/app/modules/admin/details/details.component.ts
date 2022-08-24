@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
 import { Product } from 'src/app/models/product';
 
@@ -9,9 +9,19 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
+  comData = {
+    title: "Product Details",
+    buttons: [
+      {
+      type: "add-product",
+      name: "Add Product",
+      color: "us-btn-primary",
+    }
+  ]
+  }
   paramID: any;
   value: any[] = []
-  constructor(private route: ActivatedRoute, private adminServices: AdminService) { 
+  constructor(private route: ActivatedRoute, private adminServices: AdminService, private router: Router) { 
     this.route.queryParams.subscribe(data => {
       this.paramID = data['id']
       
@@ -36,6 +46,12 @@ export class DetailsComponent {
       }
       
     })
+  }
+
+  comActionEmit =(data: any) => {
+    if(data.type === 'add-product'){
+      this.router.navigate(['admin/add'])
+    }
   }
 
 

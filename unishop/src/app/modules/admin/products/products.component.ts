@@ -16,7 +16,8 @@ export class ProductsComponent implements OnInit {
     {isBtn: true, key: "category", isSortable: false, dIcon: false}, 
     {isBtn: true, key: "productName", isSortable: false, dIcon: false},
     {isBtn: true, key: "price", isSortable: false, dIcon: false}, 
-    {isBtn: true, key: "sold", isSortable: false, dIcon: false}
+    {isBtn: true, key: "sold", isSortable: false, dIcon: false},
+    {isBtn: true, key: "isActive", isSortable: false, dIcon: false}
   ]
 
   buttons = [
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit {
   constructor(private adminService: AdminService, private router: Router) { 
     this.adminService.getAllProducts().subscribe(
       x =>{
-        this.products = x
+        this.products = x.filter(i => i.isActive === true)
       }
     )
   }
@@ -48,13 +49,14 @@ export class ProductsComponent implements OnInit {
     if(event.type === 'edit') {
       this.router.navigate(['admin/add'], {queryParams: {id: event.id}})
     }else if(event.type === 'delete') {
-      forkJoin([this.adminService.deleteProduct(event.id),
+      event.isActive = !event.isActive
+      forkJoin([this.adminService.editProduct(event),
       this.adminService.getAllProducts()]).pipe(
         map(([f, s]) => {
           this.products = s
         })
       ).subscribe()
-      //this.adminService.deleteProduct(event.id).subscribe()
+      
     }else if(event.type === 'view') {
       this.router.navigate(['admin/details'], {queryParams: {id: event.id}})
     }
