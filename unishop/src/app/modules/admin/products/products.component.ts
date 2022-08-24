@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
       ).subscribe()
       //this.adminService.deleteProduct(event.id).subscribe()
     }else if(event.type === 'view') {
-      this.router.navigate(['admin/details'])
+      this.router.navigate(['admin/details'], {queryParams: {id: event.id}})
     }
   }
 

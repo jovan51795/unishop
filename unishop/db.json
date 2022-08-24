@@ -40,7 +40,7 @@
       "paymentType": "COD",
       "isActive": false,
       "rating": [],
-      "customers": [],
+      "customers": ["jovanie", "cabatuan"],
       "sold": 0
     }
   ],
