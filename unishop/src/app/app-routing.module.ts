@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.compone
 
 const routes: Routes = [{
   path: '',
-  redirectTo: "admin",
+  redirectTo: "home",
   pathMatch: 'full'
 },
 {
