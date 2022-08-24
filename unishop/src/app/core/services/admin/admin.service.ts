@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Product } from 'src/app/models/product';
-import { catchError, map, Observable, tap } from 'rxjs';
+import { catchError, filter, map, Observable, tap } from 'rxjs';
+import { Users } from '../../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,14 @@ export class AdminService {
 
   deleteProduct(id: number) {
     return this.http.delete(`${environment.url}/products/${id}`).pipe(
+      tap(x => x)
+    )
+  }
+
+  //users
+
+  getAllUsers = (): Observable<Users[]> => {
+    return this.http.get<Users[]>(`${environment.url}/users`).pipe(
       tap(x => x)
     )
   }

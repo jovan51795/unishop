@@ -9,6 +9,17 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  comData = {
+    title: "Dashboard",
+    buttons: [
+      {
+      type: "add-product",
+      name: "Add Product",
+      color: "us-btn-primary"
+    }
+  ]
+  }
   products: Product[] = [];
   constructor(private router: Router, private adminServices: AdminService) { 
     this.getProducts('sold', true)
@@ -35,6 +46,12 @@ export class DashboardComponent implements OnInit {
     this.adminServices.getProducts(1, 5, data, order?'desc': 'acs' ).subscribe(x => {
       this.products = x
     })
+  }
+
+  comActionEmit =(data: any) => {
+    if(data.type === 'add-product'){
+      this.router.navigate(['admin/add'])
+    }
   }
 }
 

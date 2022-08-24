@@ -5,7 +5,7 @@
 app-dashboard {
     width: 100%;
 }
-app-add-product, app-products, app-details {
+app-add-product, app-products, app-details, app-users {
     width: 100%;
     margin: 1rem;
 }
@@ -42,5 +42,13 @@ app-add-product, app-products, app-details {
 .form-control {
     border: 2px solid #fb817e !important;
     height: 3rem !important;
+}
+
+.active-link {
+    background: #ffc13b;
+}
+
+.active-link:hover {
+    background: #ffc13b !important;
 }
 
