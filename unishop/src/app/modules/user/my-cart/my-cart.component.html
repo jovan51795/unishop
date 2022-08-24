@@ -1,92 +1,62 @@
 <div class="card">
   <h5 class="card-header">My Cart</h5>
   <div class="table-responsive text-nowrap">
-    <table class="table table-hover">
+    <table class="table table-hover"  *ngIf="products?.length; else noItemsInCart" >
       <thead class="text-center">
         <tr>
+          <th>Item Image</th>
           <th>Product name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Total</th>
           <th>Action</th>
-          <th class="text-right" *ngIf="items?.length;">
-            <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Clear Cart</button>
+          <th>
+            <button (click)="emptyCart()" class="btn btn-xs btn-danger">Clear Cart</button>
           </th>
         </tr>
       </thead>
-      <tbody class="table-border-bottom-0 text-center" *ngIf="items?.length; else noItemsInCart">
-        <tr *ngFor="let item of items">
+      <tbody class="table-border-bottom-0 text-center">
+      
+        <tr *ngFor="let item of products; let i = index">
+          <td> <img style="width: 120px" src="{{item.image}}" alt=""> </td>
+          <td>{{item.productName}}</td>
+          <td><input class="form-control" id="qty" type="number" value="{{item.quantity}}" min="1"></td>
+          <td> {{item.price}} </td>
+          <td> {{item.price * item.quantity}} </td>
+          
           <td>
-            <div class="product-item">
-              <a class="product-thumb">
-                <img [src]="item.product.image[0]" alt="Product">
-              </a>
-              <div class="product-info">
-                <h4 class="product-title">
-                  {{item.product.productName}}
-                </h4>
-              </div>
-            </div>
+            <button (click)="removeItem(item)" class="btn btn-xs btn-outline-danger">Remove Item</button>
           </td>
-          <td class="text-center">
-            <div class="count-input">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="button" (click)="decreaseAmount(item)">-</button>
-                </div>
-                <input type="text" class="form-control text-center">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="increaseAmount(item)">+</button>
-                </div>
-              </div>
-            </div>
-          </td>
-
-          <td class="text-center text-lg text-medium">Price:</td>
-          <td class="text-center text-lg text-medium">{{ (item.product.price * item.amount) }}</td>
-
-          <td class="text-right">
-            <a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"
-              (click)="onRemoveItem($event, item)">
-              <i class="icon-cross"></i>
-            </a>
-          </td>
+          <td></td>
         </tr>
+        <tr>
+          <td colspan="5"></td>
+          <td><strong>Subtotal : ${{subTotal}}</strong></td>
+          
+      </tr>
       </tbody>
-
-      <ng-template #noItemsInCart>
-        <tbody>
-          <tr>
-            <td colspan="5">There are no items in your cart..</td>
-          </tr>
-        </tbody>
-      </ng-template>
     </table>
+
+      <ng-template #noItemsInCart> 
+          <img class="image" src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png" alt="">
+          <h4>There are no items in your cart..</h4>
+          <button  class="btn btn-warning" (click)="goToProducts()">Shop Now</button>
+      </ng-template>
+
   </div>
 
-  <div class="table-footer" *ngIf="items?.length; else noItemsInCartButtons">
+  <div class="table-footer" *ngIf="products?.length;">
     <div class="shopping-cart-footer">
       <div class="column">
-
-      </div>
-      <div class="column text-lg">Total:
-        <span class="text-medium">&#8369; {{ total }}</span>
-      </div>
-    </div>
-    <div class="shopping-cart-footer">
-      <div class="column">
-        <a class="btn btn-outline-secondary" routerLink="/products">
-          <i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
+          <button  class="btn btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button>
       </div>
       <div class="column">
-
-        <a class="btn btn-success" routerLink="/checkout">Proceed to Checkout</a>
+        <a class="btn btn-warning" (click)="goToCheckout()" >Proceed to Checkout</a>
       </div>
+      
     </div>
   </div>
 
-  <ng-template #noItemsInCartButtons>
-    <button class="btn-table-options btn-sm btn-outline-secondary">Go to Shop</button>
-  </ng-template>
 
 
 </div>
@@ -95,36 +65,23 @@
 
 <div class="container">
   <h5 class="card-header">My Cart</h5>
-  <div class="container-card " *ngIf="items?.length; else noItemsInCartMobile">
-    <div class="row" *ngFor="let item of items">
+  <div class="container-card " *ngIf="products?.length; else noItemsInCartMobile">
+    <div class="row" >
       <div class="col-12 col-md-12 col-lg-12 ">
-        <img class="card-img card-img-center"
-          src="https://media.istockphoto.com/photos/flat-lay-with-womans-clothes-and-accessories-picture-id1339264709?k=20&m=1339264709&s=612x612&w=0&h=pC-z5y_KPFrUQEA4dXeycsVCwNkG-5ApzN4SWiY1Bro=" />
-        <div class="card-body">
-
-          <h5 class="card-title">Apparel</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-            This content is a little bit longer.
-          </p>
-          <h5 class="pb-1 mb-4">Price: &#8369; </h5>
-
-          <div class="count-input-mobile ">
-            <div class="input-group ">
-              <div class="input-group-prepend">
-              </div>
-            </div>
-          </div><br><br><br>
-          <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Remove this item</button>
+         <div class="card-body" *ngFor="let item of products">
+          <h5 class="card-title">{{item.productName}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <h5 class="pb-1 mb-4">Price: &#8369; {{item.price}}</h5>
+          <button (click)="removeItem(item)" class="btn btn-outline-danger">Remove Item</button>
         </div>
-
       </div>
     </div>
   </div>
+  <br><br>
 
-  <div class="button-options" *ngIf="items?.length; else noItemsInCartMobileButtons">
-    <h5 class="pb-1 mb-4">Total: &#8369; </h5>
-    <button class="btn-options btn-sm btn-warning mb-3">Checkout</button><br>
+  <div class="button-options" *ngIf="products?.length;">
+    <h5 class="pb-1 mb-4">Total: &#8369;   </h5>
+    <button class="btn-options btn-sm btn-warning mb-3">Proceed to Checkout</button><br>
     <button class="btn-options btn-sm btn-outline-secondary">Continue Shopping</button><br><br>
     <button class="btn-options btn-sm btn-outline-danger">Clear Cart</button>
   </div>
@@ -132,9 +89,7 @@
 </div>
 
 <ng-template #noItemsInCartMobile>
-  <h5 class="no-items">There are no items in your cart..</h5><br>
-</ng-template>
-
-<ng-template #noItemsInCartMobileButtons>
-  <button class="btn-options btn-sm btn-outline-secondary">Go to Shop</button>
+  <img style="width: 100px;" src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png">
+  <h4>There are no items in your cart..</h4>
+  <button routerLink="home" class="btn btn-warning">Shop Now</button>
 </ng-template>

@@ -19,10 +19,19 @@
       },
       "orders": [
         {
+          "orderedDate": "date",
+          "productName": "products",
+          "image": "image",
+          "description": "description",
           "qty": "number",
-          "ordersDate": "long date",
-          "products": "products",
+          "unitPrice": "number",
+          "total": "number",
           "status": "value"
+        }
+      ],
+      "interests": [
+        {
+          "category": "categories"
         }
       ]
     },
@@ -64,6 +73,51 @@
       ],
       "sold": 0,
       "type": "delete"
+    },
+    {
+      "id": 2,
+      "category": "Home & Garden",
+      "productName": "Plant",
+      "image": "ARRAY METHOD.jpg",
+      "description": "White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant ",
+      "price": "230",
+      "quantity": "23",
+      "date": "Aug 24, 2022",
+      "paymentType": "COD",
+      "isActive": true,
+      "rating": [],
+      "customers": [],
+      "sold": 0
+    },
+    {
+      "id": 3,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": "21",
+      "date": "Aug 24, 2022",
+      "paymentType": "COD",
+      "isActive": true,
+      "rating": [],
+      "customers": [],
+      "sold": 0
+    },
+    {
+      "id": 4,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": "21",
+      "date": "Aug 24, 2022",
+      "paymentType": "COD",
+      "isActive": true,
+      "rating": [],
+      "customers": [],
+      "sold": 0
     }
   ],
   "admin": {
