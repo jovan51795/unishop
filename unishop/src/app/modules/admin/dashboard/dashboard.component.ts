@@ -11,19 +11,30 @@ import { Product } from 'src/app/models/product';
 export class DashboardComponent implements OnInit {
   products: Product[] = [];
   constructor(private router: Router, private adminServices: AdminService) { 
-      this.adminServices.getProducts().subscribe(x => {
-        console.log(x[0].category)
-        this.products = x
-      })
+    this.getProducts('sold', true)
   }
 
-  columns =["category", "productName","price", "sold"]
-
+  columns =[
+    {isBtn: true, key: "category", isSortable: true, dIcon: false}, 
+    {isBtn: true, key: "productName", isSortable: true, dIcon: false},
+    {isBtn: true, key: "price", isSortable: true, dIcon: false}, 
+    {isBtn: true, key: "sold", isSortable: true, dIcon: false}
+  ]
   
   ngOnInit(): void {
   }
   goToAddProduct =() => {
     this.router.navigate(['admin/add'])
+  }
+
+  tblHeaderAction(event: any) {
+    this.getProducts(event.key, event.dIcon)
+  }
+
+  getProducts = (data: any, order: any) => {
+    this.adminServices.getProducts(1, 5, data, order?'desc': 'acs' ).subscribe(x => {
+      this.products = x
+    })
   }
 }
 

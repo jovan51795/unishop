@@ -1,12 +1,16 @@
 
 <div class="page-container">
-    <div>Dashboard</div>
-    <div>
+    <div class="page-nav">Dashboard</div>
+    <div class="page-nav">
         <button class="btn us-btn-primary" (click)="goToAddProduct()">Add Product</button>
     </div>
 </div>
 <section class="page-container">
+    
     <div class="card-body">
-        <app-table [data]="products" [columns]="columns"></app-table>
+        <div class="card-header">
+            Trending Items
+        </div>
+        <app-table (headerBtnEmitter)="tblHeaderAction($event)"  [data]="products" [columns]="columns"></app-table>
     </div>
 </section>
