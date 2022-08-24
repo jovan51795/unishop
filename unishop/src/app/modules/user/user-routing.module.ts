@@ -4,6 +4,8 @@ import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { RouterModule } from '@angular/router';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +18,14 @@ const routes: Routes = [{
 {
   path: "my-cart",
   component: MyCartComponent
+},
+{
+  path: "checkout",
+  component: CheckoutComponent
+},
+{
+  path: "my-orders",
+  component: MyOrdersComponent
 }
 ]
 
