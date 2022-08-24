@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserAuth } from '../model/auth-model';
@@ -14,11 +14,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private toast: ToastrService) {
     this.registerForm = this.fb.group({
-      firstName: [''],
-      middleName: [''],
-      lastName: [''],
-      email: [''],
-      password: ['']
+      firstName: ['', [Validators.required]],
+      middleName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
    }
 
