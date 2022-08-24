@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { LoginComponent } from './auth/login/login.component';
     UserLayoutComponent,
     AdminSidebarComponent,
     LoginComponent,
+    RegisterComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,

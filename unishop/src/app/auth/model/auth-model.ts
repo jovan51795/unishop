@@ -1,5 +1,7 @@
 export interface UserAuth {
-    name: string,
+    firstName: string,
+    middleName: string,
+    lastName: string,
     email: string,
     password: string
 }
