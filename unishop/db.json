@@ -3,7 +3,7 @@
     {
       "id": "number",
       "isActive": "boolean",
-      "role": "user",
+      "role": "admin",
       "email": "value",
       "password": "value",
       "firstName": "Value",
@@ -25,6 +25,24 @@
           "status": "value"
         }
       ]
+    },
+    {
+      "email": "jovanie@gmail.com",
+      "password": "$2a$10$jOiKI4zTkfPMoMSU2TC5tOl/K8O/sZni4ruTKm4EYSM.9rvckP4H2",
+      "firstName": "jovanie",
+      "middleName": "m",
+      "lastName": "cabatuan",
+      "role": "admin",
+      "id": "_VJNvWn"
+    },
+    {
+      "email": "jovan@gmail.com",
+      "password": "$2a$10$V0I3AaiLnrbtRvursQuHeuHW88e0vKEqJO7t7zI1rHaAltU7ujlsW",
+      "firstName": "Jovanie",
+      "middleName": "m",
+      "lastName": "cabatuan",
+      "role": "user",
+      "id": "Dq8RQCU"
     }
   ],
   "products": [
