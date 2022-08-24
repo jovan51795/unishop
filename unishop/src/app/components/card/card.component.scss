@@ -1,0 +1,31 @@
+
+@import '../../../scss/mixins';
+.details-container{
+    padding: .7rem;
+    .card-details {
+        margin: .5rem;
+        background-color: #fff;
+        border-left: 10px solid #ffc13b;
+        padding: 1rem;
+    }
+
+    .card-title-container {
+        flex: 1;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .card-title-value {
+        flex: 1;
+        text-align: start;
+        font-size: 18px;
+        text-transform: capitalize;
+    }
+}
+
+.content-wrapper {
+    @include breakpoint-max(xs) {
+        flex-direction: column !important;
+    }
+}
