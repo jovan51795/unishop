@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ProductsComponent } from './components/products/products.component';
+import { MyCartComponent } from './modules/user/my-cart/my-cart.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
 
@@ -26,6 +28,10 @@ const routes: Routes = [{
 {
   path: "home",
   component: HomeComponent
+},
+{
+  path: "products",
+  component: ProductsComponent
 },
 {
   path: '',
