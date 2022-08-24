@@ -4,9 +4,11 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductsComponent } from './components/products/products.component';
-import { MyCartComponent } from './modules/user/my-cart/my-cart.component';
+import { AdminAuthGuard } from './core/guards/admin/admin-auth.guard';
+import { AuthGuard } from './core/guards/user/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
+import { UserLayoutComponent } from './shared/user-layout/user-layout.component';
 
 const routes: Routes = [{
   path: '',
@@ -35,7 +37,8 @@ const routes: Routes = [{
 },
 {
   path: '',
-  
+  component: UserLayoutComponent,
+  canActivate: [AuthGuard],
   children: [
     {
       path: "user",
@@ -46,6 +49,7 @@ const routes: Routes = [{
 {
   path: '',
   component: AdminLayoutComponent,
+  canActivate: [AdminAuthGuard],
   children: [
     {
       path: 'admin',
