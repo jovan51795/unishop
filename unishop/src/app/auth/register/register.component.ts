@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { UserAuth } from '../model/auth-model';
 
 @Component({
@@ -12,13 +13,14 @@ import { UserAuth } from '../model/auth-model';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private toast: ToastrService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private toast: ToastrService,  private router: Router) {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      middleName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      firstName: [''],
+      middleName: [''],
+      lastName: [''],
+      email: [''],
+      password: [''],
+      role: ['user']
     })
    }
 
@@ -39,6 +41,12 @@ export class RegisterComponent implements OnInit {
      if(!userData.password) {
       return this.toast.error('Password is required!')
      }
-    this.authService.register(userData).subscribe()
+    this.authService.register(userData).subscribe(x => {
+      this.router.navigate(['login'])
+      return this.toast.success('Register Success')
+      
+    })
   }
+
+  hide = true
 }

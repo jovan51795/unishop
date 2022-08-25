@@ -4,7 +4,6 @@ import { AdminService } from 'src/app/core/services/admin/admin.service';
 import { Product } from 'src/app/models/product';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe, Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -14,25 +13,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddProductComponent implements OnInit {
   productForm: FormGroup;
-  imageUrl: string = "../../../../assets/products/unishop-logo.jpg"
+  imageUrl: string = "../../../../assets/logo/unishop-logo.jpg"
   dateNow = new Date();
-  paramID: any;
-
-  comData = {title: "Add Product"}
 
   constructor(private fb: FormBuilder,
      private adminServices: AdminService, 
      private toast: ToastrService,
      private datePipe: DatePipe,
      private location: Location,
-     private route: ActivatedRoute
      ) {
-      this.route.queryParams.subscribe(data => {
-        this.paramID = data['id']
-      })
-
     this.productForm = this.fb.group({
-      id: [''],
       category: ['', [Validators.required]],
       productName: ['', [Validators.required]],
       image: ['', [Validators.required]],
@@ -41,18 +31,17 @@ export class AddProductComponent implements OnInit {
       quantity: ['', [Validators.required]],
       date: [{value: this.datePipe.transform(this.dateNow), disabled: true } ],
       paymentType: ['', [Validators.required]],
-      isActive: [true],
+      isActive: [false],
       rating: this.fb.array([]),
       customers: this.fb.array([]),
       sold: [0]
     })
 
-    if(this.paramID) {
-      this.adminServices.getProductById(parseInt(this.paramID)).subscribe(data => {
-        this.productForm.patchValue(data[0]);
-        this.imageUrl = "../../../../assets/products/" + data[0].image;
-      })
-    }
+    this.adminServices.getProducts().subscribe(
+      x => {
+        console.log(x, "the products")
+      }
+    )
 
   }
 
@@ -81,14 +70,13 @@ export class AddProductComponent implements OnInit {
       !productData.date || !productData.paymentType){
         return this.toast.error('Please fill all the required fields')
       }
-    if(this.paramID) {
-      this.adminServices.editProduct(productData).subscribe()
-    }else {
-      this.adminServices.addProducts(productData).subscribe(x => {
-        this.toast.success('Product successfully added')
-      });
-    }
+    this.adminServices.addProducts(productData).subscribe(x => {
+      this.toast.success('Product successfully added')
+    });
   }
 
+  goBack = () => {
+    this.location.back();
+  }
 
 }

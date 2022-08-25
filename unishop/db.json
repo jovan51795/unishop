@@ -24,31 +24,62 @@
       ]
     },
     {
-      "email": "pmonisit@mail.com",
-      "password": "$2a$10$hb9A9hr3b7X/Pav4yCkdweuHauLkSNvB9ybG1I98mJhU3N10uh5ri",
-      "firstName": "Prince",
+      "email": "johndoe@email.com",
+      "password": "$2a$10$4KmhT6OFIjaCRtP4NOVXyuWsJNbH28OJnutAMGRYKwiOiWxthERpe",
+      "firstName": "John",
+      "middleName": "J",
+      "lastName": "Doe",
+      "id": "ULDOy2A"
+    },
+    {
+      "email": "janedoe@email.com",
+      "password": "$2a$10$CzYhYowpoYwiXWxrL0josOCsNpy0pB.JNWkULUDXgrLoLmDZeMFEO",
+      "firstName": "Jane",
       "middleName": "D",
-      "lastName": "Monisit",
-      "id": "PNc8hxD"
+      "lastName": "Doe",
+      "id": "3XDMNdq"
+    },
+    {
+      "email": "mark@email.com",
+      "password": "$2a$10$EzZkt8Al7Cr59MSJfxCKFurS26utJueds5jDQYzKfc9pm.Zr6ipd2",
+      "firstName": "Mark",
+      "middleName": "T",
+      "lastName": "Tahimiklang",
+      "role": "role",
+      "id": "rq-UQJg"
+    },
+    {
+      "email": "john@email.com",
+      "password": "$2a$10$z0FEFSpXQmfF4fX0/Zpth.KWENrT4f5Vnu1JpeVAiYIjyAyyaBBl2",
+      "firstName": "John",
+      "middleName": "D",
+      "lastName": "Carlo",
+      "role": "user",
+      "id": "omPVuRz"
+    },
+    {
+      "email": "jack@email.com",
+      "password": "$2a$10$lxyfn9T9VtBWPKGXuaZbruPr2LiJQdkRzlOsdf4b6JrzlUM6Iuks6",
+      "firstName": "Jack",
+      "middleName": "O",
+      "lastName": "Litto",
+      "role": "user",
+      "id": "9fkEkQd"
     }
   ],
   "products": [
     {
-      "id": 1,
-      "category": "fdhgdh",
-      "productName": "hdfhdf",
-      "image": "viber_image_2022-08-22_13-27-13-566.png",
-      "description": "wertwert",
-      "price": "gsdfgfg",
-      "quantity": "345",
-      "date": "Aug 24, 2022",
+      "category": "category1",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
       "paymentType": "COD",
       "isActive": false,
       "rating": [],
-      "customers": [
-        "jovanie",
-        "cabatuan"
-      ],
+      "customers": [],
       "sold": 0,
       "type": "delete"
     },
@@ -62,7 +93,7 @@
       "quantity": "23",
       "date": "Aug 24, 2022",
       "paymentType": "COD",
-      "isActive": true,
+      "isActive": false,
       "rating": [],
       "customers": [],
       "sold": 0
@@ -77,11 +108,12 @@
       "quantity": "21",
       "date": "Aug 24, 2022",
       "paymentType": "COD",
-      "isActive": true,
+      "isActive": false,
       "rating": [],
       "customers": [],
       "sold": 0
     },
+  "orders": [
     {
       "id": 4,
       "category": "Electronics",

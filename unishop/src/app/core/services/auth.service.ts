@@ -15,13 +15,7 @@ export class AuthService {
   register = (userData: UserAuth) => {
     return this.http.post(`${environment.url}/register`, userData).pipe(
       catchError(err => {
-        this.toast.error(err.error)
         return of(err)
-      }),
-      tap((x: any) => {
-        if(x.accessToken) {
-          this.router.navigate(['login'])
-        }
       })
     )
   }

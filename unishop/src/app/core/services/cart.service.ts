@@ -8,10 +8,9 @@ import { Order } from 'src/app/models/order';
 })
 export class CartService {
 
-  
-  public cartItemList : any = []
-  public productList = new BehaviorSubject<any>([])
-  public search = new BehaviorSubject<string>("");
+  private cartItems: CartItem[];
+  public itemsChanged: EventEmitter<CartItem[]> = new EventEmitter<CartItem[]>();
+
 
 
   constructor(private http: HttpClient) {}
@@ -53,18 +52,20 @@ export class CartService {
     })
     return subTotal;
   }
+      });
 
   removeCartItem(product : any){
     this.cartItemList.map((a : any, index : any) => {
       if(product.id === a.id){
         this.cartItemList.splice(index, 1);
       }
-    })
+    });
+    this.itemsChanged.emit(this.cartItems.slice());
   }
 
-  removeAll(){
-    this.cartItemList = [];
-    this.productList.next(this.cartItemList);
+  public clearCart() {
+    this.cartItems = [];
+    this.itemsChanged.emit(this.cartItems.slice());
   }
 
 }
