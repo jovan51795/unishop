@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       password: ['']
     })
   }
-
+  
   ngOnInit(): void {
   }
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(userData).subscribe(x => {
       if (!x.error){
         localStorage.setItem("token", x.accessToken);
-        this.router.navigate(['profile'])
+        this.router.navigate(['home'])
       }
     })
   }
@@ -41,5 +41,9 @@ export class LoginComponent implements OnInit {
   goToResetPassword(){
     this.router.navigate(['forgotpassword'])
   }
+
+  hide = true
+  unhide = false
+
 
 }

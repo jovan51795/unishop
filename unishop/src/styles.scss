@@ -13,8 +13,18 @@ app-add-product {
 .us-btn-primary {
     font-size: 18px;
     font-weight: bolder;
+    color: #fff;
     background-color: #ffc13b!important;
     border: 2px solid #ffc13b!important;
+    box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
+}
+
+.us-btn-secondary {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #3b3b3b!important;
+    border: 2px solid #3b3b3b!important;
     box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
 }
 
