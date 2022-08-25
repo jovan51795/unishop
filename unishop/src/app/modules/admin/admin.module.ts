@@ -6,10 +6,6 @@ import { ProductsComponent } from './products/products.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from 'src/app/components/table/table.component';
-import { DetailsComponent } from './details/details.component';
-import { CardComponent } from 'src/app/components/card/card.component';
-import { UsersComponent } from './users/users.component';
-import { CommandBarComponent } from './components/command-bar/command-bar.component';
 
 
 
@@ -18,11 +14,7 @@ import { CommandBarComponent } from './components/command-bar/command-bar.compon
     DashboardComponent,
     ProductsComponent,
     AddProductComponent,
-    TableComponent,
-    DetailsComponent,
-    CardComponent,
-    UsersComponent,
-    CommandBarComponent
+    TableComponent
   ],
   imports: [
     AdminRoutingModule,
