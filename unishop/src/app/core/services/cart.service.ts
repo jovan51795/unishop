@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-
+import { BehaviorSubject, tap } from 'rxjs';
+import { Order } from 'src/app/models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class CartService {
   public search = new BehaviorSubject<string>("");
 
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getProducts(){
     return this.productList.asObservable();
@@ -28,16 +28,29 @@ export class CartService {
   addToCart(product : any){
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
-    this.getTotalPrice();
+    this.getItemTotal();
     console.log(this.cartItemList);
   }
 
-  getTotalPrice() : number{
+  placeOrder(userOrder : Order[]){
+      return this.http.post<Order[]>('http://localhost:3000/orders', userOrder).pipe(
+        tap(x => x)
+      )
+  }
+
+  getItemTotal() : number{
+    let total = 0;
+    this.cartItemList.map((a : any) => {
+      total = parseInt(a.price) * parseInt(a.quantity);
+    })
+    return total;
+  }
+
+  getSubTotal() : number{
     let subTotal = 0;
     this.cartItemList.map((a : any) => {
-      subTotal += a.total;
+      subTotal += parseInt(a.total);
     })
-
     return subTotal;
   }
 
@@ -53,7 +66,5 @@ export class CartService {
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
-
-
 
 }

@@ -17,18 +17,6 @@
         "province": "value",
         "brgy": "value"
       },
-      "orders": [
-        {
-          "orderedDate": "date",
-          "productName": "products",
-          "image": "image",
-          "description": "description",
-          "qty": "number",
-          "unitPrice": "number",
-          "total": "number",
-          "status": "value"
-        }
-      ],
       "interests": [
         {
           "category": "categories"
@@ -114,5 +102,23 @@
     "role": "admin",
     "username": "value",
     "password": "value"
-  }
+  },
+  "orders": [
+    {
+      "id": 3,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": 2,
+      "date": "Aug 24, 2022",
+      "paymentType": "COD",
+      "isActive": true,
+      "rating": [],
+      "customers": [],
+      "sold": 0,
+      "total": "23000"
+    }
+  ]
 }

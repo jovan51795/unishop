@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Product } from 'src/app/models/product';
 import { catchError, filter, map, Observable, tap } from 'rxjs';
-import { Users } from '../../models/users';
+import { Users } from 'src/app/models/user';
+
 
 @Injectable({
   providedIn: 'root'

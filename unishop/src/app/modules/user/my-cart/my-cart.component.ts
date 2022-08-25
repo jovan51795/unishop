@@ -12,14 +12,17 @@ import { CartService } from 'src/app/core/services/cart.service';
 export class MyCartComponent implements OnInit {
 
   public products : any = [];
+  public itemTotal !: number;
   public subTotal !: number;
+  public newQuantity !: number;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
    this.cartService.getProducts().subscribe( res => {
     this.products = res;
-    this.subTotal = this.cartService.getTotalPrice();
+    this.itemTotal = this.cartService.getItemTotal();
+    this.subTotal = this.cartService.getSubTotal();
    })
   }
 

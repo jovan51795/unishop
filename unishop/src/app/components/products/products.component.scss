@@ -43,3 +43,18 @@
 .menu-inner{
     cursor: pointer;
 }
+
+.count-input {
+    display: inline-block;
+    width: 100%;
+    width: 150px;
+  }
+  
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap ;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 10px;
+  }
