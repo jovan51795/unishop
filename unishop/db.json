@@ -17,12 +17,9 @@
         "province": "value",
         "brgy": "value"
       },
-      "orders": [
+      "interests": [
         {
-          "qty": "number",
-          "ordersDate": "long date",
-          "products": "products",
-          "status": "value"
+          "category": "categories"
         }
       ]
     },
@@ -84,117 +81,76 @@
       "rating": [],
       "customers": [],
       "sold": 0,
-      "id": 9
+      "type": "delete"
     },
     {
-      "category": "category2",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
+      "id": 2,
+      "category": "Home & Garden",
+      "productName": "Plant",
+      "image": "ARRAY METHOD.jpg",
+      "description": "White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant ",
+      "price": "230",
+      "quantity": "23",
+      "date": "Aug 24, 2022",
       "paymentType": "COD",
       "isActive": false,
       "rating": [],
       "customers": [],
-      "sold": 1000,
-      "id": 10
+      "sold": 0
     },
     {
-      "category": "category3",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
+      "id": 3,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": "21",
+      "date": "Aug 24, 2022",
       "paymentType": "COD",
       "isActive": false,
       "rating": [],
       "customers": [],
-      "sold": 1500,
-      "id": 11
+      "sold": 0
     },
+  "orders": [
     {
-      "category": "category4",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
+      "id": 4,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": "21",
+      "date": "Aug 24, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "isActive": true,
       "rating": [],
       "customers": [],
-      "sold": 100,
-      "id": 12
-    },
-    {
-      "category": "category5",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
-      "paymentType": "COD",
-      "isActive": false,
-      "rating": [],
-      "customers": [],
-      "sold": 89,
-      "id": 13
-    },
-    {
-      "category": "category6",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
-      "paymentType": "COD",
-      "isActive": false,
-      "rating": [],
-      "customers": [],
-      "sold": 2000,
-      "id": 14
-    },
-    {
-      "category": "category7",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
-      "paymentType": "COD",
-      "isActive": false,
-      "rating": [],
-      "customers": [],
-      "sold": 1,
-      "id": 15
-    },
-    {
-      "category": "category8",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
-      "paymentType": "COD",
-      "isActive": false,
-      "rating": [],
-      "customers": [],
-      "sold": 2900,
-      "id": 16
+      "sold": 0
     }
   ],
   "admin": {
     "role": "admin",
     "username": "value",
     "password": "value"
-  }
+  },
+  "orders": [
+    {
+      "id": 3,
+      "category": "Electronics",
+      "productName": "Vivo",
+      "image": "ARRAY METHOD.jpg",
+      "description": "32 GB Smartphone, 32 GB Smartphone ",
+      "price": "23000",
+      "quantity": 2,
+      "date": "Aug 24, 2022",
+      "paymentType": "COD",
+      "isActive": true,
+      "rating": [],
+      "customers": [],
+      "sold": 0,
+      "total": "23000"
+    }
+  ]
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
-import { CartItem } from 'src/app/models/cart';
+
+
 
 @Component({
   selector: 'app-my-cart',
@@ -10,54 +11,37 @@ import { CartItem } from 'src/app/models/cart';
 })
 export class MyCartComponent implements OnInit {
 
-  private cartSubscription: Subscription | undefined;
-  public items: CartItem[] | undefined;
-  public total: number = 0;
+  public products : any = [];
+  public itemTotal !: number;
+  public subTotal !: number;
+  public newQuantity !: number;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.items = this.cartService.getItems();
-    this.total = this.cartService.getTotal();
-    this.cartSubscription = this.cartService.itemsChanged.subscribe(
-      (items: CartItem[]) => {
-        this.items = items;
-        this.total = this.cartService.getTotal();
-      }
-    );
+   this.cartService.getProducts().subscribe( res => {
+    this.products = res;
+    this.itemTotal = this.cartService.getItemTotal();
+    this.subTotal = this.cartService.getSubTotal();
+   })
+  }
+
+  removeItem(item : any){
+    this.cartService.removeCartItem(item);
+  }
+  
+  emptyCart(){
+    this.cartService.removeAll();
+  }
+
+  goToProducts(){
+    this.router.navigate(['/products'])
+  }
+
+  goToCheckout(){
+    this.router.navigate(['user/checkout'])
   }
 
   
-  public onClearCart(event: { preventDefault: () => void; stopPropagation: () => void; }) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.cartService.clearCart();
-  }
-
-  public onRemoveItem(event: { preventDefault: () => void; stopPropagation: () => void; }, item: CartItem) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.cartService.removeItem(item);
-  }
-
-  public increaseAmount(item: CartItem) {
-    this.cartService.updateItemAmount(item, item.amount + 1);
-  }
-
-  public decreaseAmount(item: CartItem) {
-    const newAmount = item.amount === 1 ? 1 : item.amount - 1;
-    this.cartService.updateItemAmount(item, newAmount);
-  }
-
-  // public checkAmount(item: CartItem) {
-  //   this.cartService.updateItemAmount(
-  //     item,
-  //     item.amount < 1 || !item.amount || isNaN(item.amount) ? 1 : item.amount
-  //   );
-  // }
-
-  ngOnDestroy() {
-    this.cartSubscription?.unsubscribe();
-  }
 
 }

@@ -13,60 +13,57 @@
           </th>
         </tr>
       </thead>
-      <tbody class="table-border-bottom-0 text-center" *ngIf="items?.length; else noItemsInCart">
-        <tr *ngFor="let item of items">
-          <td>
-            <div class="product-item">
-              <a class="product-thumb">
-                <img [src]="item.product.image[0]" alt="Product">
-              </a>
-              <div class="product-info">
-                <h4 class="product-title">
-                  {{item.product.productName}}
-                </h4>
-              </div>
-            </div>
-          </td>
+      <tbody class="table-border-bottom-0 text-center">
+      
+        <tr *ngFor="let item of products; let i = index">
+          <td> <img style="width: 120px" src="{{item.image}}" alt=""> </td>
+          <td>{{item.productName}}</td>
           <td class="text-center">
             <div class="count-input">
               <div class="input-group">
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="button" (click)="decreaseAmount(item)">-</button>
-                </div>
-                <input type="text" class="form-control text-center">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="increaseAmount(item)">+</button>
-                </div>
+                  <button class="btn btn-outline-secondary"  type="button">-</button> 
+                  <input 
+                  type="number" 
+                  class="form-control text-center" 
+                  value={{item.quantity}}
+                  min="1"
+                  >
+                  <button class="btn btn-outline-secondary"  type="button" >+</button> 
               </div>
             </div>
           </td>
+          <!-- <td><input class="form-control" id="qty" type="number" value="{{item.quantity}}" min="1"></td> -->
+          <td> &#x20B1;{{item.price}} </td>
+          <td> &#x20B1;{{itemTotal}} </td>
 
-          <td class="text-center text-lg text-medium">Price:</td>
-          <td class="text-center text-lg text-medium">{{ (item.product.price * item.amount) }}</td>
-
-          <td class="text-right">
-            <a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"
-              (click)="onRemoveItem($event, item)">
-              <i class="icon-cross"></i>
-            </a>
+          
+          
+          <td>
+            <button (click)="removeItem(item)" class="btn btn-xs btn-outline-danger">Remove Item</button>
           </td>
+          <td></td>
         </tr>
+        <tr>
+          <td colspan="5"></td>
+          <td><strong>Subtotal : &#x20B1;{{subTotal}}</strong></td>
+          <td></td>
+          
+      </tr>
       </tbody>
-
-      <ng-template #noItemsInCart>
-        <tbody>
-          <tr>
-            <td colspan="5">There are no items in your cart..</td>
-          </tr>
-        </tbody>
-      </ng-template>
     </table>
+
+      <ng-template #noItemsInCart> 
+          <img class="image" src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png" alt="">
+          <h4>There are no items in your cart..</h4>
+          <button  class="btn btn-warning" (click)="goToProducts()">Shop Now</button>
+      </ng-template>
+
   </div>
 
-  <div class="table-footer" *ngIf="items?.length; else noItemsInCartButtons">
+  <div class="table-footer" *ngIf="products?.length;">
     <div class="shopping-cart-footer">
       <div class="column">
-
+          <button  class="btn btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button>
       </div>
       <div class="column text-lg">Total:
         <span class="text-medium">&#8369; {{ total }}</span>
@@ -74,13 +71,9 @@
     </div>
     <div class="shopping-cart-footer">
       <div class="column">
-        <a class="btn btn-outline-secondary" routerLink="/products">
-          <i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
+        <a class="btn btn-warning" (click)="goToCheckout()" >Proceed to Checkout</a>
       </div>
-      <div class="column">
-
-        <a class="btn btn-success" routerLink="/checkout">Proceed to Checkout</a>
-      </div>
+      
     </div>
   </div>
 
@@ -122,11 +115,11 @@
     </div>
   </div>
 
-  <div class="button-options" *ngIf="items?.length; else noItemsInCartMobileButtons">
-    <h5 class="pb-1 mb-4">Total: &#8369; </h5>
-    <button class="btn-options btn-sm btn-warning mb-3">Checkout</button><br>
-    <button class="btn-options btn-sm btn-outline-secondary">Continue Shopping</button><br><br>
-    <button class="btn-options btn-sm btn-outline-danger">Clear Cart</button>
+  <div class="button-options" *ngIf="products?.length;">
+    <h5 class="pb-1 mb-4">Total: &#8369;   </h5>
+    <button class="btn-options btn-sm btn-warning mb-3" (click)="goToCheckout()">Proceed to Checkout</button><br>
+    <button class="btn-options btn-sm btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button><br><br>
+    <button class="btn-options btn-sm btn-outline-danger" (click)="emptyCart()">Clear Cart</button>
   </div>
 
 </div>
