@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 declare function toggleSidebar(): any;
 @Component({
@@ -8,9 +9,17 @@ declare function toggleSidebar(): any;
 })
 export class HeaderComponent implements OnInit {
   stickyHeader: boolean = false;
-  isLogin = localStorage.getItem("user")
-  
-  constructor(private router: Router) { }
+  isLogin: boolean = false
+  data = localStorage.getItem("user")
+  credentials: any;
+  userType: boolean = false
+  constructor(private router: Router, private storage: StorageMap) {
+    this.isLogin = localStorage.getItem("user") ? true : false
+    if (this.isLogin) {
+      this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user.role === 'admin' ? true : false;
+      this.credentials = JSON.parse(JSON.parse(JSON.stringify(this.data)))
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -18,16 +27,18 @@ export class HeaderComponent implements OnInit {
   onWindowScroll() {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
     // let max = document.documentElement.scrollHeight;
-    
-    this.stickyHeader = pos > 1500? true : false
+
+    this.stickyHeader = pos > 1500 ? true : false
   }
 
-toggle() {
-  toggleSidebar()
-}
+  toggle() {
+    toggleSidebar()
+  }
 
-logout() {
-  localStorage.removeItem("user");
-  this.router.navigate(['home']);
-}
+  logout() {
+    this.isLogin = false
+    localStorage.removeItem("user");
+    this.router.navigate(['pages/home']);
+    
+  }
 }

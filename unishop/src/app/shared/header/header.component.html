@@ -13,26 +13,26 @@
               <img src="../.././assets/logo/unishop-logo.jpg" alt="">
             </div>
           </div>
-          <div class="nav-item">
-            <a href="" class="nav-link">Home</a>
+          <div class="nav-item" *ngIf="!userType">
+            <a  class="nav-link" [routerLink]="['pages/home']">Home</a>
           </div>
-          <div class="nav-item">
-            <a href="" class="nav-link">Products</a>
+          <div class="nav-item" *ngIf="!userType">
+            <a class="nav-link" [routerLink]="['pages/products']">Products</a>
           </div>
           
           <div class="nav-item" *ngIf="!isLogin">
-            <a [routerLink]="['login']" class="nav-link">Login</a>
+            <a [routerLink]="['auth/login']" class="nav-link">Login</a>
           </div>
           <div class="nav-item" *ngIf="!isLogin">
-            <a  [routerLink]="['register']" class="nav-link">Register</a>
+            <a  [routerLink]="['auth/register']" class="nav-link">Register</a>
           </div>
-          <div class="nav-item nav-item-con">
-            <a href="javascript:void(0);" class="d-flex justify-content-center align-items-center">
+          <div class="nav-item nav-item-con" *ngIf="!userType">
+            <a [routerLink]="['user/my-cart']" class="d-flex justify-content-center align-items-center">
               <span class="menu-icon tf-icons bx bx-cart"></span>
-              <span class="badge bg-us-primary  rounded-pill">1</span>
+              <span class="badge bg-us-primary  rounded-pill" *ngIf="isLogin">1</span>
             </a>
           </div>
-          
+          <!-- *ngIf="isLogin" -->
           <div class="nav-item navbar-dropdown dropdown-user dropdown" *ngIf="isLogin">
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               
@@ -42,8 +42,9 @@
                     <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt
                       class="rounded-circle" />
                   </div>
-                  <div class="account-type">
-                    Admin
+                  <div class="account-type"> 
+                    
+                   {{userType ? 'Admin' : credentials.user.firstName}}
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -81,7 +82,7 @@
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="auth-login-basic.html"
+                    <a class="dropdown-item" href="javascript:void(0);"
                     (click)="logout()">
                       <i class="bx bx-power-off me-2"></i>
                       <span class="align-middle">Log Out</span>
