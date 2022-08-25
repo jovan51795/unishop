@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { DetailsComponent } from './details/details.component';
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes =[
   {
@@ -24,14 +22,6 @@ const routes: Routes =[
   {
     path: 'add',
     component: AddProductComponent
-  },
-  {
-    path: 'details',
-    component: DetailsComponent
-  },
-  {
-    path: "users",
-    component: UsersComponent
   }
 ]
 
