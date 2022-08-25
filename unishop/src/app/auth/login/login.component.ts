@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   hide = true
-  unhide = false
 
 
 }
