@@ -2,17 +2,33 @@
     <table class="table">
         <thead>
             <tr>
-                <th *ngFor="let col of columns">
-                    {{ col }}
+                <th class="t-header" *ngFor="let col of columns" (click)="orderBy(col.dIcon = !col.dIcon, col)">
+                    <span>{{ col.key }}</span>&nbsp;
+                    <ng-container *ngIf="col.isBtn">
+                        <i id="col" [ngClass]="{'bx-chevron-down': !col.dIcon, 'bx-chevron-up': col.dIcon}"
+                            class="tf-icon bx"></i>
+                    </ng-container>
                 </th>
+                <th *ngIf="buttons">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let d of data" > 
+            <tr *ngFor="let d of data">
                 <td *ngFor="let x of tableRowData(d)">
                     <p>{{x}}</p>
                 </td>
+                <td class="d-flex flex-row justify-content-around" *ngIf="buttons">
+                    <button *ngFor="let btn of buttons" class="btn" [ngClass]="btn?.bgColor"(click)="actions(d, btn.type)">
+                        <i *ngIf="btn.icon" class="menu-icon tf-icons bx" [ngClass]="btn.icon"></i>
+                    </button>
+                </td>
+                <!-- <td class="d-flex flex-row justify-content-around" >
+                    <button class="btn btn-primary"><i class="menu-icon tf-icons bx bx-pencil"></i></button>
+                    <button class="btn btn-danger"><i class="menu-icon tf-icons bx bx-trash"></i></button>
+                </td> -->
             </tr>
+            
         </tbody>
     </table>
+    <div *ngIf="getDataLength()" class="no-data text-center p-4">No Data Found</div>
 </div>
