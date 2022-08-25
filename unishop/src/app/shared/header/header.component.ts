@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { StorageMap } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 declare function toggleSidebar(): any;
 @Component({
@@ -13,7 +12,7 @@ export class HeaderComponent implements OnInit {
   data = localStorage.getItem("user")
   credentials: any;
   userType: boolean = false
-  constructor(private router: Router, private storage: StorageMap) {
+  constructor(private router: Router) {
     this.isLogin = localStorage.getItem("user") ? true : false
     if (this.isLogin) {
       this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user.role === 'admin' ? true : false;
