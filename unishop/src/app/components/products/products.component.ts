@@ -22,10 +22,7 @@ export class ProductsComponent implements OnInit {
       this.productList = res;
       this.filterCategory = res;
 
-      this.productList.forEach((a : any) => {
-        if(a.category === 'Home & Garden'){
-          a.category = "Home & Garden"
-        }
+      this.productList.forEach((a : any) => {    
         Object.assign(a, {quantity : 1, total : a.price})
       });
     });
