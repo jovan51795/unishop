@@ -37,7 +37,9 @@
               "src/scss/_mixins.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/sidebar.js"
+            ]
           },
           "configurations": {
             "production": {

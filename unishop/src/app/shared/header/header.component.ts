@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+declare function toggleSidebar(): any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,7 +8,9 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   stickyHeader: boolean = false;
-  constructor() { }
+  isLogin = localStorage.getItem("user")
+  
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +22,12 @@ export class HeaderComponent implements OnInit {
     this.stickyHeader = pos > 1500? true : false
   }
 
+toggle() {
+  toggleSidebar()
+}
 
-
+logout() {
+  localStorage.removeItem("user");
+  this.router.navigate(['home']);
+}
 }

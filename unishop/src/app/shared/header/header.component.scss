@@ -1,7 +1,10 @@
+
+@import '../../../scss/mixins';
 header {
     z-index: 1;
-    height: 120px!important;
-    min-height: 120px!important;
+    height: 80px!important;
+    min-height: 80px!important;
+    width: 100% !important;
     background: #fff;
     left: 0;
     right: 0;
@@ -43,6 +46,7 @@ header {
 .navigation-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-flow: row;
     flex-direction: row;
     
@@ -50,6 +54,29 @@ header {
 
 .logo-wrapper {
     background: yellow;
+}
+
+@media (max-width: 1199.98px) {
+    .logo-wrapper {
+        display: none !important;
+    }
+}
+
+.account-type {
+    margin-left: 1rem;
+}
+
+.nav-item-con {
+    margin: 0 2rem;
+}
+
+.menu-icon {
+    font-size: 2.5rem;
+}
+
+.nav-link {
+    font-size: 18px;
+    font-weight: 900;
 }
 
 
