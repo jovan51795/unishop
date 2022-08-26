@@ -13,6 +13,9 @@ export class CartService {
   public productList = new BehaviorSubject<any>([])
   public search = new BehaviorSubject<string>("");
 
+  constructor() { 
+    this.cartItems = []
+  }
 
   constructor() {}
 
@@ -20,9 +23,8 @@ export class CartService {
     return this.productList.asObservable();
   }
 
-  setProduct(product : any){
-    this.cartItemList.push(...product);
-    this.productList.next(product);
+  private getItemIds() {
+    return this.getItems().map(cartItem => cartItem.product.id);
   }
   
   addToCart(product : any){
@@ -41,19 +43,28 @@ export class CartService {
     return subTotal;
   }
 
-  removeCartItem(product : any){
-    this.cartItemList.map((a : any, index : any) => {
-      if(product.id === a.id){
-        this.cartItemList.splice(index, 1);
+  public updateItemAmount(item: CartItem, newAmount: number) {
+    this.cartItems.forEach((cartItem) => {
+      if (cartItem.product.id === item.product.id) {
+        cartItem.amount = newAmount;
       }
     })
   }
 
-  removeAll(){
-    this.cartItemList = [];
-    this.productList.next(this.cartItemList);
+  public clearCart() {
+    this.cartItems = [];
+    this.itemsChanged.emit(this.cartItems.slice());
   }
+>>>>>>> parent of a4458af (Merge pull request #22 from jovan51795/feature-order-process)
 
+
+  public getTotal() {
+    let total = 0;
+    this.cartItems.forEach((cartItem) => {
+      total += cartItem.amount * cartItem.product.price;
+    });
+    return total;
+  }
 
 
 }
