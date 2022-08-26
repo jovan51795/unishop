@@ -33,6 +33,7 @@ dropdownIcon = false
         resultArray.push(data[col.key])
       }
     }
+    console.log(resultArray)
     return resultArray;
   }
 
