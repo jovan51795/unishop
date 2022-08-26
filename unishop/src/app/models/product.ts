@@ -8,7 +8,7 @@ export class Product {
       public description: string = '',
       public price: number = 0,
       public quantity: number = 0,
-      public isActive: boolean = true,
+      public status: boolean = true,
       public ratings: {} = {},
       public comments: string[] = [],
       public date: string = new Date().toISOString().split('T')[0],

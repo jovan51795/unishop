@@ -1,39 +1,15 @@
 {
   "users": [
     {
-      "id": "number",
-      "isActive": "boolean",
-      "role": "user",
-      "email": "value",
-      "password": "value",
-      "firstName": "Value",
-      "lastName": "value",
-      "contact": "number",
-      "dob": "short date",
-      "address": {
-        "house_number": "value",
-        "street": "value",
-        "city": "value",
-        "province": "value",
-        "brgy": "value"
-      },
-      "interests": [
-        {
-          "qty": "number",
-          "ordersDate": "long date",
-          "products": "products",
-          "status": "value"
-        }
-      ]
-    },
-    {
       "email": "pmonisit@mail.com",
       "password": "$2a$10$hb9A9hr3b7X/Pav4yCkdweuHauLkSNvB9ybG1I98mJhU3N10uh5ri",
       "firstName": "Prince",
       "middleName": "D",
+      "contact": "0998347543795",
       "lastName": "Monisit",
       "id": "PNc8hxD",
-      "role": "user"
+      "role": "user",
+      "status": true
     },
     {
       "email": "jovanie@gmail.com",
@@ -43,6 +19,17 @@
       "lastName": "cabatuan",
       "id": "dc2QbJi",
       "role": "admin"
+    },
+    {
+      "email": "jhovanie@gmail.com",
+      "password": "$2a$10$jIHZG06FnESZuaY.b2hWvOC09LUtHceOD/s8Si/IkHyLII6uztXpe",
+      "firstName": "jhovanie",
+      "middleName": "M",
+      "lastName": "Cabatuan",
+      "role": "user",
+      "contact": null,
+      "status": true,
+      "id": "wVp01Cm"
     }
   ],
   "products": [
@@ -56,28 +43,30 @@
       "quantity": "345",
       "date": "Aug 24, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [
         "jovanie",
         "cabatuan"
       ],
-      "sold": 0
+      "sold": 0,
+      "type": "delete"
     },
     {
+      "id": 10,
       "category": "category2",
       "productName": "name1",
-      "image": "download (2).png",
+      "image": "woman-with-keys.png",
       "description": "sample1",
       "price": "3",
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": true,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 1000,
-      "id": 10
+      "type": "delete"
     },
     {
       "category": "category3",
@@ -88,11 +77,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": true,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 1500,
-      "id": 11
+      "id": 11,
+      "type": "delete"
     },
     {
       "category": "category4",
@@ -103,11 +93,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 100,
-      "id": 12
+      "id": 12,
+      "type": "delete"
     },
     {
       "category": "category5",
@@ -118,11 +109,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 89,
-      "id": 13
+      "id": 13,
+      "type": "delete"
     },
     {
       "category": "category6",
@@ -133,11 +125,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": true,
       "rating": [],
       "customers": [],
       "sold": 2000,
-      "id": 14
+      "id": 14,
+      "type": "delete"
     },
     {
       "category": "category7",
@@ -148,11 +141,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": true,
       "rating": [],
       "customers": [],
       "sold": 1,
-      "id": 15
+      "id": 15,
+      "type": "delete"
     },
     {
       "category": "category8",
@@ -163,7 +157,7 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 2900,

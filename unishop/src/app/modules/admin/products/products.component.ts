@@ -17,19 +17,23 @@ export class ProductsComponent implements OnInit {
     {isBtn: true, key: "productName", isSortable: false, dIcon: false},
     {isBtn: true, key: "price", isSortable: false, dIcon: false}, 
     {isBtn: true, key: "sold", isSortable: false, dIcon: false},
-    {isBtn: true, key: "isActive", isSortable: false, dIcon: false}
+    {isBtn: false, key: "status", isSortable: true, dIcon: false, badge: true}
   ]
 
   buttons = [
-    {type: "edit", icon: "bx-pencil", bgColor: "btn-primary"},
+    {type: "edit", icon: "bx-edit-alt", bgColor: "btn-primary"},
     {type: "delete", icon: "bx-trash", bgColor: "btn-danger"},
     {type: "view", icon: "bxs-detail", bgColor: "btn-info"}
   ]
 
   constructor(private adminService: AdminService, private router: Router) { 
+    this.getAllProducts()
+  }
+
+  getAllProducts() {
     this.adminService.getAllProducts().subscribe(
       x =>{
-        this.products = x.filter(i => i.isActive === true)
+        this.products = x.filter(i => i.status === true)
       }
     )
   }
@@ -41,25 +45,34 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['admin/add'])
   }
 
-  // tblHeaderAction(event: any) {
-  //   this.
-  // }
-
   tableAction(event: any) {
     if(event.type === 'edit') {
       this.router.navigate(['admin/add'], {queryParams: {id: event.id}})
     }else if(event.type === 'delete') {
-      event.isActive = !event.isActive
-      forkJoin([this.adminService.editProduct(event),
-      this.adminService.getAllProducts()]).pipe(
-        map(([f, s]) => {
-          this.products = s
-        })
-      ).subscribe()
+      event.status = !event.status
+      this.adminService.editProduct(event).subscribe(x => {
+        this.getAllProducts()
+      })
+      // forkJoin([this.adminService.editProduct(event),
+      // this.adminService.getAllProducts()]).pipe(
+      //   map(([f, s]) => {
+      //     this.products = s
+      //   })
+      // ).subscribe()
       
     }else if(event.type === 'view') {
       this.router.navigate(['admin/details'], {queryParams: {id: event.id}})
     }
+  }
+
+  tblHeaderAction(event: any) {
+    this.getProducts(event.key, event.dIcon)
+  }
+
+  getProducts = (data: any, order: any) => {
+    this.adminService.getProducts(1, 10, data, order?'desc': 'acs' ).subscribe(x => {
+      this.products = x.filter(i => i.status === true)
+    })
   }
 
 }
