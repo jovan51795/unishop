@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private userService: AuthService, private router: Router) { 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     })
   }
@@ -28,11 +28,10 @@ export class LoginComponent implements OnInit {
   login(): any {
     const userData = this.loginForm.getRawValue() as UserAuth
     this.userService.login(userData).subscribe(x => {
-      console.log(x)
       if (!x.error){
         localStorage.setItem("user", JSON.stringify(x));
         if(x.user.role === "user") {
-          this.router.navigate(['home'])
+          this.router.navigate(['pages'])
         }else if(x.user.role === "admin"){
           this.router.navigate(['admin'])
         }
@@ -46,6 +45,8 @@ export class LoginComponent implements OnInit {
   
   goToResetPassword(){
     this.router.navigate(['forgotpassword'])
+    
   }
 
+ 
 }

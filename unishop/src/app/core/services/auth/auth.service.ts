@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subscriber, tap } from 'rxjs';
 import { UserAuth } from 'src/app/auth/model/auth-model';
 import { environment } from 'src/environments/environment.prod';
 import { ToastrService } from 'ngx-toastr';
@@ -35,7 +35,6 @@ export class AuthService {
         return of(err)
       }),
       tap(x => x)
-
     )
   }
 
@@ -55,4 +54,12 @@ export class AuthService {
   getToken(){
     return localStorage.getItem("token")? true: false;
   }
+
+  // private logger = new Observable<any>((observer: Subscriber<any>) => {
+  //   observer.next(localStorage.getItem("user"));
+  // });
+
+  // isLoggedIn(): Observable<any> {
+  //   return this.logger;
+  // }
 }
