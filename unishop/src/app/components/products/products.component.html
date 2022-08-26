@@ -81,7 +81,7 @@
                 type="text"
                 class="form-control border-0 shadow-none"
                 [(ngModel)]="searchTerm"
-                (keyup)="search($event)"
+                
                 placeholder="Search items..."
                 aria-label="Search..."
               />
@@ -91,7 +91,7 @@
             <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                 <li class="nav-item lh-1 me-3">
-                    <button (click)="goToCart()" class="btn btn-primary">
+                    <button  class="btn btn-primary">
                         <div style="font-size: 10px;" class="badge bg-danger">5</div>
                     </button>
                 </li>
@@ -110,7 +110,7 @@
                             <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.productName}}</h5>
                             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
                             <p><strong>Price:</strong> &#8369;{{item.price}}</p>
-                            <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
+                            <button class="btn btn-warning" >Add to cart</button>
                         </div>
                     </ng-container>
             

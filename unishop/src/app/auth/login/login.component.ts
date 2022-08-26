@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   login(): any {
     const userData = this.loginForm.getRawValue() as UserAuth
     this.userService.login(userData).subscribe(x => {
-      
       console.log(x)
       if (!x.error){
         localStorage.setItem("user", JSON.stringify(x));

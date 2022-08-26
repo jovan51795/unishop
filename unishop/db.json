@@ -17,21 +17,12 @@
         "province": "value",
         "brgy": "value"
       },
-      "orders": [
-        {
-          "orderedDate": "date",
-          "productName": "products",
-          "image": "image",
-          "description": "description",
-          "qty": "number",
-          "unitPrice": "number",
-          "total": "number",
-          "status": "value"
-        }
-      ],
       "interests": [
         {
-          "category": "categories"
+          "qty": "number",
+          "ordersDate": "long date",
+          "products": "products",
+          "status": "value"
         }
       ]
     },
@@ -41,7 +32,17 @@
       "firstName": "Prince",
       "middleName": "D",
       "lastName": "Monisit",
-      "id": "PNc8hxD"
+      "id": "PNc8hxD",
+      "role": "user"
+    },
+    {
+      "email": "jovanie@gmail.com",
+      "password": "$2a$10$N7qMBDjzI3SGDfGRGXNWFOyMovBeG9c4fzo9i/QM5LvSTefJkZL4y",
+      "firstName": "jovanie",
+      "middleName": "M",
+      "lastName": "cabatuan",
+      "id": "dc2QbJi",
+      "role": "admin"
     }
   ],
   "products": [
@@ -61,53 +62,112 @@
         "jovanie",
         "cabatuan"
       ],
-      "sold": 0,
-      "type": "delete"
+      "sold": 0
     },
     {
-      "id": 2,
-      "category": "Home & Garden",
-      "productName": "Plant",
-      "image": "ARRAY METHOD.jpg",
-      "description": "White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant White Plant Super Long Description for Plant \nWhite Plant Super Long Description for Plant ",
-      "price": "230",
-      "quantity": "23",
-      "date": "Aug 24, 2022",
+      "category": "category2",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
       "paymentType": "COD",
       "isActive": true,
       "rating": [],
       "customers": [],
-      "sold": 0
+      "sold": 1000,
+      "id": 10
     },
     {
-      "id": 3,
-      "category": "Electronics",
-      "productName": "Vivo",
-      "image": "ARRAY METHOD.jpg",
-      "description": "32 GB Smartphone, 32 GB Smartphone ",
-      "price": "23000",
-      "quantity": "21",
-      "date": "Aug 24, 2022",
+      "category": "category3",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
       "paymentType": "COD",
       "isActive": true,
       "rating": [],
       "customers": [],
-      "sold": 0
+      "sold": 1500,
+      "id": 11
     },
     {
-      "id": 4,
-      "category": "Electronics",
-      "productName": "Vivo",
-      "image": "ARRAY METHOD.jpg",
-      "description": "32 GB Smartphone, 32 GB Smartphone ",
-      "price": "23000",
-      "quantity": "21",
-      "date": "Aug 24, 2022",
+      "category": "category4",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": true,
+      "isActive": false,
       "rating": [],
       "customers": [],
-      "sold": 0
+      "sold": 100,
+      "id": 12
+    },
+    {
+      "category": "category5",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
+      "paymentType": "COD",
+      "isActive": false,
+      "rating": [],
+      "customers": [],
+      "sold": 89,
+      "id": 13
+    },
+    {
+      "category": "category6",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
+      "paymentType": "COD",
+      "isActive": false,
+      "rating": [],
+      "customers": [],
+      "sold": 2000,
+      "id": 14
+    },
+    {
+      "category": "category7",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
+      "paymentType": "COD",
+      "isActive": false,
+      "rating": [],
+      "customers": [],
+      "sold": 1,
+      "id": 15
+    },
+    {
+      "category": "category8",
+      "productName": "name1",
+      "image": "download (2).png",
+      "description": "sample1",
+      "price": "3",
+      "quantity": "3",
+      "date": "Aug 23, 2022",
+      "paymentType": "COD",
+      "isActive": false,
+      "rating": [],
+      "customers": [],
+      "sold": 2900,
+      "id": 16
     }
   ],
   "admin": {

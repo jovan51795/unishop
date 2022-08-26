@@ -36,7 +36,8 @@ import { FilterPipe } from './shared/filter/filter.pipe';
     UserLayoutComponent,
     AdminSidebarComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

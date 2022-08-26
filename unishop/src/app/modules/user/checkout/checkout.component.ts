@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart.service';
-import { CartItem } from 'src/app/models/cart';
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +9,7 @@ import { CartItem } from 'src/app/models/cart';
 })
 export class CheckoutComponent implements OnInit {
 
-  items: CartItem[] | undefined;
+
   total: number | undefined;
 
   constructor(private cartService: CartService, private router: Router) { }
