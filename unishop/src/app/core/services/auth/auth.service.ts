@@ -20,7 +20,7 @@ export class AuthService {
       }),
       tap((x: any) => {
         if(x.accessToken) {
-          this.router.navigate(['login'])
+          this.router.navigate(['user/login'])
         }
       })
     )

@@ -3,5 +3,8 @@ export interface UserAuth {
     middleName: string,
     lastName: string,
     email: string,
-    password: string
+    password: string,
+    constact: number,
+    status: boolean,
+    role: string
 }

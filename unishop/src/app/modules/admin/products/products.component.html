@@ -10,7 +10,13 @@
         <div class="card-header">
             Trending Items
         </div>
-        <app-table  [data]="products" [columns]="columns" [buttons]="buttons" (actionEmitter)="tableAction($event)"></app-table>
+        <app-table  
+            [data]="products" 
+            [columns]="columns" 
+            [buttons]="buttons" 
+            (actionEmitter)="tableAction($event)"
+            (headerBtnEmitter)="tblHeaderAction($event)">
+        </app-table>
         <!-- (headerBtnEmitter)="tblHeaderAction($event)"  -->
     </div>
 </section>

@@ -26,14 +26,17 @@ dropdownIcon = false
   }
 
   
-  tableRowData =(data: any): string[] => {
-    let resultArray: string[] = []
+  tableRowData =(data: any): any[] => {
+    let resultArray: any[] = []
     for(let col of this.columns){
       if(Object.keys(data).includes(col.key)){
-        resultArray.push(data[col.key])
+        if(col.badge) {
+          resultArray.push({val: data[col.key], key: col.key})
+        }else {
+          resultArray.push({val: data[col.key]})
+        }
       }
     }
-    console.log(resultArray)
     return resultArray;
   }
 
