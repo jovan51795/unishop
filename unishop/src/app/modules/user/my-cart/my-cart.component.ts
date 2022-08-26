@@ -35,7 +35,7 @@ export class MyCartComponent implements OnInit {
   }
 
   goToProducts(){
-    this.router.navigate(['/products'])
+    this.router.navigate(['pages/products'])
   }
 
   goToCheckout(){
