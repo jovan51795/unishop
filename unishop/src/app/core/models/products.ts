@@ -1,4 +1,4 @@
-import { Users } from "src/app/models/user"
+import { Users } from "./users";
 
 export interface Product {
     id?: number,

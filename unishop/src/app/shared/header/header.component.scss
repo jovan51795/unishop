@@ -15,13 +15,11 @@ header {
 
 .sticky-header {
     position: sticky;
-    
-
 }
 
 .nav-header-container {
     width: 100%;
-    
+
     .us-navbar {
         display: flex;
         justify-content: space-between;
@@ -30,7 +28,6 @@ header {
         min-height: 3.25rem;
         position: relative;
         z-index: 30;
-        
     } 
     
 }
@@ -41,7 +38,6 @@ header {
     justify-content: center;
     flex-flow: column;
     z-index: 1;
-    
 }
 
 .navigation-container{
@@ -49,7 +45,6 @@ header {
     justify-content: space-between;
     flex-flow: row;
     flex-direction: row;
-    
     
 }
 

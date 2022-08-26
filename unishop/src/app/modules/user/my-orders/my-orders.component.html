@@ -12,16 +12,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of orders; let i = index">    
+                <tr>    
                 <td><button
                     type="button"
                     class="btn btn-xs-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#backDropModal">
-                    {{item.id}}
+                    1
                   </button></td>
-                <td>{{item.date}}</td>
-                <td class="text-left text-lg text-medium">{{item.total}}</td>
+                <td>100</td>
+                <td class="text-left text-lg text-medium">300</td>
                 <td><span class="badge bg-label-warning me-1">Pending</span></td>
                 </tr>
             </tbody>
@@ -54,20 +54,53 @@
                         <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Qty</th>
                             <th>Unit Price</th>
                             <th class="text-center">Total</th>
                             
-                        </tr >
+                        </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let item of orders; let i = index">
-                            <td> {{item.productName}}</td>
-                            <td>{{item.quantity}}</td>
-                            <td>{{item.price}}</td>
-                            <td class="text-center text-lg text-medium">{{item.total}}</td>
+                        <tr>
+                            <td>
+                            <div class="product-item">
+                                <a class="product-thumb" >
+                                <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                                </a>
+                                <td>Tshirt x 3</td>
+                            </div>
+                            </td>
+                            <td>100</td>
+                            <td class="text-center text-lg text-medium">300</td>
                             
                         </tr>
+                        <tr>
+                            <td>
+                            <div class="product-item">
+                                <a class="product-thumb" >
+                                <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                                </a>
+                                <td>Tshirt x 3</td>
+                            </div>
+                            </td>
+                            <td>100</td>
+                            <td class="text-center text-lg text-medium">300</td>
+                            
+                        </tr>
+            
+                        <tr>
+                            <td>
+                            <div class="product-item">
+                                <a class="product-thumb" >
+                                <!-- <img [src]="item.product.image[0]" alt="{{item.product.name}}"> -->
+                                </a>
+                                <td>Tshirt x 3</td>
+                            </div>
+                            </td>
+                            <td>100</td>
+                            <td class="text-center text-lg text-medium">300</td>
+                            
+                        </tr>
+            
                         </tbody>
                     </table>
                     </div>

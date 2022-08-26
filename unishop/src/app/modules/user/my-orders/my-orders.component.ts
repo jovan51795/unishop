@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CheckoutService } from 'src/app/core/services/checkout.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -9,16 +8,9 @@ import { CheckoutService } from 'src/app/core/services/checkout.service';
 })
 export class MyOrdersComponent implements OnInit {
 
-  public orders : any = [];
-
-  constructor(private router: Router, private checkoutService: CheckoutService) { }
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
-    this.checkoutService.getOrders().subscribe(
-      res => {
-        this.orders = res
-      }
-     ) 
   }
 
 

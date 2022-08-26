@@ -110,22 +110,6 @@
                             <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.productName}}</h5>
                             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
                             <p><strong>Price:</strong> &#8369;{{item.price}}</p>
-                            
-                            <div>
-                              <p><strong>Quantity: </strong></p>
-                              <div class="count-input">
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary" type="button">-</button> 
-                                    <input 
-                                    type="number" 
-                                    class="form-control text-center" 
-                                    value="1"
-                                    min="1"
-                                    >
-                                    <button class="btn btn-outline-secondary" type="button" >+</button> 
-                                </div>
-                              </div>
-                            </div>
                             <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
                         </div>
                     </ng-container>

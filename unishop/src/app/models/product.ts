@@ -8,7 +8,6 @@ export class Product {
       public description: string = '',
       public price: number = 0,
       public quantity: number = 0,
-      public total: number = 0,
       public isActive: boolean = true,
       public ratings: {} = {},
       public comments: string[] = [],

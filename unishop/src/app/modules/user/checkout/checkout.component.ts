@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart.service';
-
-
+import { CartItem } from 'src/app/models/cart';
 
 @Component({
   selector: 'app-checkout',
@@ -12,32 +10,17 @@ import { CartService } from 'src/app/core/services/cart.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  public products : any = [];
-  public itemTotal !: number;
-  public subTotal !: number;
+  items: CartItem[] | undefined;
+  total: number | undefined;
 
-  constructor(
-    private cartService: CartService, 
-    private router: Router, 
-    private toast: ToastrService
-    ) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cartService.getProducts().subscribe( res => {
-      this.products = res;
-      this.itemTotal = this.cartService.getItemTotal();
-      this.subTotal = this.cartService.getSubTotal();
-     })
-
-     
-     
   }
 
    placeOrder() {
-    this.cartService.placeOrder(this.products).subscribe(() => {
-      this.toast.success("Your order has been placed.");
-      this.router.navigate(['user/my-orders']);;
-    })
+    alert("Order has been placed")
+    this.router.navigate(['user/my-orders']);
   }
 
    backToCart() {
