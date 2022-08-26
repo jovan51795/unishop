@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
-
 
 
 @Component({
@@ -11,34 +10,18 @@ import { CartService } from 'src/app/core/services/cart.service';
 })
 export class MyCartComponent implements OnInit {
 
-  public products : any = [];
-  public subTotal !: number;
+  private cartSubscription: Subscription | undefined;
+  
+  public total: number = 0;
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-   this.cartService.getProducts().subscribe( res => {
-    this.products = res;
-    this.subTotal = this.cartService.getTotalPrice();
-   })
-  }
-
-  removeItem(item : any){
-    this.cartService.removeCartItem(item);
-  }
   
-  emptyCart(){
-    this.cartService.removeAll();
   }
 
-  goToProducts(){
-    this.router.navigate(['/products'])
+  ngOnDestroy() {
+    this.cartSubscription?.unsubscribe();
   }
-
-  goToCheckout(){
-    this.router.navigate(['user/checkout'])
-  }
-
-  
 
 }

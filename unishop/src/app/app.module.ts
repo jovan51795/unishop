@@ -34,7 +34,8 @@ import { PagesLayoutComponent } from './shared/pages-layout/pages-layout.compone
     AdminSidebarComponent,
     FilterPipe,
     AuthLayoutComponent,
-    PagesLayoutComponent
+    PagesLayoutComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

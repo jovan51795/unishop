@@ -13,17 +13,14 @@ export class CartService {
   public productList = new BehaviorSubject<any>([])
   public search = new BehaviorSubject<string>("");
 
-
-  constructor() {}
-
+  constructor() { 
+    
+  }
   getProducts(){
     return this.productList.asObservable();
   }
 
-  setProduct(product : any){
-    this.cartItemList.push(...product);
-    this.productList.next(product);
-  }
+ 
   
   addToCart(product : any){
     this.cartItemList.push(product);
@@ -40,20 +37,5 @@ export class CartService {
 
     return subTotal;
   }
-
-  removeCartItem(product : any){
-    this.cartItemList.map((a : any, index : any) => {
-      if(product.id === a.id){
-        this.cartItemList.splice(index, 1);
-      }
-    })
-  }
-
-  removeAll(){
-    this.cartItemList = [];
-    this.productList.next(this.cartItemList);
-  }
-
-
 
 }
