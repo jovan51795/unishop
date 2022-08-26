@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InputMixinsService } from 'src/app/mixins/input-mixins.service';
 
 @Component({
   selector: 'app-add-product',
@@ -20,12 +21,14 @@ export class AddProductComponent implements OnInit {
 
   comData = {title: "Add Product"}
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
      private adminServices: AdminService, 
      private toast: ToastrService,
      private datePipe: DatePipe,
      private location: Location,
-     private route: ActivatedRoute
+     private route: ActivatedRoute,
+     private inputServices: InputMixinsService
      ) {
       this.route.queryParams.subscribe(data => {
         this.paramID = data['id']
@@ -88,6 +91,10 @@ export class AddProductComponent implements OnInit {
         this.toast.success('Product successfully added')
       });
     }
+  }
+
+  validateInput(event: any, comp: number) {
+    this.inputServices.numberOnlyInput(event, comp)
   }
 
 
