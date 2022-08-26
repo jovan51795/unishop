@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Quantity</label>
-                    <input type="text" formControlName="quantity" class="form-control" placeholder="Quantity" required>
+                    <input type="text" (keypress)="validateInput($event, 12)" formControlName="quantity" class="form-control" placeholder="Quantity" required>
                 </div>
             </div>
             <div class="row">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Price</label>
-                    <input type="text" formControlName="price" class="form-control" placeholder="Price"
+                    <input type="text" (keypress)="validateInput($event, 11)" formControlName="price" class="form-control" placeholder="Price"
                         required>
                 </div>
                 <div class="col-md-4 mb-3">
