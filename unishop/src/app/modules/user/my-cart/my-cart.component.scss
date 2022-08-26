@@ -13,6 +13,10 @@
     font-size: 15px;
     margin-bottom: 70px ;
     padding: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1000px;
+    text-align: center;
 
     @include breakpoint-max(xs) {
       display: none;
