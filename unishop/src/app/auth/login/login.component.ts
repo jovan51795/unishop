@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
-
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { UserAuth } from '../model/auth-model';
 
 @Component({
@@ -17,20 +16,27 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private userService: AuthService, private router: Router) { 
     this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
   }
-  
+
   ngOnInit(): void {
+   
   }
 
   login(): any {
     const userData = this.loginForm.getRawValue() as UserAuth
     this.userService.login(userData).subscribe(x => {
+      
+      console.log(x)
       if (!x.error){
-        localStorage.setItem("token", x.accessToken);
-        this.router.navigate(['home'])
+        localStorage.setItem("user", JSON.stringify(x));
+        if(x.user.role === "user") {
+          this.router.navigate(['home'])
+        }else if(x.user.role === "admin"){
+          this.router.navigate(['admin'])
+        }
       }
     })
   }
@@ -42,8 +48,5 @@ export class LoginComponent implements OnInit {
   goToResetPassword(){
     this.router.navigate(['forgotpassword'])
   }
-
-  hide = true
-
 
 }

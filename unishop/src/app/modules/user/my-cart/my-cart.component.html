@@ -1,15 +1,17 @@
 <div class="card">
   <h5 class="card-header">My Cart</h5>
   <div class="table-responsive text-nowrap">
-    <table class="table table-hover">
+    <table class="table table-hover"  *ngIf="products?.length; else noItemsInCart" >
       <thead class="text-center">
         <tr>
+          <th>Item Image</th>
           <th>Product name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Total</th>
           <th>Action</th>
-          <th class="text-right" *ngIf="items?.length;">
-            <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Clear Cart</button>
+          <th>
+            <button (click)="emptyCart()" class="btn btn-xs btn-danger">Clear Cart</button>
           </th>
         </tr>
       </thead>
@@ -48,11 +50,6 @@
       <div class="column">
           <button  class="btn btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button>
       </div>
-      <div class="column text-lg">Total:
-        <span class="text-medium">&#8369; {{ total }}</span>
-      </div>
-    </div>
-    <div class="shopping-cart-footer">
       <div class="column">
         <a class="btn btn-warning" (click)="goToCheckout()" >Proceed to Checkout</a>
       </div>
@@ -60,9 +57,6 @@
     </div>
   </div>
 
-  <ng-template #noItemsInCartButtons>
-    <button class="btn-table-options btn-sm btn-outline-secondary">Go to Shop</button>
-  </ng-template>
 
 
 </div>
@@ -71,32 +65,19 @@
 
 <div class="container">
   <h5 class="card-header">My Cart</h5>
-  <div class="container-card " *ngIf="items?.length; else noItemsInCartMobile">
-    <div class="row" *ngFor="let item of items">
+  <div class="container-card " *ngIf="products?.length; else noItemsInCartMobile">
+    <div class="row" >
       <div class="col-12 col-md-12 col-lg-12 ">
-        <img class="card-img card-img-center"
-          src="https://media.istockphoto.com/photos/flat-lay-with-womans-clothes-and-accessories-picture-id1339264709?k=20&m=1339264709&s=612x612&w=0&h=pC-z5y_KPFrUQEA4dXeycsVCwNkG-5ApzN4SWiY1Bro=" />
-        <div class="card-body">
-
-          <h5 class="card-title">Apparel</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-            This content is a little bit longer.
-          </p>
-          <h5 class="pb-1 mb-4">Price: &#8369; </h5>
-
-          <div class="count-input-mobile ">
-            <div class="input-group ">
-              <div class="input-group-prepend">
-              </div>
-            </div>
-          </div><br><br><br>
-          <button class="btn btn-sm btn-outline-danger" (click)="onClearCart($event)">Remove this item</button>
+         <div class="card-body" *ngFor="let item of products">
+          <h5 class="card-title">{{item.productName}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <h5 class="pb-1 mb-4">Price: &#8369; {{item.price}}</h5>
+          <button (click)="removeItem(item)" class="btn btn-outline-danger">Remove Item</button>
         </div>
-
       </div>
     </div>
   </div>
+  <br><br>
 
   <div class="button-options" *ngIf="products?.length;">
     <h5 class="pb-1 mb-4">Total: &#8369;   </h5>
@@ -108,9 +89,7 @@
 </div>
 
 <ng-template #noItemsInCartMobile>
-  <h5 class="no-items">There are no items in your cart..</h5><br>
-</ng-template>
-
-<ng-template #noItemsInCartMobileButtons>
-  <button class="btn-options btn-sm btn-outline-secondary">Go to Shop</button>
+  <img style="width: 100px;" src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png">
+  <h4>There are no items in your cart..</h4>
+  <button routerLink="home" class="btn btn-warning">Shop Now</button>
 </ng-template>

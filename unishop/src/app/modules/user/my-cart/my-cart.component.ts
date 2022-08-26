@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart.service';
 
 
@@ -14,7 +14,7 @@ export class MyCartComponent implements OnInit {
   public products : any = [];
   public subTotal !: number;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
    this.cartService.getProducts().subscribe( res => {

@@ -1,0 +1,42 @@
+<div class="details-container w-100" >
+    <ng-container *ngFor="let d of data">
+        <div class="card-details d-flex flex-column  justify-content-between" *ngIf="(d.name !== 'rating')">
+
+            <ng-container *ngIf="d.hasChild; else noChild">
+                <div class="content-wrapper d-flex flex-row alig-items-center justify-content-center" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <div class="card-title-container" >
+                        {{d.name}}
+                    </div>
+                    <div class="card-title-value">
+                        {{d.key}}
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noChild>
+                <div class="content-wrapper d-flex flex-row alig-items-center justify-content-center" >
+                    <div class="card-title-container">
+                        {{d.name}}
+                    </div>
+                    <div class="card-title-value">
+                        {{d.key}}
+                    </div>
+                </div>
+            </ng-template>
+    
+            <div class="collapse mt-4" id="collapseExample" *ngIf="d.hasChild">
+                <div class="d-grid d-sm-flex p-3 border">
+                    <!-- <img src="../assets/img/elements/1.jpg" alt="collapse-image" height="125" class="me-4 mb-sm-0 mb-2" /> -->
+                    <!-- <span *ngFor="let da of d.key">
+                        {{da}}
+                    </span> -->
+                    <div class="w-100 d-flex flex-column" >
+                        <a href="!#" *ngFor="let da of d.key">{{da}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    
+
+</div>

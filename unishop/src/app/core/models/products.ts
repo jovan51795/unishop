@@ -17,6 +17,6 @@ export interface Product {
         }
     ],
     date: Date,
-    paymentType: string[],
+    paymentType: string,
     sold?: number
 }

@@ -18,9 +18,43 @@ export class AdminService {
     )
   }
 
+  getAllProducts = (): Observable<Product[]> => {
+    return this.http.get<Product[]>(`${environment.url}/products`).pipe(
+      tap(x => x)
+    )
+  }
+
+  getProductById = (id: number) => {
+    return this.getAllProducts().pipe(
+      map((x: Product[]) => {
+        return  x.filter( i => i.id === id)
+      })
+    )
+  }
+
   addProducts = (data: Product) => {
     return this.http.post(`${environment.url}/products`, data).pipe(
       catchError( x => x)
+    )
+  }
+
+  editProduct = (data: Product) => {
+    return this.http.put(`${environment.url}/products/${data.id}`, data).pipe(
+      tap(x => x)
+    )
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete(`${environment.url}/products/${id}`).pipe(
+      tap(x => x)
+    )
+  }
+
+  //users
+
+  getAllUsers = (): Observable<Users[]> => {
+    return this.http.get<Users[]>(`${environment.url}/users`).pipe(
+      tap(x => x)
     )
   }
 }

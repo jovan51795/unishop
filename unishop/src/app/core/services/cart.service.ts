@@ -8,9 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
 
-  private cartItems: CartItem[];
-  public itemsChanged: EventEmitter<CartItem[]> = new EventEmitter<CartItem[]>();
-
+  
+  public cartItemList : any = []
+  public productList = new BehaviorSubject<any>([])
+  public search = new BehaviorSubject<string>("");
 
 
   constructor() {}
@@ -39,20 +40,18 @@ export class CartService {
 
     return subTotal;
   }
-      });
 
   removeCartItem(product : any){
     this.cartItemList.map((a : any, index : any) => {
       if(product.id === a.id){
         this.cartItemList.splice(index, 1);
       }
-    });
-    this.itemsChanged.emit(this.cartItems.slice());
+    })
   }
 
-  public clearCart() {
-    this.cartItems = [];
-    this.itemsChanged.emit(this.cartItems.slice());
+  removeAll(){
+    this.cartItemList = [];
+    this.productList.next(this.cartItemList);
   }
 
 
