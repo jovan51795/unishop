@@ -108,7 +108,7 @@
                       <div class="card col-md-3">
                           <img src="{{item.image}}">
                           <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.productName}}</h5>
-                          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+                          <p>{{item.description | slice: 0:20}}...</p>
                           <p><strong>Price:</strong> &#8369;{{item.price}}</p>
                           <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
                       </div>

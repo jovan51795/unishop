@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductsService } from 'src/app/core/services/products.service';
 // import { ProductsService } from 'src/app/core/services/products.service';
@@ -19,7 +20,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductsService, 
     private cartService: CartService, 
-    private router: Router
+    private router: Router,
+    private toast: ToastrService
 
   ) { }
 
@@ -42,6 +44,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(item : any){
+    this.toast.success("Added to Cart")
     this.cartService.addToCart(item);
   }
 
