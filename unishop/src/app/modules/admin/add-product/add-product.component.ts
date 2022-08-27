@@ -44,7 +44,7 @@ export class AddProductComponent implements OnInit {
       quantity: ['', [Validators.required]],
       date: [{value: this.datePipe.transform(this.dateNow), disabled: true } ],
       paymentType: ['', [Validators.required]],
-      isActive: [true],
+      true: [true],
       rating: this.fb.array([]),
       customers: this.fb.array([]),
       sold: [0]
