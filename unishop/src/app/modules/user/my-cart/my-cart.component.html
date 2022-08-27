@@ -30,16 +30,14 @@
                     value={{item.quantity}}
                     min="1"
                     >
-                    <button class="btn btn-outline-secondary"  type="button" >+</button> 
+                    <button class="btn btn-outline-secondary" type="button" >+</button> 
                 </div>
               </div>
             </td>
             <!-- <td><input class="form-control" id="qty" type="number" value="{{item.quantity}}" min="1"></td> -->
-            <td> &#x20B1;{{item.price}} </td>
-            <td> &#x20B1;{{itemTotal}} </td>
+            <td> {{item.price | currency: 'PHP' }} </td>
+            <td> {{itemTotal | currency: 'PHP'}} </td>
   
-            
-            
             <td>
               <button (click)="removeItem(item)" class="btn btn-xs btn-outline-danger">Remove Item</button>
             </td>
@@ -47,7 +45,7 @@
           </tr>
           <tr>
             <td colspan="5"></td>
-            <td><strong>Subtotal : &#x20B1;{{subTotal}}</strong></td>
+            <td><strong>Subtotal : {{subTotal | currency: 'PHP'}}</strong></td>
             <td></td>
             
         </tr>
