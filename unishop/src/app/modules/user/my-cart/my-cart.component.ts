@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart.service';
-import { MessengerService } from 'src/app/core/services/messenger/messenger.service';
-
 
 @Component({
   selector: 'app-my-cart',
@@ -19,12 +18,11 @@ export class MyCartComponent implements OnInit {
   constructor(
     private cartService: CartService, 
     private router: Router,
-    private msg: MessengerService
+    private toast: ToastrService
     ) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getItemList()
-
     console.log(this.cartItems)
     this.cartItems.map((res:any) => {
       this.qty = res.qty
@@ -55,8 +53,10 @@ export class MyCartComponent implements OnInit {
     this.router.navigate(['pages/products'])
   }
 
-  goToCheckout(){
-    this.router.navigate(['user/checkout'])
-  }
+  // placeOrder(item : any){
+  //   this.toast.success("Your order has been placed")
+  //   this.cartService.placeOrder(item)
+  // }
+
 
 }
