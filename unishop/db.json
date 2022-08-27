@@ -34,25 +34,6 @@
   ],
   "products": [
     {
-      "id": 1,
-      "category": "fdhgdh",
-      "productName": "hdfhdf",
-      "image": "viber_image_2022-08-22_13-27-13-566.png",
-      "description": "wertwert",
-      "price": "gsdfgfg",
-      "quantity": "345",
-      "date": "Aug 24, 2022",
-      "paymentType": "COD",
-      "status": false,
-      "rating": [],
-      "customers": [
-        "jovanie",
-        "cabatuan"
-      ],
-      "sold": 0,
-      "type": "delete"
-    },
-    {
       "id": 10,
       "category": "category2",
       "productName": "name1",

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/core/models/products';
 import { CartService } from 'src/app/core/services/cart.service';
 import { MessengerService } from 'src/app/core/services/messenger/messenger.service';
 import { ProductsService } from 'src/app/core/services/products.service';
+import { Product } from 'src/app/models/product';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  public productList : any;
+  public productList: any[] | undefined;
   public filterCategory : any;
   searchKey: string = "";
   public searchTerm !: string;
@@ -25,7 +25,6 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private toast: ToastrService,
     private msg: MessengerService
-
   ) { }
 
   ngOnInit(): void {
@@ -41,18 +40,22 @@ export class ProductsComponent implements OnInit {
     this.cartService.search.subscribe((val: any) => {
       this.searchKey = val;
     })
+
+   
   }
 
-  // addToCart(item : Product[]){
-  //   this.toast.success("Added to cart")
-  //   this.cartService.addToCart(item);
+  addToCart(item : any){
+    this.toast.success("Added to cart")
+    this.cartService.addToCart(item);
+  }
+
+  // addToCart(item : any){
+  //   console.log(item)
+  //   this.toast.success("Added to cart");
+  //   this.msg.sendMsg(item)
   // }
 
-  addToCart(item: Product[]){
-    this.toast.success("Added to cart");
-    this.msg.sendMsg(item)
-  }
-
+  
   goToCart(){
     this.router.navigate(['user/my-cart']);
   }
