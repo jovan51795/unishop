@@ -5,7 +5,7 @@
 app-dashboard {
     width: 100%;
 }
-app-add-product {
+app-add-product, app-products, app-details, app-users {
     width: 100%;
     margin: 1rem;
 }
@@ -13,7 +13,6 @@ app-add-product {
 .us-btn-primary {
     font-size: 18px;
     font-weight: bolder;
-    color: #fff;
     background-color: #ffc13b!important;
     border: 2px solid #ffc13b!important;
     box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
@@ -46,7 +45,7 @@ app-add-product {
     border-radius: 20px;
     margin: 1rem;
 
-    div{
+    .page-nav {
         font-size: 28px;
         font-weight: 700;
     }
@@ -63,4 +62,22 @@ app-add-product {
     height: 3rem !important;
 }
 
+.active-link {
+    background: #ffc13b;
+}
 
+.active-link:hover {
+    background: #ffc13b !important;
+}
+
+.ng-invalid:not(form) {
+    border: 2px solid #eb707a;
+}
+
+.ng-valid:not(form) {
+    border: 2px solid #ffc836 !important;
+}
+
+.bg-us-primary {
+    background: #ffc836 !important;
+}

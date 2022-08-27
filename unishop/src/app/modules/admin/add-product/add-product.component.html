@@ -1,16 +1,23 @@
-<div class="page-container">
-    <div>Add Product</div>
-    <div>
-        <button class="btn us-btn-primary" (click)="goBack()">Back</button>
-    </div>
-</div>
-<section class="page-navbar">
+<app-command-bar [data]="comData"></app-command-bar>
+
+<section class="page-container">
     <div class="card-body">
         <form [formGroup]="productForm" (ngSubmit)="addProduct()">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">Category</label>
-                    <input type="text" formControlName="category" class="form-control input-border" placeholder="Category">
+                    <select  class="form-control" formControlName="category">
+                        <option value="Home & Garden">Home & Garden</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Style & Fashion">Style & Fashion</option>
+                        <option value="Apparel & Accessories">Apparel & Accessories</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Pets & Pets Supplies">Pets & Pets Supplies</option>
+                        <option value="Sporting Goods">Sporting Goods</option>
+                        <option value="Health & Wellness">Health & Wellness</option>
+                    </select>
+                    <!-- <label for="validationDefault01">Category</label>
+                    <input type="text" formControlName="category" class="form-control input-border" placeholder="Category"> -->
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Product Name</label>
@@ -19,7 +26,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Quantity</label>
-                    <input type="text" formControlName="quantity" class="form-control" placeholder="Quantity" required>
+                    <input type="text" (keypress)="validateInput($event, 12)" formControlName="quantity" class="form-control" placeholder="Quantity" required>
                 </div>
             </div>
             <div class="row">
@@ -29,7 +36,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Price</label>
-                    <input type="text" formControlName="price" class="form-control" placeholder="Price"
+                    <input type="text" (keypress)="validateInput($event, 11)" formControlName="price" class="form-control" placeholder="Price"
                         required>
                 </div>
                 <div class="col-md-4 mb-3">

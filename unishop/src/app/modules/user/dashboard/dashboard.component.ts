@@ -19,8 +19,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+   }
 
    toProfile(){
     document.getElementById("profile")?.scrollIntoView({behavior: "smooth"});

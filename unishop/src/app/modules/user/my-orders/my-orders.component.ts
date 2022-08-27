@@ -15,7 +15,7 @@ export class MyOrdersComponent implements OnInit {
 
 
    backToHome() {
-    this.router.navigate(['home']);
+    this.router.navigate(['pages/home']);
   }
 
 }

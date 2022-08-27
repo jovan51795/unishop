@@ -1,0 +1,52 @@
+@import '../../../scss/mixins';
+.table-view {
+    @include breakpoint-max(sm) {
+        display: none;
+    }
+}
+.no-data {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+}
+.card-view-body {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ffc13b;
+    div {
+        flex: 1;
+    }
+    .card-title-key {
+        font-size: larger;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .card-title-val {
+        text-transform: capitalize;
+        font-size: large;
+    }
+
+    @include breakpoint-max(xxs) {
+        flex-direction: column;
+    }
+}
+
+.card-view-container {
+    display: none;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #697a8d;
+
+    @include breakpoint-max(sm) {
+        display: block;
+    }
+}
+
+.button-container {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}

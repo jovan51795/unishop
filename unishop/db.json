@@ -1,105 +1,72 @@
 {
   "users": [
     {
-      "id": "number",
-      "isActive": "boolean",
-      "role": "user",
-      "email": "value",
-      "password": "value",
-      "firstName": "Value",
-      "lastName": "value",
-      "contact": "number",
-      "dob": "short date",
-      "address": {
-        "house_number": "value",
-        "street": "value",
-        "city": "value",
-        "province": "value",
-        "brgy": "value"
-      },
-      "orders": [
-        {
-          "qty": "number",
-          "ordersDate": "long date",
-          "products": "products",
-          "status": "value"
-        }
-      ]
-    },
-    {
-      "email": "johndoe@email.com",
-      "password": "$2a$10$4KmhT6OFIjaCRtP4NOVXyuWsJNbH28OJnutAMGRYKwiOiWxthERpe",
-      "firstName": "John",
-      "middleName": "J",
-      "lastName": "Doe",
-      "id": "ULDOy2A"
-    },
-    {
-      "email": "janedoe@email.com",
-      "password": "$2a$10$CzYhYowpoYwiXWxrL0josOCsNpy0pB.JNWkULUDXgrLoLmDZeMFEO",
-      "firstName": "Jane",
+      "email": "pmonisit@mail.com",
+      "password": "$2a$10$hb9A9hr3b7X/Pav4yCkdweuHauLkSNvB9ybG1I98mJhU3N10uh5ri",
+      "firstName": "Prince",
       "middleName": "D",
-      "lastName": "Doe",
-      "id": "3XDMNdq"
-    },
-    {
-      "email": "mark@email.com",
-      "password": "$2a$10$EzZkt8Al7Cr59MSJfxCKFurS26utJueds5jDQYzKfc9pm.Zr6ipd2",
-      "firstName": "Mark",
-      "middleName": "T",
-      "lastName": "Tahimiklang",
-      "role": "role",
-      "id": "rq-UQJg"
-    },
-    {
-      "email": "john@email.com",
-      "password": "$2a$10$z0FEFSpXQmfF4fX0/Zpth.KWENrT4f5Vnu1JpeVAiYIjyAyyaBBl2",
-      "firstName": "John",
-      "middleName": "D",
-      "lastName": "Carlo",
+      "contact": "0998347543795",
+      "lastName": "Monisit",
+      "id": "PNc8hxD",
       "role": "user",
-      "id": "omPVuRz"
+      "status": true
     },
     {
-      "email": "jack@email.com",
-      "password": "$2a$10$lxyfn9T9VtBWPKGXuaZbruPr2LiJQdkRzlOsdf4b6JrzlUM6Iuks6",
-      "firstName": "Jack",
-      "middleName": "O",
-      "lastName": "Litto",
+      "email": "jovanie@gmail.com",
+      "password": "$2a$10$N7qMBDjzI3SGDfGRGXNWFOyMovBeG9c4fzo9i/QM5LvSTefJkZL4y",
+      "firstName": "jovanie",
+      "middleName": "M",
+      "lastName": "cabatuan",
+      "id": "dc2QbJi",
+      "role": "admin"
+    },
+    {
+      "email": "jhovanie@gmail.com",
+      "password": "$2a$10$jIHZG06FnESZuaY.b2hWvOC09LUtHceOD/s8Si/IkHyLII6uztXpe",
+      "firstName": "jhovanie",
+      "middleName": "M",
+      "lastName": "Cabatuan",
       "role": "user",
-      "id": "9fkEkQd"
+      "contact": null,
+      "status": true,
+      "id": "wVp01Cm"
     }
   ],
   "products": [
     {
-      "category": "category1",
-      "productName": "name1",
-      "image": "download (2).png",
-      "description": "sample1",
-      "price": "3",
-      "quantity": "3",
-      "date": "Aug 23, 2022",
+      "id": 1,
+      "category": "fdhgdh",
+      "productName": "hdfhdf",
+      "image": "viber_image_2022-08-22_13-27-13-566.png",
+      "description": "wertwert",
+      "price": "gsdfgfg",
+      "quantity": "345",
+      "date": "Aug 24, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
-      "customers": [],
+      "customers": [
+        "jovanie",
+        "cabatuan"
+      ],
       "sold": 0,
-      "id": 9
+      "type": "delete"
     },
     {
+      "id": 10,
       "category": "category2",
       "productName": "name1",
-      "image": "download (2).png",
+      "image": "woman-with-keys.png",
       "description": "sample1",
       "price": "3",
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 1000,
-      "id": 10
+      "type": "delete"
     },
     {
       "category": "category3",
@@ -110,11 +77,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 1500,
-      "id": 11
+      "id": 11,
+      "type": "delete"
     },
     {
       "category": "category4",
@@ -125,11 +93,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 100,
-      "id": 12
+      "id": 12,
+      "type": "delete"
     },
     {
       "category": "category5",
@@ -140,11 +109,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 89,
-      "id": 13
+      "id": 13,
+      "type": "delete"
     },
     {
       "category": "category6",
@@ -155,11 +125,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": true,
       "rating": [],
       "customers": [],
       "sold": 2000,
-      "id": 14
+      "id": 14,
+      "type": "delete"
     },
     {
       "category": "category7",
@@ -170,11 +141,12 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": true,
       "rating": [],
       "customers": [],
       "sold": 1,
-      "id": 15
+      "id": 15,
+      "type": "delete"
     },
     {
       "category": "category8",
@@ -185,7 +157,7 @@
       "quantity": "3",
       "date": "Aug 23, 2022",
       "paymentType": "COD",
-      "isActive": false,
+      "status": false,
       "rating": [],
       "customers": [],
       "sold": 2900,

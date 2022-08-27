@@ -1,35 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { HomeComponent } from './pages/home/home.component';
+import { AdminAuthGuard } from './core/guards/admin/admin-auth.guard';
+import { AuthGuard } from './core/guards/user/auth.guard';
 import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { PagesLayoutComponent } from './shared/pages-layout/pages-layout.component';
+import { UserLayoutComponent } from './shared/user-layout/user-layout.component';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: "admin",
+  redirectTo: "pages/home",
   pathMatch: 'full'
 },
 {
-  path: 'login',
-  component: LoginComponent
-},
-{
-  path: "register",
-  component: RegisterComponent
-},
-{
-  path: "forgotpassword",
-  component: ForgotpasswordComponent
-},
-{
-  path: "home",
-  component: HomeComponent
+  path: "",
+  component: PagesLayoutComponent,
+  children: [
+    {
+      path: "pages",
+      loadChildren: ()=> import('./pages/pages.module').then(b => b.PagesModule)
+    }
+  ]
 },
 {
   path: '',
-  
+  component: UserLayoutComponent,
+  canActivate: [AuthGuard],
   children: [
     {
       path: "user",
@@ -40,12 +36,24 @@ const routes: Routes = [{
 {
   path: '',
   component: AdminLayoutComponent,
+  // canActivate: [AdminAuthGuard],
   children: [
     {
       path: 'admin',
       loadChildren: () => import('./modules/admin/admin.module').then(b => b.AdminModule)
     }
   ]
+},
+{
+  path: "",
+  component: AuthLayoutComponent,
+  children: [
+    {
+      path: "auth",
+      loadChildren: () => import('./auth/auth.module').then(b => b.AuthModule)
+    }
+  ]
+
 }
 ];
 

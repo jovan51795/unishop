@@ -13,10 +13,11 @@ import { AdminSidebarComponent } from './shared/admin-sidebar/admin-sidebar.comp
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductsComponent } from './components/products/products.component';
+import { FilterPipe } from './shared/filter/filter.pipe';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { PagesLayoutComponent } from './shared/pages-layout/pages-layout.component';
 
 
 @NgModule({
@@ -28,11 +29,13 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     HeroSectionComponent,
     MyCartComponent,
     AdminLayoutComponent,
+    ProductsComponent,
     UserLayoutComponent,
     AdminSidebarComponent,
-    LoginComponent,
-    RegisterComponent,
-    ForgotpasswordComponent
+    FilterPipe,
+    AuthLayoutComponent,
+    PagesLayoutComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot(),
   ],
   providers: [FormBuilder],

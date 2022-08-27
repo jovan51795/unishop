@@ -1,18 +1,72 @@
-<div class="table-responsive text-nowrap">
+<div class="table-responsive text-nowrap table-view">
     <table class="table">
         <thead>
             <tr>
-                <th *ngFor="let col of columns">
-                    {{ col }}
+                <th class="t-header" *ngFor="let col of columns" (click)="orderBy(col.dIcon = !col.dIcon, col)">
+                    <span>{{ col.key }}</span>&nbsp;
+                    <ng-container *ngIf="col.isBtn">
+                        <i id="col" [ngClass]="{'bx-chevron-down': !col.dIcon, 'bx-chevron-up': col.dIcon}"
+                            class="tf-icon bx"></i>
+                    </ng-container>
                 </th>
+                <th *ngIf="buttons">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let d of data" > 
+            <tr *ngFor="let d of data">
                 <td *ngFor="let x of tableRowData(d)">
-                    <p>{{x}}</p>
+                    <ng-template #value>
+                        <p>{{x.val}}</p>
+                    </ng-template>
+                    <ng-container *ngIf="(x.key ==='status'); else value">
+                        <span class="badge bg-label-primary me-1" *ngIf="x.val">Active</span>
+                        <span class="badge bg-label-warning me-1" *ngIf="!x.val">Deactivated</span>
+                    </ng-container>
+                </td>
+                <td class="" *ngIf="buttons">
+                    <div class="dropdown1">
+                        <button type="button" class="btn dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)="actions(d, btn.type)" *ngFor="let btn of buttons" >
+                                <i class="bx me-1" *ngIf="btn.icon" [ngClass]="btn.icon">
+
+                                </i>
+                                {{btn.type}}
+                            </a>
+                            <!-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                Delete</a> -->
+                        </div>
+                    </div>
+                    <!-- <button *ngFor="let btn of buttons" class="btn" [ngClass]="btn?.bgColor"
+                        (click)="actions(d, btn.type)">
+                        <i *ngIf="btn.icon" class="menu-icon tf-icons bx" [ngClass]="btn.icon"></i>
+                    </button> -->
                 </td>
             </tr>
+
         </tbody>
     </table>
+    <div *ngIf="getDataLength()" class="no-data text-center p-4">No Data Found</div>
 </div>
+
+<section class="card-view-container" *ngFor="let d of data">
+    <ng-container *ngFor="let x of tableRowData(d); let i = index">
+        <div class="card-view-body">
+            <div class="card-title-key">
+                {{columns[i].key}}
+            </div>
+            <div class="card-title-val">
+                {{x.val}}
+            </div>
+        </div>
+    </ng-container>
+
+    <div class="button-container bg-default">
+        <button *ngFor="let btn of buttons" class="btn" [ngClass]="btn?.bgColor" (click)="actions(d, btn.type)">
+            <i *ngIf="btn.icon" class="menu-icon tf-icons bx" [ngClass]="btn.icon"></i>
+        </button>
+    </div>
+
+</section>
