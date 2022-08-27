@@ -12,8 +12,7 @@ export class CartService {
   public cartItemList : any = []
   public productList = new BehaviorSubject<any>([])
   public search = new BehaviorSubject<string>("");
-
-
+  
   constructor(private http: HttpClient) {}
 
   getProducts(){
@@ -57,10 +56,18 @@ export class CartService {
   removeCartItem(product : any){
     this.cartItemList.map((a : any, index : any) => {
       if(product.id === a.id){
-        this.cartItemList.splice(index, 1);
+        this.cartItemList.splice(index, 1); 
       }
-    })
+    })   
   }
+
+  // getQty(product : any){
+  //   this.cartItemList.map((a : any, index : any) => {
+  //     if(product.id === a.id){
+  //       a.quantity += 1;
+  //     }
+  //   })
+  // }
 
   removeAll(){
     this.cartItemList = [];

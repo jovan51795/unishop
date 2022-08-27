@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Product } from 'src/app/core/models/products';
 import { CartService } from 'src/app/core/services/cart.service';
+import { MessengerService } from 'src/app/core/services/messenger/messenger.service';
 import { ProductsService } from 'src/app/core/services/products.service';
-// import { ProductsService } from 'src/app/core/services/products.service';
+
 
 @Component({
   selector: 'app-products',
@@ -21,7 +23,8 @@ export class ProductsComponent implements OnInit {
     private productService: ProductsService, 
     private cartService: CartService, 
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private msg: MessengerService
 
   ) { }
 
@@ -31,9 +34,6 @@ export class ProductsComponent implements OnInit {
       this.filterCategory = res;
 
       this.productList.forEach((a : any) => {
-        if(a.category === 'Home & Garden'){
-          a.category = "Home & Garden"
-        }
         Object.assign(a, {quantity : 1, total : a.price})
       });
     });
@@ -43,9 +43,14 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  addToCart(item : any){
-    this.toast.success("Added to Cart")
-    this.cartService.addToCart(item);
+  // addToCart(item : Product[]){
+  //   this.toast.success("Added to cart")
+  //   this.cartService.addToCart(item);
+  // }
+
+  addToCart(item: Product[]){
+    this.toast.success("Added to cart");
+    this.msg.sendMsg(item)
   }
 
   goToCart(){
@@ -59,7 +64,7 @@ export class ProductsComponent implements OnInit {
   }
 
   filter(category: string){
-    this.filterCategory = this.productList
+    this.filterCategory = this.productList!
     .filter((a:any) => {
       if(a.category == category || category == ''){
           return a;
