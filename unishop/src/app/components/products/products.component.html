@@ -109,7 +109,7 @@
                           <img src="{{item.image}}">
                           <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.productName}}</h5>
                           <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
-                          <p><strong>Price:</strong> &#8369;{{item.price}}</p>
+                          <p><strong>Price:</strong> {{item.price | currency: 'PHP'}}</p>
                           <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
                       </div>
                   </ng-container>
