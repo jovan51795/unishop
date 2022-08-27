@@ -22,5 +22,21 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   toProfile(){
+    document.getElementById("profile")?.scrollIntoView({behavior: "smooth"});
+   }
+   toAddresses(){
+    document.getElementById("addresses")?.scrollIntoView({behavior: "smooth"});
+   }
+   toPassword(){
+    document.getElementById("password")?.scrollIntoView({behavior: "smooth"});
+   }
+   toDelete(){
+    document.getElementById("delete")?.scrollIntoView({behavior: "smooth"});
+   }
+   deleteAccount(){
+    
+   }
+
   
 }

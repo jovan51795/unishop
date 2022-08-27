@@ -1,3 +1,50 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div class="d-flex flex-row sidebar-container">
+    <div>
+        <aside id="layout-menu" class="menu-vertical menu bg-menu-theme">
+            <div class="menu-inner-shadow"></div>
+        
+            <ul class="menu-inner py-1">
+        
+              <!-- My Account -->
+              <li class="menu-header small text-uppercase"><span class="menu-header-text">My Account</span></li>
+              <li class="menu-item">
+                <!-- (click)="toProfile()" -->
+                <a class="btn menu-link">
+                  <i class="menu-icon tf-icons bx bx-crown"></i>
+                  <div data-i18n="Boxicons">Profile</div>
+                </a>
+              </li>
+        
+              <li class="menu-item">
+                <!-- (click)="toAddresses()"  -->
+                <a class="btn menu-link">
+                  <i class="menu-icon tf-icons bx bx-crown"></i>
+                  <div data-i18n="Boxicons">Addresses</div>
+                </a>
+              </li>
+        
+              <li class="menu-item">
+                <!-- (click)="toPassword()" -->
+                <a class="btn menu-link">
+                  <i class="menu-icon tf-icons bx bx-crown"></i>
+                  <div data-i18n="Boxicons">Change Password</div>
+                </a>
+              </li>
+        
+              <li class="menu-item">
+                <!-- (click)="toDelete()"  -->
+                <a class="btn menu-link">
+                  <i class="menu-icon tf-icons bx bx-crown"></i>
+                  <div data-i18n="Boxicons">Delete Account</div>
+                </a>
+              </li>
+            </ul>
+          </aside>
+    </div>
+      <div class="router-container">
+        <router-outlet></router-outlet>
+      </div>
+</div>
+
 <app-footer></app-footer>
