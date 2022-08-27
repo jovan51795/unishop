@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/core/services/cart.service';
 declare function toggleSidebar(): any;
 @Component({
   selector: 'app-header',
@@ -12,7 +13,9 @@ export class HeaderComponent implements OnInit {
   data = localStorage.getItem("user")
   credentials: any;
   userType: boolean = false
-  constructor(private router: Router) {
+  totalItem : number = 0;
+
+  constructor(private router: Router, private cartService: CartService) {
     this.isLogin = localStorage.getItem("user") ? true : false
     if (this.isLogin) {
       this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user.role === 'admin' ? true : false;
@@ -21,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.totalItem = this.cartService.getCartCount()
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {

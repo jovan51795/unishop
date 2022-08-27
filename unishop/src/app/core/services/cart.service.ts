@@ -9,9 +9,10 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 
 
-  public cartItemList: any = []
-  public productList = new BehaviorSubject<any>([])
+  public cartItemList: any = [];
+  public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
+  public cartCount : number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -43,6 +44,7 @@ export class CartService {
           price: parseInt(product.price),
           qty: 1
         })
+        
     }
     console.log(this.cartItemList)
   }
@@ -51,6 +53,9 @@ export class CartService {
     return this.cartItemList
   }
 
+  getCartCount(){
+    return this.cartItemList.length
+  }
 
   decreaseQty(product: any) {
     this.cartItemList.map((a: any, index: any) => {
