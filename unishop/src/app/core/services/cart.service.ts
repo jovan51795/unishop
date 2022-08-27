@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -44,7 +43,6 @@ export class CartService {
           price: parseInt(product.price),
           qty: 1
         })
-        
     }
     console.log(this.cartItemList)
   }
@@ -76,5 +74,13 @@ export class CartService {
       }
     })
   }
+
+  // getCartItems(): Observable<Orders[]>{
+  //   return this.http.get<Orders[]>('http://localhost:3000/orders')
+  // }
+
+  // placeOrder(order: Orders): Observable<any>{
+  //   return this.http.post('http://localhost:3000/orders', {order});
+  // }
 
 }
