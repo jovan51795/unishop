@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   userForm: FormGroup;
 
   constructor(private fb: FormBuilder, private userService: AuthService, private router: Router) { 
@@ -18,8 +18,6 @@ export class DashboardComponent implements OnInit {
       password: ['']
     })
   }
-
-   }
 
    toProfile(){
     document.getElementById("profile")?.scrollIntoView({behavior: "smooth"});
@@ -36,6 +34,7 @@ export class DashboardComponent implements OnInit {
    deleteAccount(){
     
    }
+
 
   
 }
