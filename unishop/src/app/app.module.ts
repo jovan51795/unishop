@@ -13,10 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductsComponent } from './components/products/products.component';
 import { FilterPipe } from './shared/filter/filter.pipe';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { PagesLayoutComponent } from './shared/pages-layout/pages-layout.component';
+import { ProductsComponent } from './components/products/products.component';
 
 
 @NgModule({
