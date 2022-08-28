@@ -34,8 +34,9 @@ export class HeaderComponent implements OnInit {
   onWindowScroll() {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
     // let max = document.documentElement.scrollHeight;
+    console.log("listen")
 
-    this.stickyHeader = pos > 1500 ? true : false
+    this.stickyHeader = pos > 100 ? true : false
   }
 
   toggle() {

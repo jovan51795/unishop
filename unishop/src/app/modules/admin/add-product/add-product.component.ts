@@ -5,7 +5,7 @@ import { Product } from 'src/app/models/product';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute} from '@angular/router';
-import { InputMixinsService } from 'src/app/core/services/input/input-mixins.service';
+import { InputMixinsService } from 'src/app/mixins/input-mixins.service';
 
 @Component({
   selector: 'app-add-product',
