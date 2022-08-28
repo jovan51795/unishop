@@ -70,11 +70,11 @@ app-add-product, app-products, app-details, app-users {
     background: #ffc13b !important;
 }
 
-.ng-invalid:not(form) {
+.ng-invalid:not(form, .address-group) {
     border: 2px solid #eb707a;
 }
 
-.ng-valid:not(form) {
+.ng-valid:not(form, .address-group) {
     border: 2px solid #ffc836 !important;
 }
 

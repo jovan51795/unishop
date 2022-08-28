@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header (sidebarEmit)="toggleSidebar()"></app-header>
 <div class="d-flex flex-row">
-  <div id="for-sidebar">
+  <div id="for-sidebar" [ngClass]="{'layout-menu-expanded': sidebar}">
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
       <div class="menu-inner-shadow"></div>
 
@@ -10,15 +10,15 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">My Account</span></li>
         <li class="menu-item">
           <!-- (click)="toProfile()" -->
-          <a class="btn menu-link">
+          <a class="btn menu-link" (click)="toProfile()">
             <i class="menu-icon tf-icons bx bx-crown"></i>
-            <div data-i18n="Boxicons">Profile</div>
+            <div data-i18n="Boxicons">Profile </div>
           </a>
         </li>
 
         <li class="menu-item">
           <!-- (click)="toAddresses()"  -->
-          <a class="btn menu-link">
+          <a class="btn menu-link" (click)="toAddresses()">
             <i class="menu-icon tf-icons bx bx-crown"></i>
             <div data-i18n="Boxicons">Addresses</div>
           </a>
@@ -26,7 +26,7 @@
 
         <li class="menu-item">
           <!-- (click)="toPassword()" -->
-          <a class="btn menu-link">
+          <a class="btn menu-link" (click)="toPassword()">
             <i class="menu-icon tf-icons bx bx-crown"></i>
             <div data-i18n="Boxicons">Change Password</div>
           </a>
@@ -34,7 +34,7 @@
 
         <li class="menu-item">
           <!-- (click)="toDelete()"  -->
-          <a class="btn menu-link">
+          <a class="btn menu-link" (click)="toDelete()">
             <i class="menu-icon tf-icons bx bx-crown"></i>
             <div data-i18n="Boxicons">Delete Account</div>
           </a>

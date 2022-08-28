@@ -5,6 +5,7 @@ import { MyCartComponent } from './my-cart/my-cart.component';
 import { UserRoutingModule } from './user-routing.module';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,11 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
-  ]
+    UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
+
+  ],
+  providers: [FormBuilder]
 })
 export class UserModule { }
