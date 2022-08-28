@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
 import { Product } from 'src/app/models/product';
 import { ToastrService } from 'ngx-toastr';
-import { DatePipe, Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { InputMixinsService } from 'src/app/mixins/input-mixins.service';
+import { DatePipe } from '@angular/common';
+import { ActivatedRoute} from '@angular/router';
+import { InputMixinsService } from 'src/app/core/services/input/input-mixins.service';
 
 @Component({
   selector: 'app-add-product',

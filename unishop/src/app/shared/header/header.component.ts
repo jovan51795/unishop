@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from 'src/app/core/services/cart.service';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 declare function toggleSidebar(): any;
 @Component({
   selector: 'app-header',
