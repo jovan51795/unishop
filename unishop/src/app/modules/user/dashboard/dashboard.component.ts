@@ -5,6 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Users } from 'src/app/core/models/users';
 import { UserService } from 'src/app/core/services/user/user.service';
 
+export interface ChangePassword {
+  newPass: string,
+  confirmPass: string
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +16,10 @@ import { UserService } from 'src/app/core/services/user/user.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  showModal = false;
   userForm: FormGroup;
-  imageUrl: string = "../../../../assets/images/empty.png"
+  changePasswordForm: FormGroup;
+  imageUrl: string = "../../../../assets/images/empty.png";
   dateNow = new Date();
 
   constructor(private fb: FormBuilder, 
@@ -43,6 +49,11 @@ export class DashboardComponent implements OnInit {
 
     })
 
+    this.changePasswordForm = this.fb.group({
+      newPass: ['', [Validators.required]],
+      confirmPass: ['', [Validators.required]]
+    })
+
     
   }
 
@@ -65,9 +76,6 @@ export class DashboardComponent implements OnInit {
    toDelete(){
     document.getElementById("delete")?.scrollIntoView({behavior: "smooth"});
    }
-   deleteAccount(){
-    
-   }
 
    previewImage(e: any) {
     if(e.target.files) {
@@ -87,13 +95,33 @@ export class DashboardComponent implements OnInit {
       if(!x.error){
         this.toast.success("Successful");
       }
-      // localStorage.setItem("user", JSON.stringify(x))
       
     })
    }
 
-   delete= () => {
-    this.userService.deleteAccount();
+   onChangePassword = (): any => {
+    const userCred = this.changePasswordForm.getRawValue() as ChangePassword
+    if(!userCred.newPass || !userCred.confirmPass) {
+      return this.toast.error("Please fill all the required fields!")
+    }
+
+    if(userCred.newPass !== userCred.confirmPass) {
+      return  this.toast.error("Password does not match!");
+    }
+
+    const data = { password: userCred.newPass, email: this.userForm.get('email')?.getRawValue()} as Users
+    
+    this.userService.updateUserInfo(data).subscribe( x => {
+      if(!x.error){
+        this.toast.success("Password successfully changed!");
+      }
+    })
+
+   }
+
+   delete = () => {
+    this.userService.deleteAccount().subscribe();
+    localStorage.clear()
     this.router.navigate(['pages/home'])
    }
 }
