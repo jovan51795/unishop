@@ -1,6 +1,6 @@
 <app-header (sidebarEmit)="toggleSidebar()"></app-header>
-<div class="d-flex flex-row">
-  <div id="for-sidebar" [ngClass]="{'layout-menu-expanded': sidebar}">
+<div class="d-flex flex-row justify-content-center">
+  <div id="for-sidebar" *ngIf="isProfilePage" [ngClass]="{'layout-menu-expanded': sidebar}">
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
       <div class="menu-inner-shadow"></div>
 
@@ -42,7 +42,7 @@
       </ul>
     </aside>
   </div>
-  <div class="layout-page">
+  <div [ngClass]="{'layout-page': isProfilePage}">
     <router-outlet></router-outlet>
   </div>
 </div>
