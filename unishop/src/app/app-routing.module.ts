@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminAuthGuard } from './core/guards/admin/admin-auth.guard';
+import { PageGuard } from './core/guards/pages/page.guard';
 import { AuthGuard } from './core/guards/user/auth.guard';
 import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
@@ -15,6 +16,7 @@ const routes: Routes = [{
 {
   path: "",
   component: PagesLayoutComponent,
+  canActivate: [PageGuard],
   children: [
     {
       path: "pages",
