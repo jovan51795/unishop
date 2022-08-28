@@ -1,54 +1,44 @@
 <div class="card">
-    <h5 class="card-header">My Cart</h5>
+    <h5 class="card-header">My Cart</h5> 
     <div class="table-responsive text-nowrap">
-      <table class="table table-hover"  *ngIf="products?.length; else noItemsInCart" >
+      <table class="table table-hover"  *ngIf="cartItems?.length; else noItemsInCart" >
         <thead class="text-center">
           <tr>
-            <th>Item Image</th>
             <th>Product name</th>
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
-            <th>Action</th>
-            <th>
-              <button (click)="emptyCart()" class="btn btn-xs btn-danger">Clear Cart</button>
-            </th>
+            <th><button (click)="emptyCart()" class="btn btn-xs btn-danger">Clear Cart</button></th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0 text-center">
         
-          <tr *ngFor="let item of products; let i = index">
-            <td> <img style="width: 120px" src="{{item.image}}" alt=""> </td>
+          <tr *ngFor="let item of cartItems; let i = index">
+            <!-- <td> <img style="width: 120px" src="{{item.image}}" alt=""> </td> -->
             <td>{{item.productName}}</td>
             <td class="text-center">
               <div class="count-input">
                 <div class="input-group">
-                    <button class="btn btn-outline-secondary"  type="button">-</button> 
+                    <button (click)="decreaseQty(item)" class="btn btn-outline-secondary"  type="button">-</button> 
                     <input 
-                    type="number" 
+                    type="text" 
                     class="form-control text-center" 
-                    value={{item.quantity}}
+                    value={{item.qty}}
                     min="1"
                     >
-                    <button class="btn btn-outline-secondary" type="button" >+</button> 
+                    <button (click)="increaseQty(item)" class="btn btn-outline-secondary" type="button" >+</button> 
                 </div>
               </div>
             </td>
-            <!-- <td><input class="form-control" id="qty" type="number" value="{{item.quantity}}" min="1"></td> -->
             <td> {{item.price | currency: 'PHP' }} </td>
-            <td> {{itemTotal | currency: 'PHP'}} </td>
-  
-            <td>
-              <button (click)="removeItem(item)" class="btn btn-xs btn-outline-danger">Remove Item</button>
-            </td>
+            <td> {{ item.price * item.qty | currency: 'PHP'}} </td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
-            <td colspan="5"></td>
-            <td><strong>Subtotal : {{subTotal | currency: 'PHP'}}</strong></td>
-            <td></td>
-            
-        </tr>
+            <td colspan="4"></td>
+            <td><strong>Subtotal : {{subTotal | currency: 'PHP'}}</strong></td> 
+          </tr>
         </tbody>
       </table>
   
@@ -60,44 +50,103 @@
   
     </div>
   
-    <div class="table-footer" *ngIf="products?.length;">
+    <div class="table-footer" *ngIf="cartItems?.length;">
       <div class="shopping-cart-footer">
         <div class="column">
             <button  class="btn btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button>
         </div>
         <div class="column">
-          <a class="btn btn-warning" (click)="goToCheckout()" >Proceed to Checkout</a>
+          <button 
+          class="btn btn-warning" 
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#backDropModal"
+          >Proceed to Checkout
+        </button>
         </div>
-        
       </div>
     </div>
   </div>
+
+
+  <!-- Modal -->
+<div class="col-lg-4 col-md-3">
+  <div class="mt-3">
+    <div class="modal fade" id="backDropModal" data-bs-backdrop="static" tabindex="-1">
+      <div class="modal-dialog">
+        <form class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="backDropModalTitle">Order Summary</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                      <tr>
+                          <th>Product Name</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                          <th>Total</th>
+                          
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let item of cartItems; let i = index">
+                          <td>{{item.productName}}</td>
+                          <td>{{item.qty}}</td>
+                          <td>{{item.price | currency: 'PHP'}}</td>
+                          <td>{{ item.price * item.qty | currency: 'PHP'}}</td>
+                          
+                      </tr>
+          
+                      </tbody>
+                  </table>
+                  </div>
+                  <div class="column text-lg">Subtotal:
+                      <span class="text-medium">{{subTotal | currency: 'PHP'}}</span>
+                  </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+              Place Order
+            </button>
+           
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   
-  <!-- Mobile View -->
-  
+  <!-- Mobile View -->  
   <div class="container">
     <h5 class="card-header">My Cart</h5>
-    <div class="container-card " *ngIf="products?.length; else noItemsInCartMobile">
+    <div class="container-card " *ngIf="cartItems?.length; else noItemsInCartMobile">
       <div class="row" >
         <div class="col-12 col-md-12 col-lg-12 ">
-           <div class="card-body" *ngFor="let item of products">
+           <div class="card-body" *ngFor="let item of cartItems">
             <h5 class="card-title">{{item.productName}}</h5>
-            <p class="card-text">{{item.description}}</p>
+            <p class="card-text">{{item.productDescription}}</p> 
             <h5 class="pb-1 mb-4">Price: &#8369; {{item.price}}</h5>
-            <button (click)="removeItem(item)" class="btn btn-outline-danger">Remove Item</button>
+            <!-- <button (click)="removeItem(item)" class="btn btn-outline-danger">Remove Item</button> -->
           </div>
         </div>
       </div>
     </div>
     <br><br>
   
-    <div class="button-options" *ngIf="products?.length;">
+    <div class="button-options" *ngIf="cartItems?.length;">
       <h5 class="pb-1 mb-4">Total: &#8369;   </h5>
-      <button class="btn-options btn-sm btn-warning mb-3" (click)="goToCheckout()">Proceed to Checkout</button><br>
+      <button class="btn-options btn-sm btn-warning mb-3">Proceed to Checkout</button><br>
       <button class="btn-options btn-sm btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button><br><br>
       <button class="btn-options btn-sm btn-outline-danger" (click)="emptyCart()">Clear Cart</button>
     </div>
-  
   </div>
   
   <ng-template #noItemsInCartMobile>

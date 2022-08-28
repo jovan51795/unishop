@@ -29,7 +29,7 @@
           <div class="nav-item nav-item-con" *ngIf="!userType">
             <a [routerLink]="['user/my-cart']" class="d-flex justify-content-center align-items-center">
               <span class="menu-icon tf-icons bx bx-cart"></span>
-              <span class="badge bg-us-primary  rounded-pill" *ngIf="isLogin">1</span>
+              <span class="badge bg-us-primary  rounded-pill" *ngIf="isLogin">{{totalItem}}</span>
             </a>
           </div>
           <!-- *ngIf="isLogin" -->

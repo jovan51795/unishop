@@ -88,14 +88,6 @@
           </div> 
         </div>
       <!-- Search Bar -->  
-          <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <!-- Place this tag where you want the button to render. -->
-              <li class="nav-item lh-1 me-3">
-                  <button (click)="goToCart()" class="btn btn-primary">
-                      <div style="font-size: 10px;" class="badge bg-danger">5</div>
-                  </button>
-              </li>
-          </ul>
       </nav>
       <!-- / Navbar -->
       <!-- Layout container -->
@@ -107,9 +99,9 @@
                   <ng-container *ngFor="let item of filterCategory | filter :searchKey: 'productName'">
                       <div class="card col-md-3">
                           <img src="{{item.image}}">
-                          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.productName}}</h5>
-                          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
-                          <p><strong>Price:</strong> &#8369;{{item.price}}</p>
+                          <h5>{{item.productName | slice: 0:20}}</h5>
+                          <p>{{item.description | slice: 0:30}}...</p>
+                          <p><strong>Price:</strong> {{item.price | currency: 'PHP'}}</p>
                           <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
                       </div>
                   </ng-container>

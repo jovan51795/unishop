@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/core/models/products';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart.service';
-import { MessengerService } from 'src/app/core/services/messenger/messenger.service';
-
-
 
 @Component({
   selector: 'app-my-cart',
@@ -13,48 +10,53 @@ import { MessengerService } from 'src/app/core/services/messenger/messenger.serv
 })
 export class MyCartComponent implements OnInit {
 
-  public products !: Product[];
-  public itemTotal !: number;
-  public subTotal !: number;
-  public newQuantity !: number;
-
+  public cartItems: any = [];
+  public itemPrice !: number;
+  public qty !: number;
+  public subTotal = 0;
+  
   constructor(
     private cartService: CartService, 
     private router: Router,
-    private msg: MessengerService
-    
+    private toast: ToastrService
     ) { }
 
   ngOnInit(): void {
-
-    // this.msg.getMsg().subscribe((product: any) => {
-      
-    // })
-
-    this.cartService.getProducts().subscribe( res => {
-    this.products = res;
-    this.itemTotal = this.cartService.getItemTotal();
-    this.subTotal = this.cartService.getSubTotal();
+    this.cartItems = this.cartService.getItemList()
+    console.log(this.cartItems)
+    this.cartItems.map((res:any) => {
+      this.qty = res.qty
+      this.itemPrice = res.price
+      this.subTotal += this.qty * this.itemPrice
+    })    
+  }
+  
+  decreaseQty(item : any){
+    this.cartService.decreaseQty(item);
+    this.cartService.getProducts().subscribe( () => {
+      this.subTotal -= item.price; 
     })
   }
 
-  removeItem(item : any){
-    this.cartService.removeCartItem(item);
+  increaseQty(item : any){
+    this.cartService.increaseQty(item);
     this.cartService.getProducts().subscribe( () => {
-      this.subTotal -= item.price 
+      this.subTotal += item.price; 
     })
   }
   
   emptyCart(){
-    this.cartService.removeAll();
+    this.cartItems = []
   }
 
   goToProducts(){
     this.router.navigate(['pages/products'])
   }
 
-  goToCheckout(){
-    this.router.navigate(['user/checkout'])
-  }
+  // placeOrder(item : any){
+  //   this.toast.success("Your order has been placed")
+  //   this.cartService.placeOrder(item)
+  // }
+
 
 }
