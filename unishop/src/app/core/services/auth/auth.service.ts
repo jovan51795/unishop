@@ -20,7 +20,7 @@ export class AuthService {
       }),
       tap((x: any) => {
         if(x.accessToken) {
-          this.router.navigate(['user/login'])
+          this.router.navigate(['auth/login'])
         }
       })
     )
@@ -54,12 +54,4 @@ export class AuthService {
   getToken(){
     return localStorage.getItem("token")? true: false;
   }
-
-  // private logger = new Observable<any>((observer: Subscriber<any>) => {
-  //   observer.next(localStorage.getItem("user"));
-  // });
-
-  // isLoggedIn(): Observable<any> {
-  //   return this.logger;
-  // }
 }

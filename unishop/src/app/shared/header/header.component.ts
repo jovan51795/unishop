@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart.service';
 declare function toggleSidebar(): any;
@@ -10,16 +10,20 @@ declare function toggleSidebar(): any;
 export class HeaderComponent implements OnInit {
   stickyHeader: boolean = false;
   isLogin: boolean = false
-  data = localStorage.getItem("user")
+  data = localStorage.getItem("user");
   credentials: any;
   userType: boolean = false
   totalItem : number = 0;
 
-  constructor(private router: Router, private cartService: CartService) {
+  @Output() sidebarEmit = new EventEmitter();
+
+  constructor(private router: Router, private cartService: CartService, ) {
     this.isLogin = localStorage.getItem("user") ? true : false
     if (this.isLogin) {
-      this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user.role === 'admin' ? true : false;
-      this.credentials = JSON.parse(JSON.parse(JSON.stringify(this.data)))
+      this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?.role === 'admin' ||
+      JSON.parse(JSON.parse(JSON.stringify(this.data))).role === "admin"
+      ? true : false;
+      this.credentials = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?? JSON.parse(JSON.parse(JSON.stringify(this.data)))
     }
   }
 
@@ -35,13 +39,16 @@ export class HeaderComponent implements OnInit {
   }
 
   toggle() {
-    toggleSidebar()
+    this.sidebarEmit.emit()
+    
+    
+    
+    // toggleSidebar()
   }
 
   logout() {
     this.isLogin = false
     localStorage.removeItem("user");
     this.router.navigate(['pages/home']);
-    
   }
 }

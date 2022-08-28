@@ -12,8 +12,16 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const userToken = JSON.parse(JSON.stringify(localStorage.getItem("user")))
-    return JSON.parse(userToken).user.role === "user"? true : false;
+    
+    let proceed = false;
+    if(localStorage.getItem("user")){
+      const userToken = JSON.parse(JSON.stringify(localStorage.getItem("user")));
+      proceed = JSON.parse(userToken).user?.role === "user" || 
+      JSON.parse(userToken).role === "user"? true : false;
+    }
+
+    return proceed;
+    
   }
   
 }

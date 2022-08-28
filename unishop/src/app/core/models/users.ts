@@ -1,10 +1,22 @@
 export interface Users {
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    role: string
+    id?: string,
+    firstName?: string,
+    middleName?: string,
+    lastName?: string,
+    email?: string,
+    password?: string,
+    role?: string,
+    status?: boolean,
+    contact?: number,
+    dob?: Date,
+    profile: string,
+    address?: {
+        province?: string,
+        city?: string,
+        brgy?: string,
+        street?: string,
+        landmark?: string,
+    }
 }
 
 // {

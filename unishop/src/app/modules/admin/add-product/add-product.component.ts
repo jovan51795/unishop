@@ -26,7 +26,6 @@ export class AddProductComponent implements OnInit {
      private adminServices: AdminService, 
      private toast: ToastrService,
      private datePipe: DatePipe,
-     private location: Location,
      private route: ActivatedRoute,
      private inputServices: InputMixinsService
      ) {

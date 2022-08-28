@@ -3,7 +3,7 @@
     <nav class="us-navbar">
       <div class="us-navbar-menu-header">
         <div class="navigation-container">
-          <div (click)="toggle()" class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+          <div (click)="toggle()" #sidebarToggle class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
               <i class="bx bx-menu bx-sm"></i>
             </a>
@@ -44,7 +44,7 @@
                   </div>
                   <div class="account-type"> 
                     
-                   {{userType ? 'Admin' : credentials.user.firstName}}
+                   {{userType ? 'Admin' : credentials.firstName}}
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">

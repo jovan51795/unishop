@@ -18,6 +18,24 @@ app-add-product, app-products, app-details, app-users {
     box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
 }
 
+.us-btn-secondary {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #3b3b3b!important;
+    border: 2px solid #3b3b3b!important;
+    box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
+}
+
+.us-btn-danger {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #c31414!important;
+    border: 2px solid #c31414!important;
+    box-shadow: 0 3px 6px rgba(0,0,0,.0784314),0 7px 14px rgba(50,50,93,.101961)!important;
+}
+
 .page-container {
     display: flex;
     align-items: center;
@@ -52,11 +70,11 @@ app-add-product, app-products, app-details, app-users {
     background: #ffc13b !important;
 }
 
-.ng-invalid:not(form) {
+.ng-invalid:not(form, .address-group) {
     border: 2px solid #eb707a;
 }
 
-.ng-valid:not(form) {
+.ng-valid:not(form, .address-group) {
     border: 2px solid #ffc836 !important;
 }
 
