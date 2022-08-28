@@ -25,8 +25,9 @@ export class UserService {
   }
 
   updateUserInfo = (data: Users) => {
-    return this.http.patch(`${environment.url}/users/${data.id}`, data).pipe(
+    return this.http.patch(`${environment.url}/users/${data.id?? this.userID}`, data).pipe(
       catchError(err => {
+        console.log(err, "the error")
         this.toast.error(err.error)
         return of(err)
       }),
@@ -34,7 +35,7 @@ export class UserService {
   }
 
   deleteAccount = () => {
-    this.http.delete(`${environment.url}/user/${this.userID}`).pipe(
+    return this.http.delete(`${environment.url}/users/${this.userID}`).pipe(
       tap(x => x)
     )
   }
