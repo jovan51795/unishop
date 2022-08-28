@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -7,10 +8,15 @@ import { Component, OnInit} from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
   sidebar = false
-  constructor() { }
+  isProfilePage = false
+  constructor(private router: Router) {
+    this.router.events.subscribe((e) => {
+      this.isProfilePage = this.router.url.split('/').includes('profile')
+    })
+   }
 
   ngOnInit(): void {
-   
+    
   }
 
   toggleSidebar(){
