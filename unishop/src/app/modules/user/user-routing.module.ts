@@ -7,12 +7,14 @@ import { RouterModule } from '@angular/router';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 
-const routes: Routes = [{
-  path: '',
-  redirectTo: 'dashboard',
-  pathMatch: "full"
-},{
-  path: "dashboard",
+const routes: Routes = [
+//   {
+//   path: '',
+//   redirectTo: 'dashboard',
+//   pathMatch: "full"
+// },
+{
+  path: "profile",
   component: DashboardComponent
 },
 {
