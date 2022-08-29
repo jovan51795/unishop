@@ -1,7 +1,7 @@
 import { Product } from "./product";
 
 export interface Orders {
-    userId: string;
+    customerId: string;
     orderedDate: Date;
     totalPrice: number;
     status: string;

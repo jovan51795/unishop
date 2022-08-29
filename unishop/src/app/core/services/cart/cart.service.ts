@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import {Cart} from '../../../models/cart'
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +89,27 @@ export class CartService {
       this.cartItemList.map((res : any) => {
             this.cartItemList.splice(res.length);
       });
+    }
+
+
+    //jovanie verison
+    addProductCart = (data: any) => {
+      return this.http.post(`${environment.url}/cart`, data).pipe(
+        tap(x => x)
+      )
+    }
+
+    getProductCart = (id: string): Observable<Cart[]> => {
+      return this.http.get<Cart[]>(`${environment.url}/cart?customerId=${id}`).pipe(
+        tap(x => x)
+      )
+    }
+
+    addCustomerCart = (data: any) => {
+      console.log(data)
+      return this.http.patch(`${environment.url}/cart/${data.id}`, data.cart).pipe(
+        tap(x => x)
+      )
     }
 
 

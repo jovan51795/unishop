@@ -1,10 +1,10 @@
 import { Product } from "./product";
 
 export interface Cart {
-    userId: string;
+    customerId: string;
     products: Product[];
     qty: number;
-    total: number;
-    subtotal: number;
+    total?: number;
+    subtotal?: number;
 
 }

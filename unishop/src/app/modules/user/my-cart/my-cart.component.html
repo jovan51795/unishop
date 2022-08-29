@@ -23,7 +23,7 @@
                     <input 
                     type="text" 
                     class="form-control text-center" 
-                    value={{item.qty}}
+                    [(ngModel)]="item.qty"
                     min="1"
                     >
                     <button (click)="increaseQty(item)" class="btn btn-outline-secondary" type="button" >+</button> 
