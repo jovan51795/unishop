@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +10,12 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 
 
-  public cartItemList: any = [];
+  public cartItemList: any[] = [];
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
   public cartCount : number = 0;
+  public userId = localStorage.getItem('user')
+  
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +30,7 @@ export class CartService {
 
   addToCart(product: any) {
     let productExist = false
-
+    console.log(this.userId)
     for(let i in this.cartItemList){
         if(this.cartItemList[i].id === product.id){
           this.cartItemList[i].qty++;
@@ -67,6 +71,20 @@ export class CartService {
     })
   }
 
+  removeItem(product: any) {
+    this.cartItemList.map((a: any, index: any) => {
+      if (product.id === a.id) {
+          this.cartItemList.splice(index, 1);
+      }
+    })
+  }
+
+  removeAll(){
+    this.cartItemList.map((res) => {
+          this.cartItemList.splice(res.length);
+    });
+  }
+
   increaseQty(product: any) {
     this.cartItemList.map((a: any) => {
       if (product.id === a.id) {
@@ -74,13 +92,5 @@ export class CartService {
       }
     })
   }
-
-  // getCartItems(): Observable<Orders[]>{
-  //   return this.http.get<Orders[]>('http://localhost:3000/orders')
-  // }
-
-  // placeOrder(order: Orders): Observable<any>{
-  //   return this.http.post('http://localhost:3000/orders', {order});
-  // }
 
 }

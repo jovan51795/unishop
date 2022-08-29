@@ -26,14 +26,15 @@
                     value={{item.qty}}
                     min="1"
                     >
-                    <button (click)="increaseQty(item)" class="btn btn-outline-secondary" type="button" >+</button> 
+                    <button (click)="increaseQty(item)" class="btn btn-outline-secondary" type="button">+</button> 
                 </div>
               </div>
             </td>
             <td> {{item.price | currency: 'PHP' }} </td>
             <td> {{ item.price * item.qty | currency: 'PHP'}} </td>
-            <td></td>
-            <td></td>
+            <td>
+              <span class="tf-icons bx bx-x" (click)="removeItem(item)"></span></td>
+            <td> </td>
           </tr>
           <tr>
             <td colspan="4"></td>

@@ -39,6 +39,10 @@
   h6 {
     font-weight: 400;
   }
+
+  .tf-icons{
+    cursor: pointer;
+  }
 }
 
 .my-cart {
@@ -50,12 +54,6 @@
   margin-bottom: 70px;
   box-shadow: 0px 10px 20px rgb(30, 25, 25);
   padding: 30px;
-}
-
-.count-input {
-  display: inline-block;
-  width: 100%;
-  width: 170px;
 }
 
 .count-input {

@@ -33,20 +33,21 @@ export class MyCartComponent implements OnInit {
   
   decreaseQty(item : any){
     this.cartService.decreaseQty(item);
-    this.cartService.getProducts().subscribe( () => {
-      this.subTotal -= item.price; 
-    })
+    this.subTotal -= item.price; 
   }
 
   increaseQty(item : any){
     this.cartService.increaseQty(item);
-    this.cartService.getProducts().subscribe( () => {
-      this.subTotal += item.price; 
-    })
+    this.subTotal += item.price; 
+  }
+
+  removeItem(item : any){
+    this.cartService.removeItem(item)  
+    this.subTotal -= item.price * item.qty; 
   }
   
   emptyCart(){
-    this.cartItems = []
+    this.cartService.removeAll()
   }
 
   goToProducts(){

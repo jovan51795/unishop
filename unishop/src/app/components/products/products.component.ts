@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CartService } from 'src/app/core/services/cart.service';
-import { ProductsService } from 'src/app/core/services/products.service';
+
 
 @Component({
   selector: 'app-products',
@@ -28,7 +27,7 @@ export class ProductsComponent implements OnInit {
       this.productList = res;
       this.filterCategory = res;
 
-      this.productList.forEach((a : any) => {
+      this.productList?.forEach((a : any) => {
         Object.assign(a, {quantity : 1, total : a.price})
       });
     });
@@ -40,7 +39,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(item : any){
     this.toast.success("Added to cart")
-    this.cartService.addToCart(item);
+    this.cartService.addProductToCart(item)
   }
   
   goToCart(){

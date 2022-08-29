@@ -1,13 +1,6 @@
-export class Orders {
+export interface Orders{
     orderId: number;
-    orderedDate: Date = new Date();
+    orderedDate: Date;
     totalPrice: number;
-    status: string = "Pending";
-
-    constructor(orderId: number, orderedDate: Date, totalPrice: number, status: string){
-        this.orderId = orderId;
-        this.orderedDate = orderedDate;
-        this.totalPrice = totalPrice
-        this.status = status;     
-    }
+    status: string;
 }

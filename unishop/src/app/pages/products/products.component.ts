@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { ProductsService } from 'src/app/core/services/product/products.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products',
@@ -38,7 +39,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  addToCart(item : any){
+  addToCart(item : Product){
     this.toast.success("Added to cart")
     this.cartService.addToCart(item);
   }
@@ -61,6 +62,5 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
-
 
 }
