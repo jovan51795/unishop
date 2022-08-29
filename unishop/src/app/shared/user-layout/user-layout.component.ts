@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { SidebarService } from 'src/app/core/services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-user-layout',
@@ -9,9 +10,13 @@ import { NavigationEnd, Router } from '@angular/router';
 export class UserLayoutComponent implements OnInit {
   sidebar = false
   isProfilePage = false
-  constructor(private router: Router) {
+  constructor(private router: Router, private sidebarToggle:SidebarService) {
     this.router.events.subscribe((e) => {
       this.isProfilePage = this.router.url.split('/').includes('profile')
+    })
+
+    this.sidebarToggle.getSidebar().subscribe(x => {
+      this.sidebar = x
     })
    }
 
@@ -19,9 +24,6 @@ export class UserLayoutComponent implements OnInit {
     
   }
 
-  toggleSidebar(){
-    this.sidebar = !this.sidebar
-  }
 
   toProfile(){
     this.sidebar = false
