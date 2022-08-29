@@ -75,12 +75,19 @@ export class CartService {
     })
   }
 
-  // getCartItems(): Observable<Orders[]>{
-  //   return this.http.get<Orders[]>('http://localhost:3000/orders')
-  // }
+  removeItem(product: any) {
+    this.cartItemList.map((a: any, index: any) => {
+      if (product.id === a.id) {
+          this.cartItemList.splice(index, 1);
+      }
+    })
+  }
 
-  // placeOrder(order: Orders): Observable<any>{
-  //   return this.http.post('http://localhost:3000/orders', {order});
-  // }
+  removeAll(){
+      this.cartItemList.map((res : any) => {
+            this.cartItemList.splice(res.length);
+      });
+    }
+
 
 }

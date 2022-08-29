@@ -45,12 +45,17 @@ export class MyCartComponent implements OnInit {
     })
   }
   
-  emptyCart(){
-    this.cartItems = []
-  }
-
   goToProducts(){
     this.router.navigate(['pages/products'])
+  }
+
+  removeItem(item : any){
+    this.cartService.removeItem(item)  
+    this.subTotal -= item.price * item.qty; 
+  }
+  
+  emptyCart(){
+    this.cartService.removeAll()
   }
 
   // placeOrder(item : any){
