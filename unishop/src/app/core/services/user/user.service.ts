@@ -18,13 +18,14 @@ export class UserService {
     }
    }
 
-  getUserCred = (): Observable<any> => {
-    return this.http.get(`${environment.url}/users/${this.userID}`).pipe(
+  getUserCred = (data = this.userID): Observable<any> => {
+    return this.http.get(`${environment.url}/users/${data}`).pipe(
       tap(x => x)
     )
   }
 
   updateUserInfo = (data: Users) => {
+    console.log(data, "from service")
     return this.http.patch(`${environment.url}/users/${data.id?? this.userID}`, data).pipe(
       catchError(err => {
         console.log(err, "the error")
