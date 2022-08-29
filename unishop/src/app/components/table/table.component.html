@@ -19,8 +19,8 @@
                         <p>{{x.val}}</p>
                     </ng-template>
                     <ng-container *ngIf="(x.key ==='status'); else value">
-                        <span class="badge bg-label-primary me-1" *ngIf="x.val">Active</span>
-                        <span class="badge bg-label-warning me-1" *ngIf="!x.val">Deactivated</span>
+                        <span  class="badge bg-label-primary me-1 user-status" *ngIf="x.val">Active</span>
+                        <span  class="badge bg-label-warning me-1 user-status" *ngIf="!x.val">Deactivated</span>
                     </ng-container>
                 </td>
                 <td class="" *ngIf="buttons">
@@ -33,7 +33,7 @@
                                 <i class="bx me-1" *ngIf="btn.icon" [ngClass]="btn.icon">
 
                                 </i>
-                                {{btn.type}}
+                                <span class="btn-type">{{ d.status ? btn.type : btn.type2}}</span>
                             </a>
                             <!-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                 Delete</a> -->

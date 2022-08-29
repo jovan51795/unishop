@@ -39,7 +39,7 @@ export class AdminService {
   }
 
   editProduct = (data: Product) => {
-    return this.http.put(`${environment.url}/products/${data.id}`, data).pipe(
+    return this.http.patch(`${environment.url}/products/${data.id}`, data).pipe(
       tap(x => x)
     )
   }

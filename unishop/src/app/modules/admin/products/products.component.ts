@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit {
       // ).subscribe()
       
     }else if(event.type === 'view') {
-      this.router.navigate(['admin/details'], {queryParams: {id: event.id}})
+      this.router.navigate(['admin/details'], {queryParams: {id: event.id, type: "products"}})
     }
   }
 

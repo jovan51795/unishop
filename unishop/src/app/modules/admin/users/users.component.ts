@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Users } from 'src/app/core/models/users';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 @Component({
   selector: 'app-users',
@@ -22,11 +24,13 @@ export class UsersComponent implements OnInit {
   ]
 
   buttons = [
-    // {type: "edit", icon: "bx-pencil", bgColor: "btn-primary"},
-    {type: "Deactivate", icon: "bx-user-check", bgColor: "btn-success"},
-    {type: "View", icon: "bxs-detail", bgColor: "btn-info"}
+    {type: "Deactivate", type2: "Activate", icon: "bx-user-check", bgColor: "btn-success"},
+    {type: "View", type2: "View", icon: "bxs-detail", bgColor: "btn-info"}
   ]
-  constructor(private router: Router, private adminservice: AdminService) { 
+  constructor(private router: Router, 
+    private adminservice: AdminService,
+    private userService: UserService
+    ) { 
     this.adminservice.getAllUsers().subscribe(data => {
       this.users = data.filter( user => user.role !== "admin")
     })
@@ -44,9 +48,10 @@ export class UsersComponent implements OnInit {
   tableAction(event: any) {
     
     if(event.type === "Deactivate") {
-
+      event.status = !event.status
+      this.userService.updateUserInfo(event).subscribe()
     }else if(event.type === "View") {
-
+      this.router.navigate(['admin/details'], {queryParams: {id: event.id, type: "users"}})
     }
   }
 
