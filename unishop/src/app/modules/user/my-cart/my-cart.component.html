@@ -32,7 +32,7 @@
             </td>
             <td> {{item.price | currency: 'PHP' }} </td>
             <td> {{ item.price * item.qty | currency: 'PHP'}} </td>
-            <td></td>
+            <td> <span class="tf-icons bx bx-x" (click)="removeItem(item)"></span> </td>
             <td></td>
           </tr>
           <tr>
