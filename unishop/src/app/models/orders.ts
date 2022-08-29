@@ -1,6 +1,5 @@
 import { Product } from "./product";
 
-
 export interface Orders {
     userId: string;
     orderedDate: Date;
