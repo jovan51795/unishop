@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from 'src/app/core/services/sidebar/sidebar.service';
 declare function hideSidebar(): any
 @Component({
   selector: 'app-admin-sidebar',
@@ -7,13 +8,19 @@ declare function hideSidebar(): any
 })
 export class AdminSidebarComponent implements OnInit {
 
-  constructor() { }
+  sidebarToggle = false;
+  constructor(private sidebar: SidebarService) {
+    this.sidebar.getSidebar().subscribe(x => {
+      this.sidebarToggle = x
+    })
+   }
 
   ngOnInit(): void {
+    
   }
 
   hide() {
-    hideSidebar()
+    this.sidebar.setValue(!this.sidebarToggle)
   }
 
 }
