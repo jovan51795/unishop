@@ -1,4 +1,5 @@
-import { Product } from "../core/models/products";
+import { Product } from "./product";
+
 
 export interface Orders {
     userId: string;
