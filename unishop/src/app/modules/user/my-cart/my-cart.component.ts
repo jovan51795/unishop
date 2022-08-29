@@ -14,35 +14,52 @@ export class MyCartComponent implements OnInit {
   public itemPrice !: number;
   public qty !: number;
   public subTotal = 0;
+  userInfo: any
   
   constructor(
     private cartService: CartService, 
     private router: Router,
     private toast: ToastrService
-    ) { }
+    ) {
+      
+      if(localStorage.getItem("user")) {
+        this.userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
+      }
+
+      this.getCartitem()
+     }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getItemList()
-    console.log(this.cartItems)
-    this.cartItems.map((res:any) => {
-      this.qty = res.qty
-      this.itemPrice = res.price
-      this.subTotal += this.qty * this.itemPrice
-    })    
+    const cartItem: any[] = this.cartItems
+    
+
+    
+    
+    
   }
   
   decreaseQty(item : any){
-    this.cartService.decreaseQty(item);
-    this.cartService.getProducts().subscribe( () => {
-      this.subTotal -= item.price; 
+    
+    this.cartItems.map((x: any) => {
+      if(x.id === item.id) {
+        if(x.qty === 1) {
+          x.qty = 1;
+        }else {
+          x.qty--;
+          this.subTotal -= x.price
+        }
+      }
     })
   }
 
   increaseQty(item : any){
-    this.cartService.increaseQty(item);
-    this.cartService.getProducts().subscribe( () => {
-      this.subTotal += item.price; 
+    this.cartItems.map((x: any) => {
+      if(x.id === item.id) {
+        x.qty++;
+        this.subTotal += parseInt(x.price)
+      }
     })
+
   }
   
   goToProducts(){
@@ -58,10 +75,26 @@ export class MyCartComponent implements OnInit {
     this.cartService.removeAll()
   }
 
+  
+
   // placeOrder(item : any){
   //   this.toast.success("Your order has been placed")
   //   this.cartService.placeOrder(item)
   // }
+
+  getCartitem = () => {
+    this.cartService.getProductCart(this.userInfo.user.id).subscribe( x => {
+      
+      this.cartItems = x[0].products
+      this.getTotal()
+    })
+  }
+
+  getTotal = () => {
+    this.cartItems.map((res:any) => {
+      this.subTotal += res.qty * res.price
+    })  
+  }
 
 
 }
