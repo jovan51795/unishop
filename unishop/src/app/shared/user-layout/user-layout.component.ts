@@ -26,20 +26,24 @@ export class UserLayoutComponent implements OnInit {
 
 
   toProfile(){
-    this.sidebar = false
+    this.setSidebar()
     document.getElementById("profile")?.scrollIntoView({behavior: "smooth"});
    }
    toAddresses(){
-    this.sidebar = false
+    this.setSidebar()
     document.getElementById("addresses")?.scrollIntoView({behavior: "smooth"});
    }
    toPassword(){
-    this.sidebar = false
+    this.setSidebar()
     document.getElementById("password")?.scrollIntoView({behavior: "smooth"});
    }
    toDelete(){
-    this.sidebar = false
+    this.setSidebar()
     document.getElementById("delete")?.scrollIntoView({behavior: "smooth"});
+   }
+
+   setSidebar =() =>{
+    this.sidebarToggle.setValue(false)
    }
 
   
