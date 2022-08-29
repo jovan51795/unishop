@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div id="for-sidebar" class="d-flex flex-row">
+<div id="for-sidebar" class="d-flex flex-row" [ngClass]="{'layout-menu-expanded': sidebarToogle}">
     <app-admin-sidebar >
     </app-admin-sidebar>
     <div class="layout-page">

@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/cart/cart.service';
+import { SidebarService } from 'src/app/core/services/sidebar/sidebar.service';
 declare function toggleSidebar(): any;
 @Component({
   selector: 'app-header',
@@ -14,10 +15,9 @@ export class HeaderComponent implements OnInit {
   credentials: any;
   userType: boolean = false
   totalItem : number = 0;
+  sidebarTooglge = false;
 
-  @Output() sidebarEmit = new EventEmitter();
-
-  constructor(private router: Router, private cartService: CartService, ) {
+  constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService) {
     this.isLogin = localStorage.getItem("user") ? true : false
     if (this.isLogin) {
       this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?.role === 'admin' ||
@@ -29,22 +29,22 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalItem = this.cartService.getCartCount()
+    this.getSidebarStatus();
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-    // let max = document.documentElement.scrollHeight;
-    console.log("listen")
-
     this.stickyHeader = pos > 100 ? true : false
   }
 
   toggle() {
-    this.sidebarEmit.emit()
-    
-    
-    
-    // toggleSidebar()
+    this.sidebar.setValue(!this.sidebarTooglge)
+  }
+
+  getSidebarStatus() {
+    this.sidebar.getSidebar().subscribe(x => {
+      this.sidebarTooglge = x
+    })
   }
 
   logout() {
