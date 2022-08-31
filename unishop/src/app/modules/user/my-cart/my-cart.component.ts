@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -6,11 +7,12 @@ import { CartService } from 'src/app/core/services/cart/cart.service';
 @Component({
   selector: 'app-my-cart',
   templateUrl: './my-cart.component.html',
-  styleUrls: ['./my-cart.component.scss']
+  styleUrls: ['./my-cart.component.scss'],
+  providers: [DatePipe]
 })
 export class MyCartComponent implements OnInit {
 
-  private customerOrder: any = []
+  private customerOrder: any = [];
   private customerCart: any = [];
   public cartItems: any = [];
   public itemPrice !: number;
@@ -21,7 +23,8 @@ export class MyCartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private datePipe: DatePipe,
   ) {
 
     if (localStorage.getItem("user")) {
@@ -73,7 +76,10 @@ export class MyCartComponent implements OnInit {
     this.cartService.updateCart(this.customerCart[0], "cart").subscribe()
   }
 
-  emptyCart() {
+  emptyCart(id = 0) {
+    if(id !== 0) {
+      this.customerCart[0] = Object.assign(this.customerCart[0], {id})
+    }
     this.cartItems = [];
     this.customerCart[0].products = this.cartItems;
     this.subTotal = 0
@@ -100,22 +106,16 @@ export class MyCartComponent implements OnInit {
   //place orders
 
   placeOrders = (): any => {
-    
-    console.log(this.customerOrder.length)
-    if (!this.customerOrder.length) {
-      delete this.customerCart[0].id
-      return this.cartService.addProductCart(Object.assign(this.customerCart[0], {subtotal: this.subTotal}), "orders").subscribe(x => {
+    const itemID = this.customerCart[0].id
+    delete this.customerCart[0].id
+    this.cartService.addProductCart(Object.assign(this.customerCart[0], { subtotal: this.subTotal, status: false, orderDate: this.datePipe.transform(new Date()) }), "orders").subscribe(x => {
         this.getProductCart();
-        this.toast.success("Transuction successful")
+        this.emptyCart(itemID);
+        this.toast.success("Order has been placed")
       })
 
-    }
-    this.cartItems.filter((x: any) => this.customerOrder[0].products.push(x))
-    this.cartService.addCustomerCart({id: this.customerOrder[0].id, cart: Object.assign(this.customerOrder[0], {subtotal: this.customerOrder[0].subtotal + this.subTotal})}, "orders").subscribe(x => {
-      this.toast.success("Transuction successful")
-      
-    })
-    this.emptyCart();
+      this.router.navigate(['user/my-orders']);
+     
   }
 
   getProductCart = () => {
