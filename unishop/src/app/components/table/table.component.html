@@ -18,10 +18,18 @@
                     <ng-template #value>
                         <p>{{x.val}}</p>
                     </ng-template>
-                    <ng-container *ngIf="(x.key ==='status'); else value">
-                        <span  class="badge bg-label-primary me-1 user-status" *ngIf="x.val">Active</span>
-                        <span  class="badge bg-label-warning me-1 user-status" *ngIf="!x.val">Deactivated</span>
+                    <ng-container *ngIf="(x.key ==='status' || x.key ==='order status'); else value">
+                        <ng-template #vals>
+                            <span class="badge bg-label-primary me-1 user-status" *ngIf="x.val">Active</span>
+                            <span class="badge bg-label-warning me-1 user-status" *ngIf="!x.val">Deactivated</span>
+                        </ng-template>
+                        <ng-container *ngIf="(x.key ==='order status'); else vals">
+                            <span class="badge bg-label-primary me-1 user-status" *ngIf="x.val">Completed</span>
+                            <span class="badge bg-label-warning me-1 user-status" *ngIf="!x.val">Pending</span>
+                        </ng-container>
                     </ng-container>
+
+
                 </td>
                 <td class="" *ngIf="buttons">
                     <div class="dropdown1">
@@ -29,9 +37,8 @@
                             <i class="bx bx-dots-vertical-rounded"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" (click)="actions(d, btn.type)" *ngFor="let btn of buttons" >
+                            <a class="dropdown-item" (click)="actions(d, btn.type)" *ngFor="let btn of buttons">
                                 <i class="bx me-1" *ngIf="btn.icon" [ngClass]="btn.icon">
-
                                 </i>
                                 <span class="btn-type">{{ d.status ? btn.type : btn.type2}}</span>
                             </a>
@@ -53,14 +60,28 @@
 
 <section class="card-view-container" *ngFor="let d of data">
     <ng-container *ngFor="let x of tableRowData(d); let i = index">
-        <div class="card-view-body">
-            <div class="card-title-key">
-                {{columns[i].key}}
+        <ng-template #vals>
+            <div class="card-view-body">
+                <div class="card-title-key">
+                    {{columns[i].key}}
+                </div>
+                <div class="card-title-val">
+                    {{x.val}}
+                </div>
             </div>
-            <div class="card-title-val">
-                {{x.val}}
+        </ng-template>
+        <ng-container *ngIf="(x.key ==='order status'); else vals">
+            <div class="card-view-body">
+                <div class="card-title-key">
+                    {{columns[i].key}}
+                </div>
+                <div class="card-title-val">
+                    <span class="badge bg-label-primary me-1 user-status" *ngIf="x.val">Completed</span>
+                    <span class="badge bg-label-warning me-1 user-status" *ngIf="!x.val">Pending</span>
+                </div>
             </div>
-        </div>
+
+        </ng-container>
     </ng-container>
 
     <div class="button-container bg-default">

@@ -1,0 +1,10 @@
+<app-command-bar [data]="comData"></app-command-bar>
+<section class="page-container">
+    
+    <div class="card-body container">
+        <div class="card-header">
+            Trending Items
+        </div>
+        <app-table [data]="ordersInfo" (actionEmitter)="tableAction($event)" (headerBtnEmitter)="tblHeaderAction($event)" [buttons]="buttons"  [columns]="columns"></app-table>
+    </div>
+</section>

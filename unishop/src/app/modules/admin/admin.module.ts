@@ -11,6 +11,7 @@ import { CardComponent } from 'src/app/components/card/card.component';
 import { UsersComponent } from './users/users.component';
 import { CommandBarComponent } from './components/command-bar/command-bar.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { OrdersComponent } from './orders/orders.component';
 
 
 
@@ -23,7 +24,8 @@ import { BrowserModule } from '@angular/platform-browser';
     DetailsComponent,
     CardComponent,
     UsersComponent,
-    CommandBarComponent
+    CommandBarComponent,
+    OrdersComponent
   ],
   imports: [
     AdminRoutingModule,

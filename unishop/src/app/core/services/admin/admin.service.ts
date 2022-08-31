@@ -57,4 +57,10 @@ export class AdminService {
       tap(x => x)
     )
   }
+
+  getAllOrders = () => {
+    return this.http.get(`${environment.url}/orders`).pipe(
+      tap(x => x)
+    )
+  }
 }

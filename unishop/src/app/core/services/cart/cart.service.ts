@@ -112,7 +112,7 @@ export class CartService {
     }
 
     updateCart = (data: any, type: string) => {
-      console.log(data, "the data")
+      
       return this.http.put(`${environment.url}/${type}/${data.id}`, data).pipe(
         tap(x => x)
       )

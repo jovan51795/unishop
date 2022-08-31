@@ -53,12 +53,6 @@ export class ProductsComponent implements OnInit {
       this.adminService.editProduct(event).subscribe(x => {
         this.getAllProducts()
       })
-      // forkJoin([this.adminService.editProduct(event),
-      // this.adminService.getAllProducts()]).pipe(
-      //   map(([f, s]) => {
-      //     this.products = s
-      //   })
-      // ).subscribe()
       
     }else if(event.type === 'view') {
       this.router.navigate(['admin/details'], {queryParams: {id: event.id, type: "products"}})
