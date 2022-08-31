@@ -92,25 +92,29 @@ export class CartService {
     }
 
 
-    //jovanie verison
-    addProductCart = (data: any) => {
-      return this.http.post(`${environment.url}/cart`, data).pipe(
+    //for add to cart
+    addProductCart = (data: any, type: string) => {
+      return this.http.post(`${environment.url}/${type}`, data).pipe(
         tap(x => x)
       )
     }
 
-    getProductCart = (id: string): Observable<Cart[]> => {
-      return this.http.get<Cart[]>(`${environment.url}/cart?customerId=${id}`).pipe(
+    getProductCart = (id: string, type: string): Observable<Cart[]> => {
+      return this.http.get<Cart[]>(`${environment.url}/${type}?customerId=${id}`).pipe(
         tap(x => x)
       )
     }
 
-    addCustomerCart = (data: any) => {
-      console.log(data)
-      return this.http.patch(`${environment.url}/cart/${data.id}`, data.cart).pipe(
+    addCustomerCart = (data: any, type: string) => {
+      return this.http.patch(`${environment.url}/${type}/${data.id}`, data.cart).pipe(
         tap(x => x)
       )
     }
 
-
+    updateCart = (data: any, type: string) => {
+      console.log(data, "the data")
+      return this.http.put(`${environment.url}/${type}/${data.id}`, data).pipe(
+        tap(x => x)
+      )
+    }
 }
