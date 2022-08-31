@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { SidebarService } from 'src/app/core/services/sidebar/sidebar.service';
 declare function toggleSidebar(): any;
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   userType: boolean = false
   totalItem : number = 0;
   sidebarTooglge = false;
-
+ 
   constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService) {
     this.isLogin = localStorage.getItem("user") ? true : false
     if (this.isLogin) {
@@ -25,10 +26,12 @@ export class HeaderComponent implements OnInit {
       ? true : false;
       this.credentials = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?? JSON.parse(JSON.parse(JSON.stringify(this.data)))
     }
+    
   }
 
+  
   ngOnInit(): void {
-    this.totalItem = this.cartService.getCartCount()
+    // this.totalItem = this.cartService.getCartCount()
     this.getSidebarStatus();
   }
   @HostListener('window:scroll', ['$event'])
@@ -52,4 +55,5 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("user");
     this.router.navigate(['pages/home']);
   }
+
 }

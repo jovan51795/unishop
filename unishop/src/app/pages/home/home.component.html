@@ -1,25 +1,17 @@
 <app-hero-section></app-hero-section>
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      <div class="layout-page">
-        <!-- Product Lists -->
-        <div class="container-fluid flex-grow-1 container-p-y">
-          <div class="container">
-            <div class="row">
-              <ng-container *ngFor="let item of filterCategory | filter :searchKey: 'productName'">
-                <div class="card col-md-3">
-                  <!-- item.image -->
-                  <img [src]="'../../../assets/products/' + item.image ">
-                  <h5>{{item.productName | slice: 0:20}}</h5>
-                  <p>{{item.description | slice: 0:30}}...</p>
-                  <p><strong>Price:</strong> {{item.price | currency: 'PHP'}}</p>
-                  <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
-                </div>
-              </ng-container>
-            </div>
-          </div>
+<div class="row mb-1">
+  <div class="col-sm-12 col-md-6 col-lg-4 mb-3" *ngFor="let item of productList">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{item.productName | slice: 0:20}}...</h5>
+          <img
+            class="d-flex mx-auto my-4"
+            src="../assets/products/elements/4.jpg"
+          />
+          <p class="card-text">{{item.description | slice: 0:20}}...</p>
+          <p class="card-text">{{item.price | currency: 'PHP'}}...</p>
+          <button class="btn btn-warning">Quick View</button>
         </div>
       </div>
-    </div>
   </div>
-        
+</div>

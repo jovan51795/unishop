@@ -44,3 +44,25 @@
 .menu-inner{
     cursor: pointer;
 }
+
+.layout-menu, .navbar {
+    z-index: unset !important;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin-top: 80px;
+}
+
+.layout-page {
+    margin-left: 250px;
+}
+
+@media (max-width: 1199.98px)
+{
+    .layout-page {
+        margin-left: unset;
+    }
+}

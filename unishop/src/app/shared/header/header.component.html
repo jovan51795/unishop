@@ -81,6 +81,12 @@
                       <span class="align-middle">Profile</span>
                     </a>
                   </li>
+                  <li *ngIf="!userType">
+                    <a class="dropdown-item"  [routerLink]="['user/my-orders']">
+                      <i class="bx bxs-shopping-bag me-2"></i>
+                      <span class="align-middle">My Orders</span>
+                    </a>
+                  </li>
                   <li>
                     <div class="dropdown-divider"></div>
                   </li>

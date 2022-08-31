@@ -24,7 +24,7 @@ import { PagesLayoutComponent } from './shared/pages-layout/pages-layout.compone
     UserLayoutComponent,
     AdminSidebarComponent,
     AuthLayoutComponent,
-    PagesLayoutComponent,
+    PagesLayoutComponent
   ],
   imports: [
     BrowserModule,
