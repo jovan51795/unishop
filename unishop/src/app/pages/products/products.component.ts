@@ -52,23 +52,23 @@ export class ProductsComponent implements OnInit {
   addToCart(item : any): any{
     const data = {customerId: this.userInfo.user?.id, qty: 1, products: ([Object.assign(item, {qty: 1, cartTotal: item.price * 1})]) as Product[] }
     if(!this.cartData.length) {
-      return  this.cartService.addProductCart(data).subscribe(x => {
-        console.log(x, "add to cart")
+      return  this.cartService.addProductCart(data, "cart").subscribe(x => {
+        this.toast.success("Item successfully added to your cart")
       })
     }
 
     let products: any[] = this.cartData[0].products
-    products.filter(x => {
-      if(x.id === item.id) {
-        this.toast.error("This is already added to your cart")
-      }else {
-        this.cartData[0].products.push(Object.assign(item, {qty: 1, cartTotal: item.price * 1}))
-        this.cartService.addCustomerCart({id: this.cartData[0].id, cart: this.cartData[0]}).subscribe(x => {
-          this.toast.success("Item successfully added to your cart")
-        })
-      }
+    const itemId = []
+    for(let iid of products) {
+      itemId.push(iid.id)
+    }
 
-      
+    if(itemId.includes(item.id)) {
+      return this.toast.error("This is already added to your cart")
+    }
+    this.cartData[0].products.push(Object.assign(item, {qty: 1, cartTotal: item.price * 1}))
+        this.cartService.addCustomerCart({id: this.cartData[0].id, cart: this.cartData[0]}, "cart").subscribe(x => {
+          this.toast.success("Item successfully added to your cart")
     })
     
   }
@@ -93,8 +93,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getCartData = () => {
-    return this.cartService.getProductCart(this.userInfo.user?.id).subscribe(x => {
-      console.log(x)
+    return this.cartService.getProductCart(this.userInfo.user?.id , "cart").subscribe(x => {
       this.cartData = x
     })
   }
