@@ -123,6 +123,5 @@ export class MyCartComponent implements OnInit {
       this.customerOrder = x;
     })
   }
-
-
+  
 }

@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   public searchTerm !: string;
   userInfo: any
   cartData: any 
+  
 
   constructor(
     private productService: ProductsService, 
@@ -30,7 +31,7 @@ export class ProductsComponent implements OnInit {
     if(localStorage.getItem("user")){
       this.userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
     }
-   }
+  }
 
    
   ngOnInit(): void {

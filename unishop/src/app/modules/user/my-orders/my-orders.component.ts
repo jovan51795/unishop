@@ -34,6 +34,4 @@ export class MyOrdersComponent implements OnInit {
     })
   }
 
-
-
 }
