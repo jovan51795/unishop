@@ -76,7 +76,6 @@ export class OrdersComponent implements OnInit {
 
 
   tblHeaderAction(data: any) {
-    console.log(data)
   }
 
   tableAction(data: any) {

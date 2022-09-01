@@ -30,7 +30,6 @@ export class AuthService {
     return this.http.post(`${environment.url}/login`, userData)
     .pipe(
       catchError(err => {
-        console.log(err)
         this.toast.error(err.error)
         return of(err)
       }),
@@ -42,7 +41,6 @@ export class AuthService {
     return this.http.post(`${environment.url}/forgotpasword`, userData)
     .pipe(
       catchError(err => {
-        console.log(err)
         this.toast.error(err.error)
         return of(err)
       }),

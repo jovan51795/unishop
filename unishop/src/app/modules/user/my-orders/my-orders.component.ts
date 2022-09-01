@@ -29,7 +29,6 @@ export class MyOrdersComponent implements OnInit {
 
   getAllOrders = () => {
     this.cartService.getProductCart(this.userInfo.user?.id, "orders").subscribe(x => {
-      console.log(x)
       this.orderItems = x
     })
   }
