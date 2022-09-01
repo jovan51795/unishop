@@ -11,7 +11,6 @@ import { Users } from '../../models/users';
 export class AdminService {
 
   constructor(private http: HttpClient) { }
-  //http://localhost:3000/products?_page=1&_limit=5&_sort=sold&_order=asc
   getProducts = (page: number = 1, limit: number = 5, sort: string = 'sold', order: string = 'desc'): Observable<Product[]> => {
     return this.http.get<Product[]>(`${environment.url}/products?_page1=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`).pipe(
       tap(x => x)
@@ -62,5 +61,19 @@ export class AdminService {
     return this.http.get(`${environment.url}/orders`).pipe(
       tap(x => x)
     )
+  }
+
+  updateSoldProducts = (data: any) => {
+    console.log(data, "from admin")
+    let productList: any;
+    this.getAllProducts().subscribe((productData: any) => {
+      productList = productData
+    })
+    setTimeout(() => {
+      for(let item of data.products) {
+        let prodtc = productList.filter((x:any) => x.id === item.id);
+        this.editProduct({id: prodtc[0].id, sold: prodtc[0].sold + item.qty} as Product).subscribe()
+      }
+    }, 1000);
   }
 }
