@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   public searchTerm !: string;
   userInfo: any
   cartData: any 
-  modalList: any;
+  modalList: any ={image: '', productName: '', description: '', price: 0};;
   
 
   constructor(
@@ -104,7 +104,7 @@ export class ProductsComponent implements OnInit {
   }
 
   showModal(id: number) {
-   this.modalList = this.productList?.filter(res => res.id === id)
+   this.modalList = this.productList?.filter(res => res.id === id)[0]
    console.log(this.modalList)
   }
 
