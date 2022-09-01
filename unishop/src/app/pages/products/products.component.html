@@ -116,11 +116,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true" *ngFor="let item of filterCategory; let i = index">
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" >
-        <h2 class="modal-title" id="modalCenterTitle">{{modalList[i].productName}}</h2>
+        <h2 class="modal-title" id="modalCenterTitle">{{modalList.productName}}</h2>
         <button
           type="button"
           class="btn-close"
@@ -133,20 +133,20 @@
           <div class="col mb-3">
             <img
             class="d-flex mx-auto my-4"
-            [src]="'../../../assets/products/' + modalList[0].image "
+            [src]="'../../../assets/products/' + modalList.image "
             /> 
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <h5 class="card-text">Product Description  </h5>
-            <p class="card-text">{{modalList[i].description}}</p>
+            <p class="card-text">{{modalList.description}}</p>
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <h5 class="card-text">Price </h5>
-            <p class="card-text">{{modalList[i].price | currency: 'PHP'}}</p>
+            <p class="card-text">{{modalList.price | currency: 'PHP'}}</p>
           </div>
         </div>
       </div>

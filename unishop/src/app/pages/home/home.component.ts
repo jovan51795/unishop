@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/core/services/product/products.service'
 export class HomeComponent implements OnInit {
 
   public productList: any[] | undefined;
-  public modalList: any;
+  public modalList: any ={image: '', productName: '', description: '', price: 0};
 
   constructor(private productService: ProductsService, private route: Router) { }
 
@@ -25,8 +25,10 @@ export class HomeComponent implements OnInit {
   }
 
   showModal(id: number) {
-   this.modalList = this.productList?.filter(res => res.id === id)
-   console.log(this.modalList)
+   setTimeout(()=> {
+    this.modalList = this.productList?.filter(res => res.id === id)[0]
+   }, 300)
+   
   }
   
 }
