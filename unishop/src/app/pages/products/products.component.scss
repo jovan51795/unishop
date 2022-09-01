@@ -1,3 +1,4 @@
+@import '../../../scss/mixins';
 .card-top {
     position: relative;
     display: flex;
@@ -80,4 +81,17 @@ aside {
     .layout-page {
         margin-left: unset;
     }
+}
+
+.category-dropdown{
+    margin-left: 30px;
+    margin-top: 30px;
+    
+    .btn{
+        width: 300px
+    }
+
+    @include breakpoint-min(lg) {
+        display: none;
+      }
 }
