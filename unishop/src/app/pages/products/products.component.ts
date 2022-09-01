@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   public searchTerm !: string;
   userInfo: any
   cartData: any 
+  modalList: any;
   
 
   constructor(
@@ -97,6 +98,15 @@ export class ProductsComponent implements OnInit {
     return this.cartService.getProductCart(this.userInfo.user?.id , "cart").subscribe(x => {
       this.cartData = x
     })
+  }
+
+  goToProducts(){
+    this.router.navigate(['pages/products'])
+  }
+
+  showModal(id: number) {
+   this.modalList = this.productList?.filter(res => res.id === id)
+   console.log(this.modalList)
   }
 
 

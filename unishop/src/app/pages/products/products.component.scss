@@ -26,6 +26,21 @@
 .card {
     padding: 20px;
     margin: 30px;
+    text-align: left;
+
+    .card-body{
+        text-align: left;
+
+        .btn{
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 150px;
+            height: auto;
+        }
+
+    }
+
+    
 }
 
 

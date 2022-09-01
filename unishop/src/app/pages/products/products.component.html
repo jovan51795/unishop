@@ -95,7 +95,18 @@
                       <h5>{{item.productName | slice: 0:20}}</h5>
                       <p>{{item.description | slice: 0:30}}...</p>
                       <p><strong>Price:</strong> {{item.price | currency: 'PHP'}}</p>
-                      <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
+                      <div class="row">
+                        <div class="col col-sm-12 col-md-12 col-lg-12">
+                          <button class="btn btn-warning" (click)="addToCart(item)">Add to cart</button>
+                        </div>
+                        <div class="col col-sm-12 col-md-12 col-lg-12">
+                          <button 
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalCenter"
+                          class="btn btn-outline-secondary" 
+                          (click)="showModal(item.id)">View Details</button>
+                        </div>
+                      </div>       
               </div>
             </div>
         </div>
@@ -103,4 +114,50 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true" *ngFor="let item of filterCategory; let i = index">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h2 class="modal-title" id="modalCenterTitle">{{modalList[i].productName}}</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col mb-3">
+            <img
+            class="d-flex mx-auto my-4"
+            [src]="'../../../assets/products/' + modalList[0].image "
+            /> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <h5 class="card-text">Product Description  </h5>
+            <p class="card-text">{{modalList[i].description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <h5 class="card-text">Price </h5>
+            <p class="card-text">{{modalList[i].price | currency: 'PHP'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
       
