@@ -11,6 +11,7 @@ export class MyOrdersComponent implements OnInit {
 
   private userInfo: any;
   orderItems: any;
+  ordersByID: any;
   constructor(private router: Router, private cartService: CartService) {
     if(localStorage.getItem("user")) {
       this.userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))));
@@ -29,8 +30,14 @@ export class MyOrdersComponent implements OnInit {
 
   getAllOrders = () => {
     this.cartService.getProductCart(this.userInfo.user?.id, "orders").subscribe(x => {
+      console.log(x, "the ex")
       this.orderItems = x
     })
+  }
+
+  showModal = (id: number) => {
+    this.ordersByID = this.orderItems.filter((data: any) => data.id === id)[0]
+    
   }
 
 }
