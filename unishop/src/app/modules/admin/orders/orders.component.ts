@@ -51,7 +51,8 @@ export class OrdersComponent implements OnInit {
   }
 
   mapOrdersAnUser = () => {
-    var info;
+    var info; 
+    this.ordersInfo = [];
     for (let order of this.orders) {
       info = this.users.filter((x: any) => {
         if (x.id === order.customerId) {
@@ -83,7 +84,7 @@ export class OrdersComponent implements OnInit {
    
     orderData[0].status = true;
     this.cartService.updateCart(orderData[0], "orders").subscribe(x => {
-      //this.initAll();
+    this.initAll();
     })
   }
 
@@ -92,7 +93,7 @@ export class OrdersComponent implements OnInit {
     this.getAllUsers();
     setTimeout(() => {
       this.mapOrdersAnUser()
-    }, 1000);
+    }, 300);
   }
 
 
