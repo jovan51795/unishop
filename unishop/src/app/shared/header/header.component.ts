@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   userType: boolean = false
   totalItem : number = 0;
   sidebarTooglge = false;
+  cartCounter: number = 0
  
   constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService) {
     this.isLogin = localStorage.getItem("user") ? true : false
@@ -26,6 +27,14 @@ export class HeaderComponent implements OnInit {
       ? true : false;
       this.credentials = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?? JSON.parse(JSON.parse(JSON.stringify(this.data)))
     }
+
+    this.cartService.getCartCounter().subscribe(
+      x => {
+        const cartProductLen = x[0]?? x;
+         this.cartCounter = cartProductLen.products.length
+        }
+    )
+
     
   }
 

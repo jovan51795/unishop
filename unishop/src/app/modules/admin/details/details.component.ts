@@ -40,7 +40,6 @@ export class DetailsComponent {
       })
     }else if(this.paramType === 'users') {
       this.userService.getUserCred(this.paramID).subscribe(x => {
-        console.log(x)
         this.modifyData(x)
       })
     }

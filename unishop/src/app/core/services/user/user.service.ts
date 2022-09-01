@@ -25,10 +25,8 @@ export class UserService {
   }
 
   updateUserInfo = (data: Users) => {
-    console.log(data, "from service")
     return this.http.patch(`${environment.url}/users/${data.id?? this.userID}`, data).pipe(
       catchError(err => {
-        console.log(err, "the error")
         this.toast.error(err.error)
         return of(err)
       }),

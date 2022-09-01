@@ -13,9 +13,12 @@ export class CartService {
   public cartItemList: any = [];
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
+  public cartCounter: BehaviorSubject<any>
   public cartCount : number = 0;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.cartCounter = new BehaviorSubject<any>([]);
+   }
 
   getProducts() {
     return this.productList.asObservable();
@@ -46,7 +49,6 @@ export class CartService {
           qty: 1
         })
     }
-    console.log(this.cartItemList)
   }
 
   getItemList() {
@@ -95,26 +97,45 @@ export class CartService {
     //for add to cart
     addProductCart = (data: any, type: string) => {
       return this.http.post(`${environment.url}/${type}`, data).pipe(
-        tap(x => x)
+        tap(x => {
+          if(type === "cart") {
+            this.cartCounter.next(x)
+          }
+        })
       )
     }
 
     getProductCart = (id: string, type: string): Observable<Cart[]> => {
       return this.http.get<Cart[]>(`${environment.url}/${type}?customerId=${id}`).pipe(
-        tap(x => x)
+        tap(x => {
+          if(type === "cart") {
+            this.cartCounter.next(x)
+          }
+        })
       )
     }
 
     addCustomerCart = (data: any, type: string) => {
       return this.http.patch(`${environment.url}/${type}/${data.id}`, data.cart).pipe(
-        tap(x => x)
+        tap(x => {
+          if(type === "cart") {
+            this.cartCounter.next(x)
+          }
+        })
       )
     }
 
     updateCart = (data: any, type: string) => {
-      
       return this.http.put(`${environment.url}/${type}/${data.id}`, data).pipe(
-        tap(x => x)
+        tap(x => {
+          if(type === "cart") {
+            this.cartCounter.next(x)
+          }
+        })
       )
+    }
+
+    getCartCounter = (): Observable<any> => {
+      return this.cartCounter.asObservable();
     }
 }
