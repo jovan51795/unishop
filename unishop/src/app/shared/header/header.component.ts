@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartCounter().subscribe(
       x => {
         const cartProductLen = x[0]?? x;
-         this.cartCounter = cartProductLen.products.length
+         this.cartCounter = cartProductLen.products?.length
         }
     )
 
