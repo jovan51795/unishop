@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart/cart.service';
@@ -26,6 +26,7 @@ export class MyCartComponent implements OnInit {
     private router: Router,
     private toast: ToastrService,
     private datePipe: DatePipe,
+    private zone: NgZone
   ) {
 
     if (localStorage.getItem("user")) {
@@ -113,10 +114,11 @@ export class MyCartComponent implements OnInit {
     this.cartService.addProductCart(Object.assign(this.customerCart[0], { subtotal: this.subTotal, status: false, orderDate: this.datePipe.transform(new Date()) }), "orders").subscribe(x => {
         this.getProductCart();
         this.emptyCart(itemID);
-        this.toast.success("Order has been placed")
+        this.toast.success("Order has been placed");
+        this.zone.run(() => this.router.navigate(['user/my-orders']));
       })
 
-      this.router.navigate(['user/my-orders']);
+      
      
   }
 
