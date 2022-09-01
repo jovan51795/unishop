@@ -19,6 +19,7 @@ export class MyCartComponent implements OnInit {
   public qty !: number;
   public subTotal = 0;
   userInfo: any
+  hasAddress = false
 
   constructor(
     private cartService: CartService,
@@ -29,6 +30,7 @@ export class MyCartComponent implements OnInit {
 
     if (localStorage.getItem("user")) {
       this.userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
+      console.log(this.userInfo.user)
     }
 
     this.getCartItem();
@@ -122,6 +124,10 @@ export class MyCartComponent implements OnInit {
     this.cartService.getProductCart(this.userInfo.user?.id, "orders").subscribe(x => {
       this.customerOrder = x;
     })
+  }
+
+  goToAddress() {
+    this.router.navigate(['user/profile'])
   }
   
 }
