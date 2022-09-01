@@ -1,7 +1,6 @@
 <div class="layout-wrapper layout-content-navbar">
   <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     
-
     <ul class="menu-inner py-1">
       <li>
         <div class="app-brand demo">
@@ -85,6 +84,81 @@
         <!-- Search Bar -->
       </nav>
       <!-- / Navbar -->
+
+      <!-- Dropdown -->
+      <div class="category-dropdown">
+        <div class="row">
+          <div class="col col-sm-12">
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-outline-warning dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Shop Categories
+              </button>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                  <a (click)="filter('')" class="menu-link">
+                    <div>All Products</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Home & Garden')" class="menu-link">
+                    <div>Home & Garden</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Electronics')" class="menu-link">
+                    <div>Electronics</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Style & Fashion')" class="menu-link">
+                    <div>Style & Fashion</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Apparel & Accessories')" class="menu-link">
+                    <div>Apparel & Accessories</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Furniture')" class="menu-link">
+                    <div>Furniture</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Pets & Pets Supplies')"  class="menu-link">
+                    <div>Pets & Pets Supplies</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Sporting Goods')" class="menu-link">
+                    <div>Sporting Goods</div>
+                  </a>
+                </li>
+          
+                <li class="dropdown-item">
+                  <a (click)="filter('Health & Wellness')" class="menu-link">
+                    <div>Health & Wellness</div>
+                  </a>
+                </li>
+              </ul>
+            </div> 
+          </div>
+        </div>
+      </div>
+       <!-- / Dropdown -->
+      
       <!-- Layout container -->
       <!-- Product Lists -->
       <div class="row mb-1">
