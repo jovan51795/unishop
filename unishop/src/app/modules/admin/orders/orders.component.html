@@ -3,7 +3,7 @@
     
     <div class="card-body container">
         <div class="card-header">
-            Trending Items
+            <h4>All Orders</h4>
         </div>
         <app-table [data]="ordersInfo" (actionEmitter)="tableAction($event)" (headerBtnEmitter)="tblHeaderAction($event)" [buttons]="buttons"  [columns]="columns"></app-table>
     </div>
