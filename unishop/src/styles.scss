@@ -10,6 +10,10 @@ app-add-product, app-products, app-details, app-users, app-orders {
     margin: 1rem;
 }
 
+.layout-page {
+    overflow: hidden !important;
+}
+
 .us-btn-primary {
     font-size: 18px;
     font-weight: bolder;
