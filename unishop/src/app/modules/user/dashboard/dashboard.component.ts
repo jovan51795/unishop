@@ -92,6 +92,8 @@ export class DashboardComponent implements OnInit {
    submit =() => {
     const userData = this.userForm.getRawValue() as Users
     this.userService.updateUserInfo(userData).subscribe( x => {
+      let userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
+      localStorage.setItem("user", JSON.stringify({accessToken: userInfo.accessToken, user: x}));
       if(!x.error){
         this.toast.success("Successful");
       }

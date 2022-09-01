@@ -11,7 +11,7 @@ import { UserAuth } from '../model/auth-model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  show = false;
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private userService: AuthService, private router: Router) { 

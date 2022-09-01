@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart/cart.service';
@@ -19,16 +19,19 @@ export class MyCartComponent implements OnInit {
   public qty !: number;
   public subTotal = 0;
   userInfo: any
+  hasAddress = false
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private toast: ToastrService,
     private datePipe: DatePipe,
+    private zone: NgZone
   ) {
 
     if (localStorage.getItem("user")) {
       this.userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
+      console.log(this.userInfo.user)
     }
 
     this.getCartItem();
@@ -111,10 +114,11 @@ export class MyCartComponent implements OnInit {
     this.cartService.addProductCart(Object.assign(this.customerCart[0], { subtotal: this.subTotal, status: false, orderDate: this.datePipe.transform(new Date()) }), "orders").subscribe(x => {
         this.getProductCart();
         this.emptyCart(itemID);
-        this.toast.success("Order has been placed")
+        this.toast.success("Order has been placed");
+        this.zone.run(() => this.router.navigate(['user/my-orders']));
       })
 
-      this.router.navigate(['user/my-orders']);
+      
      
   }
 
@@ -122,6 +126,10 @@ export class MyCartComponent implements OnInit {
     this.cartService.getProductCart(this.userInfo.user?.id, "orders").subscribe(x => {
       this.customerOrder = x;
     })
+  }
+
+  goToAddress() {
+    this.router.navigate(['user/profile'])
   }
   
 }
