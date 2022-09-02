@@ -84,10 +84,12 @@ export class AddProductComponent implements OnInit {
         return this.toast.error('Please fill all the required fields')
       }
     if(this.paramID) {
-      this.adminServices.editProduct(productData).subscribe()
+      this.adminServices.editProduct(productData).subscribe(x => {
+        this.toast.success("Product updated");
+      })
     }else {
       this.adminServices.addProducts(productData).subscribe(x => {
-        this.toast.success('Product successfully added')
+        this.toast.success('Product successfully added');
       });
     }
   }
