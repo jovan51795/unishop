@@ -48,8 +48,7 @@ export class UsersComponent implements OnInit {
   tableAction(event: any) {
     
     if(event.type === "Deactivate") {
-      event.status = !event.status
-      this.userService.updateUserInfo(event).subscribe()
+      this.userService.updateUserInfo({status: !event.status, id: event.id} as Users).subscribe()
     }else if(event.type === "View") {
       this.router.navigate(['admin/details'], {queryParams: {id: event.id, type: "users"}})
     }
