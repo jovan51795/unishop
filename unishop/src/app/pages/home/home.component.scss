@@ -9,7 +9,7 @@
 }
 
 .card img {
-    width: 170px;
+    max-width: 170px;
     height: 200px;
     margin-bottom: 15px;
     transition: 0.3s ease-in-out;
@@ -22,4 +22,9 @@
 
 .btn{
     margin-bottom: 20px;
+}
+
+.inner-img {
+    max-width: 500px;
+    max-height: 500px;
 }
