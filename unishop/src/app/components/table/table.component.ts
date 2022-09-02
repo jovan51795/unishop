@@ -33,7 +33,7 @@ dropdownIcon = false
         if(col.badge) {
           resultArray.push({val: data[col.key], key: col.key})
         }else {
-          resultArray.push({val: data[col.key]})
+          resultArray.push({val: data[col.key], key: col.key})
         }
       }
     }
