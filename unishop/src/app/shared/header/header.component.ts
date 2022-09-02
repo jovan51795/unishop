@@ -1,9 +1,8 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { SidebarService } from 'src/app/core/services/sidebar/sidebar.service';
-declare function toggleSidebar(): any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,7 +19,7 @@ export class HeaderComponent implements OnInit {
   cartCounter: number = 0
   menu = true;
  
-  constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService) {
+  constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService, private toast: ToastrService) {
     this.isLogin = localStorage.getItem("user") ? true : false
     this.router.events.subscribe(x => {
       const curRoute = this.router.url.split('/')
@@ -72,6 +71,13 @@ export class HeaderComponent implements OnInit {
     this.isLogin = false
     localStorage.removeItem("user");
     this.router.navigate(['pages/home']);
+  }
+
+  checkUser(): any {
+    if(!this.credentials) {
+      return this.toast.error("You need to login")
+    }
+    return this.router.navigate(['user/my-cart'])
   }
 
 }

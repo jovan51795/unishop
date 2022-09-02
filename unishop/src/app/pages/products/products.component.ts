@@ -51,6 +51,9 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(item : any): any{
+    if(!this.userInfo) {
+      return this.toast.error("You need to login")
+    }
     const data = {customerId: this.userInfo.user?.id, qty: 1, products: ([Object.assign(item, {qty: 1, cartTotal: item.price * 1})]) as Product[] }
     if(!this.cartData.length) {
       return  this.cartService.addProductCart(data, "cart").subscribe(x => {
@@ -92,10 +95,12 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  getCartData = () => {
-    return this.cartService.getProductCart(this.userInfo.user?.id , "cart").subscribe(x => {
-      this.cartData = x
-    })
+  getCartData = (): any => {
+    if(this.userInfo) {
+      return this.cartService.getProductCart(this.userInfo.user?.id , "cart").subscribe(x => {
+        this.cartData = x
+      })
+    }
   }
 
   goToProducts(){
