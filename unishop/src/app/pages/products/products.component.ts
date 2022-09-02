@@ -5,7 +5,6 @@ import { of } from 'rxjs';
 import { Product } from 'src/app/core/models/products';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { ProductsService } from 'src/app/core/services/product/products.service';
-import { Cart } from 'src/app/models/cart';
 
 @Component({
   selector: 'app-products',

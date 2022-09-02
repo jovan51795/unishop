@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Product } from '../../core/models/products-model/product';
 
 @Component({
   selector: 'app-table',

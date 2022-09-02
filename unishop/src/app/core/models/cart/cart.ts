@@ -1,4 +1,5 @@
-import { Product } from "./product";
+import { Product } from "../products-model/product";
+
 
 export interface Cart {
     customerId: string;
