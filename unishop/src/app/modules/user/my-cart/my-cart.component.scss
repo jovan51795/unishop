@@ -58,12 +58,6 @@
   width: 170px;
 }
 
-.count-input {
-  display: inline-block;
-  width: 100%;
-  width: 170px;
-}
-
 .input-group {
   position: relative;
   display: flex;
@@ -125,13 +119,6 @@
   
 }
 
-.count-input-mobile{
-    display: inline-block;
-    width: 100%;
-    width: 170px;
-}
-
-
 .container-card{
   display: flex;
   margin: auto;
@@ -155,3 +142,41 @@
 .input-group{
   z-index: 0;
 }
+
+.count-input-mobile{
+  display: inline-block;
+  width: 70%;
+  margin: 20px;
+}
+
+.input-group-mobile {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap ;
+  align-items: stretch;
+  width: 100%;
+}
+
+#container-card-mobile{
+  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  background-color: white;
+  border-radius: 30px;
+  
+
+  .card-title{
+    margin-top: 20px;
+  }
+}
+
+.container-button-mobile{
+  
+  button{
+    width: 200px;
+  }
+}
+
+

@@ -59,7 +59,8 @@
 
         <ng-container *ngIf="(!userInfo.user?.address); else checkout">
           <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#addressModal">Proceed
-            to Checkout {{!userInfo.user?.address}}
+            to Checkout 
+            <!-- {{!userInfo.user?.address}} -->
           </button>
         </ng-container>
       </div>
@@ -138,31 +139,64 @@
 
 <!-- Mobile View -->
 <div class="container">
-  <h5 class="card-header">My Cart</h5>
-  <div class="container-card " *ngIf="cartItems?.length; else noItemsInCartMobile">
-    <div class="row">
-      <div class="col-12 col-md-12 col-lg-12 ">
-        <div class="card-body" *ngFor="let item of cartItems">
-          <h5 class="card-title">{{item.productName}}</h5>
-          <p class="card-text">{{item.productDescription}}</p>
-          <h5 class="pb-1 mb-4">Price: &#8369; {{item.price}}</h5>
-          <!-- <button (click)="removeItem(item)" class="btn btn-outline-danger">Remove Item</button> -->
+  <h1 class="card-header">My Cart</h1>
+    <div class="container" *ngIf="cartItems?.length; else noItemsInCartMobile">
+      <div id="container-card-mobile" class="row" *ngFor="let item of cartItems">
+        <div class="col-sm-12 col-md-12" >
+            <h5 class="card-title"><strong>Product Name:</strong> {{item.productName}}</h5>
+            <h5 class="pb-1 mb-3"> <strong>Price:</strong> {{item.price | currency: 'PHP'}}</h5>
+            <h5 class="pb-1 mb-3"> <strong>Total:</strong> {{ item.price * item.qty | currency: 'PHP'}}</h5>
+            <div class="count-input">
+              <div class="input-group-mobile">
+                <button (click)="decreaseQty(item)" class="btn btn-outline-secondary" type="button">-</button>
+                <input type="text" class="form-control text-center" [(ngModel)]="item.qty" min="1">
+                <button (click)="increaseQty(item)" class="btn btn-outline-secondary" type="button">+</button>
+              </div>
+            </div>   
+            <br>
+            <button (click)="removeItem(item)" class="btn btn-sm btn-outline-danger w-25 mb-3 mt-3">Remove Item</button>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="button-options" *ngIf="cartItems?.length;">
+    <h3 class="pb-1 mb-4">Subtotal: {{subTotal | currency: 'PHP'}}</h3>
+    <hr>
+    <div class="container-button-mobile">
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <ng-template #checkout>
+            <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#backDropModal">
+              Proceed to Checkout
+            </button>
+          </ng-template>
+      
+          <ng-container *ngIf="(!userInfo.user?.address); else checkout">
+            <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#addressModal">
+              Proceed to Checkout 
+              <!-- {{!userInfo.user?.address}} -->
+            </button>
+          </ng-container>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-secondary mb-3" type="button" (click)="goToProducts()">
+            Continue Shopping
+          </button>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-outline-danger" type="button" (click)="emptyCart()">
+            Clear Cart
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <br><br>
-
-  <div class="button-options" *ngIf="cartItems?.length;">
-    <h5 class="pb-1 mb-4">Total: &#8369; </h5>
-    <button class="btn-options btn-sm btn-warning mb-3">Proceed to Checkout</button><br>
-    <button class="btn-options btn-sm btn-outline-secondary" (click)="goToProducts()">Continue Shopping</button><br><br>
-    <button class="btn-options btn-sm btn-outline-danger" (click)="emptyCart()">Clear Cart</button>
-  </div>
 </div>
+
 
 <ng-template #noItemsInCartMobile>
   <img style="width: 100px;" src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png">
   <h4>There are no items in your cart..</h4>
-  <button routerLink="home" class="btn btn-warning">Shop Now</button>
+  <button class="btn btn-warning" (click)="goToProducts()">Shop Now</button>
 </ng-template>
