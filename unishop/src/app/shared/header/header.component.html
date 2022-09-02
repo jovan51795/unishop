@@ -28,7 +28,7 @@
             <a [routerLink]="['auth/register']" class="nav-link">Register</a>
           </div>
           <div class="nav-item nav-item-con" *ngIf="!userType">
-            <a [routerLink]="['user/my-cart']" class="d-flex justify-content-center align-items-center">
+            <a  href="javascript:void(0);" (click)="checkUser()" class="d-flex justify-content-center align-items-center">
               <span class="menu-icon tf-icons bx bx-cart"></span>
               <span class="badge bg-us-primary  rounded-pill" *ngIf="isLogin">{{cartCounter}}</span>
             </a>
