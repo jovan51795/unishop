@@ -1,3 +1,4 @@
+@import '../../../scss/mixins';
 .container{
     background-color: white;
     margin-top: 50px;
@@ -8,7 +9,6 @@
     border-radius: 30px;
     width: 900px;
     
-
     .table{
         width: 800px;
         margin: auto;
@@ -37,4 +37,32 @@
         }
     }
 
+    @include breakpoint-max(sm) {
+        display: none;
+      }
+}
+
+.container-mobile-view{
+
+    text-align: center;
+
+    @include breakpoint-min(md) {
+        display: none;
+      }
+
+    #container-card-mobile{
+        text-align: left;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        background-color: white;
+        border-radius: 20px;
+
+        .btn{
+            color: blue;
+            text-decoration-line: underline;
+        }
+    }
 }
