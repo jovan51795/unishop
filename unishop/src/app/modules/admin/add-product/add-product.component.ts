@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/core/models/products-model/product';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute} from '@angular/router';

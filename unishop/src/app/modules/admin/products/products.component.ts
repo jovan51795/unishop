@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, TitleStrategy } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/core/models/products-model/product';
 
 @Component({
   selector: 'app-products',

@@ -1,8 +1,7 @@
-import { AfterContentChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
+import {  Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/core/services/admin/admin.service';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-details',
