@@ -25,12 +25,12 @@ export class OrdersComponent implements OnInit {
   }
 
   columns = [
-    { isBtn: true, key: "order id", isSortable: false, dIcon: false },
-    { isBtn: true, key: "name", isSortable: false, dIcon: false },
-    { isBtn: true, key: "email", isSortable: false, dIcon: false },
+    { isBtn: false, key: "order id", isSortable: false, dIcon: false },
+    { isBtn: false, key: "name", isSortable: false, dIcon: false },
+    { isBtn: false, key: "email", isSortable: false, dIcon: false },
     { isBtn: false, key: "address", isSortable: true, dIcon: false, badge: true },
-    { isBtn: true, key: "subtotal", isSortable: false, dIcon: false },
-    { isBtn: true, key: "quantity", isSortable: false, dIcon: false },
+    { isBtn: false, key: "subtotal", isSortable: false, dIcon: false },
+    { isBtn: false, key: "quantity", isSortable: false, dIcon: false },
     { isBtn: false, key: "order status", isSortable: true, dIcon: false, badge: true },
   ]
 
