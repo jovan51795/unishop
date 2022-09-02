@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>Pending Orders</h4>
+  <h4>My Orders</h4>
   <hr class="padding-bottom-1x">
   <div class="table-responsive">
     <table class="table">
@@ -27,10 +27,28 @@
       </tbody>
     </table>
   </div>
-
   <div class="orders-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="backToHome()"> Back to Home </button>
   </div>
+</div>
+
+<!-- Mobile View -->
+<div class="container-mobile-view">
+  <h1 class="card-header">My Orders</h1>
+      <div id="container-card-mobile" class="row" *ngFor="let item of orderItems">
+        <div class="col-sm-12 col-md-12" >
+            <h5 class="pb-1 mb-1"><strong>Order ID:</strong><button type="button" class="btn btn-xs-primary" data-bs-toggle="modal" data-bs-target="#backDropModal"
+              (click)="showModal(item.id)">
+             {{item.id}}
+            </button></h5>
+            <h5 class="pb-1 mb-3"> <strong>Ordered Date: </strong> {{item.orderDate}}</h5>
+            <h5 class="pb-1 mb-3"> <strong>Total Price: </strong>{{item.subtotal | currency:'PHP'}}</h5>
+            <h5 class="pb-1 mb-3"> <strong>Status: </strong>
+              <span class="badge bg-label-info me-1" *ngIf="item.status">Delivered</span>
+              <span class="badge bg-label-warning me-1" *ngIf="!item.status">Pending</span>
+            </h5>       
+        </div>
+      </div>
 </div>
 
 <!-- Modal -->
