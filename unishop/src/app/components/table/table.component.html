@@ -16,7 +16,12 @@
             <tr *ngFor="let d of data">
                 <td *ngFor="let x of tableRowData(d)">
                     <ng-template #value>
-                        <p>{{x.val}}</p>
+                        <ng-template #nan>
+                            <p>{{x.val}}</p>
+                        </ng-template>
+                        <p *ngIf="(x.key === 'subtotal' || x.key === 'price'); else nan">
+                            {{x.val | currency:'PHP'}}
+                        </p>
                     </ng-template>
                     <ng-container *ngIf="(x.key ==='status' || x.key ==='order status'); else value">
                         <ng-template #vals>
@@ -66,7 +71,12 @@
                     {{columns[i].key}}
                 </div>
                 <div class="card-title-val">
-                    {{x.val}}
+                    <ng-template #nan>
+                        <p>{{x.val}}</p>
+                    </ng-template>
+                    <p *ngIf="(x.key === 'subtotal' || x.key === 'price'); else nan">
+                        {{x.val | currency:'PHP'}}
+                    </p>
                 </div>
             </div>
         </ng-template>
