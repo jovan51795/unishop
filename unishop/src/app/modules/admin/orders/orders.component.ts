@@ -92,7 +92,7 @@ export class OrdersComponent implements OnInit {
     this.getAllUsers();
     setTimeout(() => {
       this.mapOrdersAnUser()
-    }, 300);
+    }, 500);
   }
 
 
