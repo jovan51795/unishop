@@ -18,9 +18,18 @@ export class HeaderComponent implements OnInit {
   totalItem : number = 0;
   sidebarTooglge = false;
   cartCounter: number = 0
+  menu = true;
  
   constructor(private router: Router, private cartService: CartService, private sidebar: SidebarService) {
     this.isLogin = localStorage.getItem("user") ? true : false
+    this.router.events.subscribe(x => {
+      const curRoute = this.router.url.split('/')
+      if(curRoute.includes("home") || (curRoute.includes("products") && curRoute.includes("pages")) || curRoute.includes("my-cart") || curRoute.includes("my-orders")) {
+        this.menu =  false;
+      }else {
+        this.menu = true
+      }
+    })
     if (this.isLogin) {
       this.userType = JSON.parse(JSON.parse(JSON.stringify(this.data))).user?.role === 'admin' ||
       JSON.parse(JSON.parse(JSON.stringify(this.data))).role === "admin"

@@ -19,14 +19,13 @@ export class DashboardComponent implements OnInit {
   showModal = false;
   userForm: FormGroup;
   changePasswordForm: FormGroup;
-  imageUrl: string = "../../../../assets/images/empty.png";
+  imageUrl: string = "";
   dateNow = new Date();
 
   constructor(private fb: FormBuilder, 
     private userService: UserService, 
     private router: Router,
     private toast: ToastrService) { 
-    
 
     this.userForm = this.fb.group({
       id: [''],
@@ -59,7 +58,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserCred().subscribe((x: any) => {
-      this.imageUrl = "../../../../assets/images/" + x.profile
+      this.imageUrl = x.profile? "../../../../assets/profiles/" + x.profile : "../../../../assets/profiles/empty.png"
       this.userForm.patchValue(x)
     })
   }
